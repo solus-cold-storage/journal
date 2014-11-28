@@ -24,16 +24,13 @@ namespace ChimeraJournal{
 
     public Gtk.Box newtabbuttonbox;
     public Gtk.Button newtabbutton;
-    public Button close_btn;
-    public Box content;
-    public Label label;
-    public ChimeraTab tab;
+    public int tab_count;
 
     construct {
         this.show_border = false;
         this.new_tab ();
         this.set_scrollable(true);
-        this.popup_enable();
+        int tab_count = 0;
       }
 
       public ChimeraNotebook()
@@ -52,24 +49,27 @@ namespace ChimeraJournal{
 
       public void new_tab ()
       {
-        this.tab = new ChimeraJournal.ChimeraTab ();
-        this.get_tab_reorderable(this.tab);
+        ChimeraTab tab = new ChimeraJournal.ChimeraTab ();
+        int tab_number = tab_count;
+        //set_data(tab_number, tab);
         //Label here.
-        this.label = new Label("Untitled");
-        this.label.show();
+        Label label = new Label("Untitled " + tab_number.to_string());
+        label.show();
         //Close Button here.
-        this.close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
-        this.close_btn.show();
+        Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
+        close_btn.show();
         //(Label) Content Box here.
-        this.content = new Gtk.Box(Orientation.HORIZONTAL, 0);
-        this.content.pack_start(this.label, false, false, 0);
-        this.content.pack_end(this.close_btn, false, false, 0);
-        this.content.show();
-        this.close_btn.clicked.connect(() => {
-            this.remove_page(this.page_num(this.content));
+        Box content = new Gtk.Box(Orientation.HORIZONTAL, 0);
+        content.pack_start(label, false, false, 0);
+        content.pack_end(close_btn, false, false, 0);
+        content.show();
+        close_btn.clicked.connect(() => {
+            stdout.printf(tab_number.to_string() +"\n");
+            remove_page(page_num(tab.scroller));
           });
-        this.append_page (this.tab.create_scroller(), this.content);
-        this.tab.show ();
+        append_page (tab.create_scroller(), content);
+        tab.show ();
+        tab_count += 1;
       }
 
   }

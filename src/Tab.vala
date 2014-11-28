@@ -39,33 +39,33 @@ namespace ChimeraJournal
 
     public Gtk.Widget create_scroller(){
 
-      this.style_provider = new CssProvider();
-      this.scroller = new ScrolledWindow (null, null);
-      this.scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
-      this.scroller.set_shadow_type (ShadowType.NONE);
-      this.text_view = new TextView ();
+      style_provider = new CssProvider();
+      scroller = new ScrolledWindow (null, null);
+      scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+      scroller.set_shadow_type (ShadowType.NONE);
+      text_view = new TextView ();
 
       /*The following causing the text to go to next line instead of going on
       horizonally forever.*/
-      this.text_view.set_wrap_mode(Gtk.WrapMode.WORD);
-      this.text_view.editable = true;
-      this.text_view.cursor_visible = true;
+      text_view.set_wrap_mode(Gtk.WrapMode.WORD);
+      text_view.editable = true;
+      text_view.cursor_visible = true;
 
       try  {
-                this.style_provider.load_from_data (TEXTVIEW_STYLESHEET, -1);
+                style_provider.load_from_data (TEXTVIEW_STYLESHEET, -1);
             } catch (Error e) {
                 stderr.printf ("\nCouldn't load style provider.\n");
             }
 
-      this.text_view.get_style_context().add_class("Text_View");
-      this.text_view.get_style_context().add_provider(style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
+      text_view.get_style_context().add_class("Text_View");
+      text_view.get_style_context().add_provider(style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-      this.scroller.add (this.text_view);
+      scroller.add (text_view);
 
-      this.text_view.show();
-      this.scroller.show();
+      text_view.show();
+      scroller.show();
 
-      return this.scroller;
+      return scroller;
     }
 
   }

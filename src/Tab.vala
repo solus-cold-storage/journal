@@ -38,14 +38,14 @@ namespace EvolveJournal
     }
     """;
 
-    public Gtk.Widget create_scroller(){
+    public Gtk.Widget create_scroller(string text){
 
       style_provider = new CssProvider();
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
       scroller.set_shadow_type (ShadowType.NONE);
       text_view = new TextView.with_buffer (text_buffer);
-
+      text_view.buffer.text = text;
       /*The following causing the text to go to next line instead of going on
       horizonally forever.*/
       text_view.set_wrap_mode(Gtk.WrapMode.WORD);
@@ -86,9 +86,9 @@ namespace EvolveJournal
         return content;
     }
 
-    public TextBuffer get_text()
+    public string get_text()
     {
-      return text_buffer;
+      return text_view.get_buffer().text;
     }
 
   }

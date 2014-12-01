@@ -25,10 +25,11 @@ namespace EvolveJournal{
     public Gtk.Box newtabbuttonbox;
     public Gtk.Button newtabbutton;
     public int tab_count;
+    private string null_buffer = "";
 
     construct {
         this.show_border = false;
-        this.new_tab ();
+        this.new_tab (null_buffer);
         this.set_scrollable(true);
         int tab_count = 0;
       }
@@ -40,21 +41,31 @@ namespace EvolveJournal{
         this.newtabbutton = new Gtk.Button();
         this.newtabbutton.show_all();
         this.newtabbutton.set_border_width(4);
-        this.newtabbutton.clicked.connect (this.new_tab);
+        this.newtabbutton.clicked.connect (() => {
+          this.new_tab(null_buffer);
+          });
         this.newtabbutton.set_relief(Gtk.ReliefStyle.NONE);
         this.newtabbutton.set_image(new Gtk.Image.from_icon_name("tab-new-symbolic", Gtk.IconSize.MENU));
         this.newtabbuttonbox.add(this.newtabbutton);
         this.set_action_widget(this.newtabbuttonbox, Gtk.PackType.END);
       }
 
-      public void new_tab ()
+      public void new_tab (string text)
       {
         EvolveTab tab = new EvolveJournal.EvolveTab ();
         int tab_number = tab_count;
-        append_page (tab.create_scroller(), tab.create_content(this, tab_number));
+        append_page (tab.create_scroller(text), tab.create_content(this, tab_number));
+        stdout.printf(text);
         tab.show ();
         tab_count += 1;
       } 
+
+      public string get_text(){
+        ScrolledWindow scroller = (ScrolledWindow)this.get_nth_page(this.get_current_page());
+        TextView text_view = (TextView)scroller.get_child();
+        string typed_text = text_view.get_buffer().text;
+        return typed_text;
+      }
 
   }
 }

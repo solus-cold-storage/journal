@@ -20,6 +20,8 @@ using Gtk;
 
 namespace EvolveJournal {
 
+  public string buffer;
+
   public class EvolveWindow : Window {
 
     public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook) {
@@ -36,6 +38,15 @@ namespace EvolveJournal {
 
     notebook.show();
 
+    var open_button = new Button.from_icon_name("emblem-documents-symbolic", IconSize.SMALL_TOOLBAR);
+    headbar.add (open_button);
+    open_button.show();
+    open_button.clicked.connect (() => {
+      var file = new EvolveJournal.Files();
+      buffer = file.on_open_clicked();
+      notebook.new_tab(buffer);
+      });
+
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (share_button);
     share_button.show();
@@ -43,9 +54,9 @@ namespace EvolveJournal {
 
       int current_tab = notebook.get_current_page();
       stdout.printf(current_tab.to_string() +"\n");
-      //stdout.printf(notebook.get_nth_page(current_tab).text_view.buffer.text);*/
+      string typed_text = notebook.get_text();
       var share = new EvolveJournal.Share();
-      share.generate_paste("test", true, "Evolve Test", "10M", "vala", this);
+      share.generate_paste(typed_text, true, "Evolve Test", "10M", "vala", this);
 
     });
 
@@ -53,8 +64,8 @@ namespace EvolveJournal {
     headbar.add (save_button);
     save_button.show();
     save_button.clicked.connect (() => {
-      //Widget scroller = notebook.get_nth_page(notebook.get_current_page()).tab.scroller.text_view.get_buffer();
-      //stdout.printf(typed_text);
+      string typed_text = notebook.get_text();
+      stdout.printf(typed_text + "\n");
       });
 
     var vbox = new Box (Orientation.VERTICAL, 0);

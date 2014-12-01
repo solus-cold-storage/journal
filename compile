@@ -12,4 +12,5 @@ src/Journal.vala \
 src/Notebook.vala \
 src/Share.vala \
 src/Tab.vala \
-src/Window.vala 
+src/Window.vala \
+src/Files.vala

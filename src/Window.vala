@@ -1,28 +1,28 @@
 /* Copyright 2014 Ryan Sipes
 *
-* This file is part of Chimera Journal.
+* This file is part of Evolve Journal.
 *
-* Chimera Journal is free software: you can redistribute it
+* Evolve Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 3 of the
 * License, or (at your option) any later version.
 *
-* Chimera Journal is distributed in the hope that it will be
+* Evolve Journal is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Chimera Journal. If not, see http://www.gnu.org/licenses/.
+* with Evolve Journal. If not, see http://www.gnu.org/licenses/.
 */
 
 using Gtk;
 
-namespace ChimeraJournal {
+namespace EvolveJournal {
 
-  public class ChimeraWindow : Window {
+  public class EvolveWindow : Window {
 
-    public Gtk.Window MainWindow (ChimeraJournal.ChimeraNotebook notebook) {
+    public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook) {
 
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -44,14 +44,19 @@ namespace ChimeraJournal {
       int current_tab = notebook.get_current_page();
       stdout.printf(current_tab.to_string() +"\n");
       //stdout.printf(notebook.get_nth_page(current_tab).text_view.buffer.text);*/
-      var share = new ChimeraJournal.Share();
-      share.generate_paste("test", true, "Chimera Test", "10M", "vala", this);
+      var share = new EvolveJournal.Share();
+      share.generate_paste("test", true, "Evolve Test", "10M", "vala", this);
 
     });
 
     var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
+    save_button.clicked.connect (() => {
+
+      //string typed_text = notebook.get_nth_page(notebook.get_current_page()).tab.text_buffer;
+      //stdout.printf(typed_text);
+      });
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 

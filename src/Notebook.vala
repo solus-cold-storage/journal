@@ -51,11 +51,10 @@ namespace EvolveJournal{
       {
         EvolveTab tab = new EvolveJournal.EvolveTab ();
         int tab_number = tab_count;
-        //set_data(tab_number, tab);
         append_page (tab.create_scroller(), tab.create_content(this, tab_number));
         tab.show ();
         tab_count += 1;
-      }
+      } 
 
   }
 }

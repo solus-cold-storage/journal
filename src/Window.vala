@@ -53,8 +53,7 @@ namespace EvolveJournal {
     headbar.add (save_button);
     save_button.show();
     save_button.clicked.connect (() => {
-
-      //string typed_text = notebook.get_nth_page(notebook.get_current_page()).tab.text_buffer;
+      //Widget scroller = notebook.get_nth_page(notebook.get_current_page()).tab.scroller.text_view.get_buffer();
       //stdout.printf(typed_text);
       });
 

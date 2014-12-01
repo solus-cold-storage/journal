@@ -86,5 +86,10 @@ namespace EvolveJournal
         return content;
     }
 
+    public TextBuffer get_text()
+    {
+      return text_buffer;
+    }
+
   }
 }

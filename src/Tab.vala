@@ -86,6 +86,10 @@ namespace EvolveJournal
         return content;
     }
 
+    public void move_focus(EvolveNotebook notebook){
+      notebook.set_current_page(notebook.page_num(scroller));
+    }
+
     public string get_text()
     {
       return text_view.get_buffer().text;

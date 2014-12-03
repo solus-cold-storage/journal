@@ -44,7 +44,13 @@ namespace EvolveJournal {
     open_button.clicked.connect (() => {
       var file = new EvolveJournal.Files();
       buffer = file.on_open_clicked();
-      notebook.new_tab(buffer);
+      //Need to adjust this
+      if (buffer == null){
+        stdout.printf("No file selected.\n");
+      }
+      else {
+        notebook.new_tab(buffer);
+      }
       });
 
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);

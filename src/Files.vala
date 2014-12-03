@@ -33,7 +33,7 @@ namespace EvolveJournal {
 				text_buffer_load = open_file (file_chooser.get_filename ());
 			}
 			else {
-				text_buffer_load = "";
+				text_buffer_load = null;
 			}
 			file_chooser.destroy();
 			return text_buffer_load;

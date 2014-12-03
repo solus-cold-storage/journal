@@ -68,6 +68,13 @@ namespace EvolveJournal {
       stdout.printf(typed_text + "\n");
       });
 
+    var menu_button = new Button.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
+    headbar.pack_end (menu_button);
+    menu_button.show();
+    menu_button.clicked.connect(() => {
+
+      });
+
     var vbox = new Box (Orientation.VERTICAL, 0);
 
     vbox.pack_start(headbar, false, true, 0);

@@ -74,7 +74,12 @@ namespace EvolveJournal {
       stdout.printf(typed_text + "\n");
       });
 
-    var menu_button = new Button.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
+    MenuButton menu_button = new MenuButton();
+    var popover = new Popover(menu_button);
+    popover.set_modal(true);
+    menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
+    menu_button.use_popover = true;
+    menu_button.set_popover(popover);
     headbar.pack_end (menu_button);
     menu_button.show();
     menu_button.clicked.connect(() => {

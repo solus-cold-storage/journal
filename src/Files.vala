@@ -50,5 +50,17 @@ namespace EvolveJournal {
 			return text;
 		}
 
+		public void on_save_clicked() {
+			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
+				FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
+			if (file_chooser.run () == ResponseType.ACCEPT){
+
+			}
+			else {
+
+			}
+			file_chooser.destroy();
+		}
+
 	}
 }

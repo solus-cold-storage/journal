@@ -44,7 +44,7 @@ namespace EvolveJournal {
     open_button.clicked.connect (() => {
       var file = new EvolveJournal.Files();
       buffer = file.on_open_clicked();
-      //Need to adjust this
+      //Set this way so that it will load an empty file, but will load nothing if no file is selected.
       if (buffer == null){
         stdout.printf("No file selected.\n");
       }
@@ -70,8 +70,10 @@ namespace EvolveJournal {
     headbar.add (save_button);
     save_button.show();
     save_button.clicked.connect (() => {
+      var file = new EvolveJournal.Files();
       string typed_text = notebook.get_text();
       stdout.printf(typed_text + "\n");
+      file.on_save_clicked();
       });
 
     MenuButton menu_button = new MenuButton();

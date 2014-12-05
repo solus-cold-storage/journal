@@ -17,6 +17,7 @@
 */
 
 using Gtk;
+using GLib;
 
 namespace EvolveJournal {
 
@@ -50,14 +51,21 @@ namespace EvolveJournal {
 			return text;
 		}
 
-		public void on_save_clicked() {
+		public void on_save_clicked(string text_to_save, EvolveNotebook notebook) {
 			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
 				FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
+			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT){
-
+				try {
+					FileUtils.set_contents(file_chooser.get_filename(), text_to_save);
+					notebook.set_label(file_chooser.get_current_name());
+				}
+				catch(Error e) {
+					stderr.printf("Error: %s\n", e.message);
+				}
 			}
 			else {
-
+				stdout.printf("FileChooserDialog cancelled.");
 			}
 			file_chooser.destroy();
 		}

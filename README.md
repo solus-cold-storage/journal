@@ -7,8 +7,8 @@ ____
 * gtk+-3.0
 * libsoup-2.4
 * json-glib-1.0
-____
 
+____
 ###To Build
 
 Change to this folder (Journal's root folder)

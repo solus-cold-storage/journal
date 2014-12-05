@@ -72,8 +72,7 @@ namespace EvolveJournal {
     save_button.clicked.connect (() => {
       var file = new EvolveJournal.Files();
       string typed_text = notebook.get_text();
-      stdout.printf(typed_text + "\n");
-      file.on_save_clicked();
+      file.on_save_clicked(typed_text, notebook);
       });
 
     MenuButton menu_button = new MenuButton();

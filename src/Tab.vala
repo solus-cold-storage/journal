@@ -25,6 +25,7 @@ namespace EvolveJournal
     public ScrolledWindow scroller;
     public TextView text_view;
     public TextBuffer text_buffer;
+    public Label label;
 
     public CssProvider style_provider;
 
@@ -71,6 +72,23 @@ namespace EvolveJournal
 
     public Gtk.Box create_content(EvolveJournal.EvolveNotebook notebook, int tab_number){
       Label label = new Label("Untitled " + tab_number.to_string());
+        label.show();
+        //Close Button here.
+        Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
+        close_btn.show();
+        //(Label) Content Box here.
+        Box content = new Gtk.Box(Orientation.HORIZONTAL, 0);
+        content.pack_start(label, false, false, 0);
+        content.pack_end(close_btn, false, false, 0);
+        content.show();
+        close_btn.clicked.connect(() => {
+            notebook.remove_page(notebook.page_num(scroller));
+          });
+        return content;
+    }
+
+    public Gtk.Box update_content(EvolveNotebook notebook, string label_name){
+      Label label = new Label(label_name);
         label.show();
         //Close Button here.
         Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);

@@ -26,12 +26,16 @@ namespace EvolveJournal {
 
 	public class Files {
 		
-		public string on_open_clicked () {
+		public string on_open_clicked (EvolveNotebook notebook) {
 			var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
 				FileChooserAction.OPEN, Stock.CANCEL, ResponseType.CANCEL,
 				Stock.OPEN, ResponseType.ACCEPT);
+			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
+				File file = File.new_for_path(file_chooser.get_filename());
 				text_buffer_load = open_file (file_chooser.get_filename ());
+				notebook.new_tab(text_buffer_load);
+				notebook.set_label(file.get_basename());
 			}
 			else {
 				text_buffer_load = null;
@@ -55,6 +59,8 @@ namespace EvolveJournal {
 			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
 				FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
 			file_chooser.set_local_only(true);
+			file_chooser.set_do_overwrite_confirmation(true);
+			file_chooser.set_create_folders(true);
 			if (file_chooser.run () == ResponseType.ACCEPT){
 				try {
 					FileUtils.set_contents(file_chooser.get_filename(), text_to_save);

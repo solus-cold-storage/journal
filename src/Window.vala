@@ -43,14 +43,7 @@ namespace EvolveJournal {
     open_button.show();
     open_button.clicked.connect (() => {
       var file = new EvolveJournal.Files();
-      buffer = file.on_open_clicked();
-      //Set this way so that it will load an empty file, but will load nothing if no file is selected.
-      if (buffer == null){
-        stdout.printf("No file selected.\n");
-      }
-      else {
-        notebook.new_tab(buffer);
-      }
+      buffer = file.on_open_clicked(notebook);
       });
 
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);

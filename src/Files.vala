@@ -32,6 +32,7 @@ namespace EvolveJournal {
 				Stock.OPEN, ResponseType.ACCEPT);
 			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
+				//This is needed to pull the filename out (and not the whole path)
 				File file = File.new_for_path(file_chooser.get_filename());
 				text_buffer_load = open_file (file_chooser.get_filename ());
 				notebook.new_tab(text_buffer_load);

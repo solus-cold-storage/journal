@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Journal
+GenericName=Journal
+Comment=Text editor for Evolve OS.
+Categories=GTK;Utility;
+Exec=evolve-journal
+Icon=application-default-icon
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=evolve-journal
+X-GNOME-Keywords=Evolve;Journal;Text;Editor;

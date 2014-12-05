@@ -1,5 +1,5 @@
 # Chimera Journal
-project (chimera-journal)
+project (evolve-journal)
 
 # the oldest stable cmake version we support
 cmake_minimum_required (VERSION 2.6)
@@ -11,17 +11,20 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
 # what to call that directory where we install data too
-set (PKGDATADIR "${DATADIR}/chimera-journal")
-set (EXEC_NAME "chimera-journal")
-set (RELEASE_NAME "Chimera Journal")
+set (PKGDATADIR "${DATADIR}/evolve-journal")
+set (EXEC_NAME "evolve-journal")
+set (RELEASE_NAME "Evolve Journal")
 set (VERSION "0.1")
-set (VERSION_INFO "Pre-Alpha Build of Chimera Journal.")
+set (VERSION_INFO "Pre-Alpha Build of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)
 
 # now let's actually check for the required dependencies
-pkg_check_modules(DEPS REQUIRED gtk+-3.0)
+pkg_check_modules(DEPS REQUIRED 
+	gtk+-3.0
+	libsoup-2.4
+	json-glib-1.0)
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
 link_directories(${DEPS_LIBRARY_DIRS})
@@ -38,11 +41,18 @@ ensure_vala_version("0.16" MINIMUM)
 # files we want to compile
 include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
-    src/journal.vala
+    src/Journal.vala
+    src/Notebook.vala
+	src/Share.vala 
+	src/Tab.vala 
+	src/Window.vala 
+	src/Files.vala
 
 # tell what libraries to use when compiling
 PACKAGES
     gtk+-3.0
+    libsoup-2.4
+    json-glib-1.0
 )
 
 # tell cmake what to call the executable we just made

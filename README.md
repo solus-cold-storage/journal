@@ -12,8 +12,13 @@ ____
 ###To Build
 
 Change to this folder (Journal's root folder)
-    mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr ../
-	make
-	sudo make install
+   
+>mkdir build
+> 
+>cd build
+>
+>cmake -DCMAKE_INSTALL_PREFIX=/usr ../
+>
+>make
+>
+>sudo make install

@@ -10,9 +10,9 @@
 
 ###To Build
 
-* Change to this folder (journal's root folder)
-* mkdir build
-* cd build
-* cmake -DCMAKE_INSTALL_PREFIX=/usr ../
-* make
-* sudo make install
+Change to this folder (journal's root folder)
+> mkdir build
+> cd build
+> cmake -DCMAKE_INSTALL_PREFIX=/usr ../
+> make
+> sudo make install

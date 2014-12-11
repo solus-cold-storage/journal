@@ -71,7 +71,7 @@ namespace EvolveJournal{
       public void set_label(string label_name){
         EvolveTab tab = new EvolveJournal.EvolveTab ();
         ScrolledWindow scroller = (ScrolledWindow)this.get_nth_page(this.get_current_page());
-        this.set_tab_label(scroller, tab.update_content(this, label_name));
+        this.set_tab_label(scroller, tab.update_content(this, label_name, scroller));
       }
 
   }

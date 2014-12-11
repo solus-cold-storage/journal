@@ -87,7 +87,7 @@ namespace EvolveJournal
         return content;
     }
 
-    public Gtk.Box update_content(EvolveNotebook notebook, string label_name){
+    public Gtk.Box update_content(EvolveNotebook notebook, string label_name, ScrolledWindow update_scroller){
       Label label = new Label(label_name);
         label.show();
         //Close Button here.
@@ -99,7 +99,7 @@ namespace EvolveJournal
         content.pack_end(close_btn, false, false, 0);
         content.show();
         close_btn.clicked.connect(() => {
-            notebook.remove_page(notebook.page_num(scroller));
+            notebook.remove_page(notebook.page_num(update_scroller));
           });
         return content;
     }

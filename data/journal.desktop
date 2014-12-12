@@ -7,5 +7,6 @@ Exec=evolve-journal
 Icon=application-default-icon
 Terminal=false
 Type=Application
+MimeType=text/plain
 X-GNOME-Gettext-Domain=evolve-journal
 X-GNOME-Keywords=Evolve;Journal;Text;Editor;

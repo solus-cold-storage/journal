@@ -75,6 +75,7 @@ namespace EvolveJournal
         label.show();
         //Close Button here.
         Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
+        close_btn.set_relief(Gtk.ReliefStyle.NONE);
         close_btn.show();
         //(Label) Content Box here.
         Box content = new Gtk.Box(Orientation.HORIZONTAL, 0);

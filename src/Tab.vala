@@ -27,6 +27,7 @@ namespace EvolveJournal
     public TextBuffer text_buffer;
     public Label label;
     public string save_path;
+    public bool saved;
 
     public CssProvider style_provider;
 

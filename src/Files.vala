@@ -56,27 +56,38 @@ namespace EvolveJournal {
 			return text;
 		}
 
-		public string on_save_clicked(string text_to_save, EvolveNotebook notebook) {
-			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
-				FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
-			file_chooser.set_local_only(true);
-			file_chooser.set_do_overwrite_confirmation(true);
-			file_chooser.set_create_folders(true);
-			if (file_chooser.run () == ResponseType.ACCEPT){
-				try {
-					FileUtils.set_contents(file_chooser.get_filename(), text_to_save);
-					notebook.set_label(file_chooser.get_current_name());
+		public void on_save_clicked(string text_to_save, EvolveNotebook notebook) {
+			EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+			if (tab.saved == false){
+				var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
+					FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
+				file_chooser.set_local_only(true);
+				file_chooser.set_do_overwrite_confirmation(true);
+				file_chooser.set_create_folders(true);
+				if (file_chooser.run () == ResponseType.ACCEPT){
+					try {
+						FileUtils.set_contents(file_chooser.get_filename(), text_to_save);
+						notebook.set_label(file_chooser.get_current_name());
+						tab.save_path = file_chooser.get_filename();
+						tab.saved = true;
+					}
+					catch(Error e) {
+						stderr.printf("Error: %s\n", e.message);
+					}
 				}
-				catch(Error e) {
+				else {
+					stdout.printf("FileChooserDialog cancelled.");
+				}
+				file_chooser.destroy();
+			}
+			else{
+				try {
+					FileUtils.set_contents(tab.save_path, text_to_save);
+				}
+				catch(Error e){
 					stderr.printf("Error: %s\n", e.message);
 				}
 			}
-			else {
-				stdout.printf("FileChooserDialog cancelled.");
-			}
-			file_chooser.destroy();
-			return file_chooser.get_filename();
 		}
-
 	}
 }

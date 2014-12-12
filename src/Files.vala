@@ -35,7 +35,7 @@ namespace EvolveJournal {
 				//This is needed to pull the filename out (and not the whole path)
 				File file = File.new_for_path(file_chooser.get_filename());
 				text_buffer_load = open_file (file_chooser.get_filename ());
-				notebook.new_tab(text_buffer_load);
+				notebook.new_tab(text_buffer_load, true, file_chooser.get_filename());
 				notebook.set_label(file.get_basename());
 			}
 			else {

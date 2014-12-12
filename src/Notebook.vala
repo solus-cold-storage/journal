@@ -29,7 +29,7 @@ namespace EvolveJournal{
 
     construct {
         this.show_border = false;
-        this.new_tab (null_buffer);
+        this.new_tab (null_buffer, false, "");
         this.set_scrollable(true);
         int tab_count = 0;
       }
@@ -42,7 +42,7 @@ namespace EvolveJournal{
         this.newtabbutton.show_all();
         this.newtabbutton.set_border_width(4);
         this.newtabbutton.clicked.connect (() => {
-          this.new_tab(null_buffer);
+          this.new_tab(null_buffer, false, "");
           });
         this.newtabbutton.set_relief(Gtk.ReliefStyle.NONE);
         this.newtabbutton.set_image(new Gtk.Image.from_icon_name("tab-new-symbolic", Gtk.IconSize.MENU));
@@ -50,12 +50,19 @@ namespace EvolveJournal{
         this.set_action_widget(this.newtabbuttonbox, Gtk.PackType.END);
       }
 
-      public void new_tab (string text)
+      public void new_tab (string text, bool open_file, string save_path)
       {
         EvolveTab tab = new EvolveJournal.EvolveTab ();
         int tab_number = tab_count;
         append_page (tab, tab.create_content(this, tab_number));
         tab.set_text(text);
+        if (open_file == true){
+          tab.save_path = save_path;
+          tab.saved = true;
+        }
+        else {
+          stdout.printf("This is a new tab");
+        }
         stdout.printf(text);
         tab.show ();
         tab_count += 1;

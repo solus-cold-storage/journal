@@ -56,7 +56,7 @@ namespace EvolveJournal {
 			return text;
 		}
 
-		public void on_save_clicked(string text_to_save, EvolveNotebook notebook) {
+		public string on_save_clicked(string text_to_save, EvolveNotebook notebook) {
 			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
 				FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
 			file_chooser.set_local_only(true);
@@ -75,6 +75,7 @@ namespace EvolveJournal {
 				stdout.printf("FileChooserDialog cancelled.");
 			}
 			file_chooser.destroy();
+			return file_chooser.get_filename();
 		}
 
 	}

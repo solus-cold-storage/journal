@@ -26,6 +26,7 @@ namespace EvolveJournal
     public TextView text_view;
     public TextBuffer text_buffer;
     public Label label;
+    public string save_path;
 
     public CssProvider style_provider;
 
@@ -39,14 +40,13 @@ namespace EvolveJournal
     }
     """;
 
-    public Gtk.Widget create_scroller(string text){
-
+    public EvolveTab(){
       style_provider = new CssProvider();
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
       scroller.set_shadow_type (ShadowType.NONE);
       text_view = new TextView.with_buffer (text_buffer);
-      text_view.buffer.text = text;
+      //text_view.buffer.text = text;
       /*The following causing the text to go to next line instead of going on
       horizonally forever.*/
       text_view.set_wrap_mode(Gtk.WrapMode.WORD);
@@ -64,10 +64,11 @@ namespace EvolveJournal
 
       scroller.add (text_view);
 
+      pack_start(scroller, true, true, 0);
+
       text_view.show();
       scroller.show();
 
-      return scroller;
     }
 
     public Gtk.Box create_content(EvolveJournal.EvolveNotebook notebook, int tab_number){
@@ -107,6 +108,10 @@ namespace EvolveJournal
 
     public void move_focus(EvolveNotebook notebook){
       notebook.set_current_page(notebook.page_num(scroller));
+    }
+
+    public void set_text(string text){
+      text_view.buffer.text = text;
     }
 
     public string get_text()

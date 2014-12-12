@@ -54,7 +54,8 @@ namespace EvolveJournal{
       {
         EvolveTab tab = new EvolveJournal.EvolveTab ();
         int tab_number = tab_count;
-        append_page (tab.create_scroller(text), tab.create_content(this, tab_number));
+        append_page (tab, tab.create_content(this, tab_number));
+        tab.set_text(text);
         stdout.printf(text);
         tab.show ();
         tab_count += 1;
@@ -62,16 +63,16 @@ namespace EvolveJournal{
       } 
 
       public string get_text(){
-        ScrolledWindow scroller = (ScrolledWindow)this.get_nth_page(this.get_current_page());
-        TextView text_view = (TextView)scroller.get_child();
+        EvolveTab scroller = (EvolveTab)this.get_nth_page(this.get_current_page());
+        TextView text_view = scroller.text_view;
         string typed_text = text_view.get_buffer().text;
         return typed_text;
       }
 
       public void set_label(string label_name){
         EvolveTab tab = new EvolveJournal.EvolveTab ();
-        ScrolledWindow scroller = (ScrolledWindow)this.get_nth_page(this.get_current_page());
-        this.set_tab_label(scroller, tab.update_content(this, label_name, scroller));
+        EvolveTab scroller = (EvolveTab)this.get_nth_page(this.get_current_page());
+        this.set_tab_label(scroller, tab.update_content(this, label_name, scroller.scroller));
       }
 
   }

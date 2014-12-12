@@ -71,7 +71,7 @@ namespace EvolveJournal
 
     }
 
-    public Gtk.Box create_content(EvolveJournal.EvolveNotebook notebook, int tab_number){
+    public Gtk.Box create_content(EvolveNotebook notebook, int tab_number){
       Label label = new Label("Untitled " + tab_number.to_string());
         label.show();
         //Close Button here.
@@ -84,12 +84,12 @@ namespace EvolveJournal
         content.pack_end(close_btn, false, false, 0);
         content.show();
         close_btn.clicked.connect(() => {
-            notebook.remove_page(notebook.page_num(scroller));
+            notebook.remove_page(notebook.page_num(this));
           });
         return content;
     }
 
-    public Gtk.Box update_content(EvolveNotebook notebook, string label_name, ScrolledWindow update_scroller){
+    public Gtk.Box update_content(EvolveNotebook notebook, string label_name){
       Label label = new Label(label_name);
         label.show();
         //Close Button here.
@@ -101,7 +101,7 @@ namespace EvolveJournal
         content.pack_end(close_btn, false, false, 0);
         content.show();
         close_btn.clicked.connect(() => {
-            notebook.remove_page(notebook.page_num(update_scroller));
+            notebook.remove_page(notebook.page_num(this));
           });
         return content;
     }

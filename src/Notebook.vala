@@ -70,9 +70,8 @@ namespace EvolveJournal{
       }
 
       public void set_label(string label_name){
-        EvolveTab tab = new EvolveJournal.EvolveTab ();
-        EvolveTab scroller = (EvolveTab)this.get_nth_page(this.get_current_page());
-        this.set_tab_label(scroller, tab.update_content(this, label_name, scroller.scroller));
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        this.set_tab_label(tab, tab.update_content(this, label_name));
       }
 
   }

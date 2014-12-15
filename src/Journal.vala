@@ -16,17 +16,62 @@
 * with Evolve Journal. If not, see http://www.gnu.org/licenses/.
 */
 
-int main(string[] args){
-  Gtk.init (ref args);
+using GLib;
 
-  var notebook = new EvolveJournal.EvolveNotebook();
-  var win = new EvolveJournal.EvolveWindow ();
-  win.MainWindow(notebook);
+class Application : GLib.Application{
 
-  win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
-  win.present ();
+	public string file_to_open;
+	public string file_name;
+	public int file_count;
 
-  Gtk.main ();
+	public Application(string[] args){
+		Object(application_id:"com.evolve-os.journal", 
+			flags:ApplicationFlags.HANDLES_OPEN);
+		set_inactivity_timeout(10000);
 
-  return 0;
+		var notebook = new EvolveJournal.EvolveNotebook();
+		var win = new EvolveJournal.EvolveWindow ();
+		win.MainWindow(notebook);
+
+		open_files(notebook);
+
+		win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
+		win.present ();
+
+	}
+
+	public override void activate() {
+		stdout.puts("activated\n");
+	}
+
+	public void open_files(EvolveJournal.EvolveNotebook notebook){
+
+		EvolveJournal.Files file = new EvolveJournal.Files();
+		int i = 0;
+		//while(i < file_count){
+		file.open_at_start(notebook, file_to_open, file_name);	
+		//}
+	}
+	
+	public override void open(File[] files, string hint){
+		foreach (File file in files){
+			file_to_open = file.get_uri();
+			stdout.printf(file_to_open + "\n");
+			file_name = file.get_basename();
+			file_count += 1;
+		}
+	}
+
+	public void run(){
+		Gtk.main();
+	}
+}
+
+static int main(string[] args){
+	Gtk.init(ref args);
+
+	Application application = new Application(args);
+	application.run();
+
+	return 0;
 }

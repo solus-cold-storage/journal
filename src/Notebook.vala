@@ -61,7 +61,7 @@ namespace EvolveJournal{
           tab.saved = true;
         }
         else {
-          stdout.printf("This is a new tab");
+          stdout.printf("This is a new tab\n");
         }
         stdout.printf(text);
         tab.show ();

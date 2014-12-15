@@ -45,6 +45,14 @@ namespace EvolveJournal {
 			return text_buffer_load;
 		}
 
+		public string open_at_start(EvolveNotebook notebook, string file_path, string file_name){
+			string success = "open_at_start, started!" + "\n";
+			text_buffer_load = open_file(file_path);
+			notebook.new_tab(text_buffer_load, true, file_path);
+			notebook.set_label(file_name);
+			return success;
+		}
+
 		private string open_file (string filename) {
 			string text;
 			try {

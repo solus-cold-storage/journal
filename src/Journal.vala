@@ -43,22 +43,31 @@ class Application : GLib.Application{
 	public override void activate() {
 		stdout.puts("activated\n");
 	}
-
-	public void open_files(EvolveJournal.EvolveNotebook notebook){
-
-		EvolveJournal.Files file = new EvolveJournal.Files();
-		int i = 0;
-		//while(i < file_count){
-		file.open_at_start(notebook, file_to_open, file_name);	
-		//}
-	}
 	
 	public override void open(File[] files, string hint){
-		foreach (File file in files){
-			file_to_open = file.get_uri();
-			stdout.printf(file_to_open + "\n");
-			file_name = file.get_basename();
-			file_count += 1;
+		if (files == null){
+			stdout.printf("No files.");
+		}
+		else{
+			foreach (File file in files){
+				file_to_open = file.get_uri();
+				stdout.printf(file_to_open + "\n");
+				file_name = file.get_basename();
+				file_count += 1;
+			}
+		}	
+	}
+
+	public void open_files(EvolveJournal.EvolveNotebook notebook){
+		if (file_to_open == null) {
+			stdout.printf("open_files could not run, no files to open.\n");
+		}
+		else{
+			EvolveJournal.Files file = new EvolveJournal.Files();
+			int i = 0;
+			//while(i < file_count){
+			file.open_at_start(notebook, file_to_open, file_name);	
+			//}
 		}
 	}
 

@@ -18,69 +18,44 @@
 
 using GLib;
 
-class Application : GLib.Application{
+class Application : Gtk.Application{
 
-	public string file_to_open;
-	public string file_name;
-	public int file_count;
+	public override void activate(){
+		EvolveJournal.EvolveNotebook notebook = get_notebook();
+		run_application(notebook);	
+	}
 
-	public Application(string[] args){
+	public override void open(File[] files, string hint){
+		foreach (File file in files){
+			EvolveJournal.EvolveNotebook notebook = get_notebook();
+			EvolveJournal.Files file_class = new EvolveJournal.Files();
+			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	
+			run_application(notebook);
+		}
+	}
+
+	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
-		set_inactivity_timeout(10000);
+	}
 
+	public EvolveJournal.EvolveNotebook get_notebook(){
 		var notebook = new EvolveJournal.EvolveNotebook();
+		return notebook;
+	}
+
+	public void run_application(EvolveJournal.EvolveNotebook notebook){
 		var win = new EvolveJournal.EvolveWindow ();
 		win.MainWindow(notebook);
 
-		open_files(notebook);
-
 		win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
-		win.present ();
+		win.present ();	
 
-	}
-
-	public override void activate() {
-		stdout.puts("activated\n");
-	}
-	
-	public override void open(File[] files, string hint){
-		if (files == null){
-			stdout.printf("No files.");
-		}
-		else{
-			foreach (File file in files){
-				file_to_open = file.get_uri();
-				stdout.printf(file_to_open + "\n");
-				file_name = file.get_basename();
-				file_count += 1;
-			}
-		}	
-	}
-
-	public void open_files(EvolveJournal.EvolveNotebook notebook){
-		if (file_to_open == null) {
-			stdout.printf("open_files could not run, no files to open.\n");
-		}
-		else{
-			EvolveJournal.Files file = new EvolveJournal.Files();
-			int i = 0;
-			//while(i < file_count){
-			file.open_at_start(notebook, file_to_open, file_name);	
-			//}
-		}
-	}
-
-	public void run(){
 		Gtk.main();
 	}
+
 }
 
 static int main(string[] args){
-	Gtk.init(ref args);
-
-	Application application = new Application(args);
-	application.run();
-
-	return 0;
+	return new Application ().run (args);
 }

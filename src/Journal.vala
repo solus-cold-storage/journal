@@ -26,12 +26,12 @@ class Application : Gtk.Application{
 	}
 
 	public override void open(File[] files, string hint){
+		EvolveJournal.EvolveNotebook notebook = get_notebook();
 		foreach (File file in files){
-			EvolveJournal.EvolveNotebook notebook = get_notebook();
 			EvolveJournal.Files file_class = new EvolveJournal.Files();
 			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	
-			run_application(notebook);
 		}
+		run_application(notebook);
 	}
 
 	public Application(){

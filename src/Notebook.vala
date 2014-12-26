@@ -25,11 +25,10 @@ namespace EvolveJournal{
     public Gtk.Box newtabbuttonbox;
     public Gtk.Button newtabbutton;
     public int tab_count;
-    private string null_buffer = "";
+    public string null_buffer = "";
 
     construct {
         this.show_border = false;
-        this.new_tab (null_buffer, false, "");
         this.set_scrollable(true);
         int tab_count = 0;
       }

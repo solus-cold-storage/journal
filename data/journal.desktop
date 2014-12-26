@@ -2,11 +2,11 @@
 Name=Journal
 GenericName=Journal
 Comment=Text editor for Evolve OS.
-Categories=GTK;Utility;TextEditor;
-Exec=evolve-journal
+Categories=GTK;Utility;TextEditor;Development;Utility;
+Exec=journal %F
 Icon=accessories-text-editor
 Terminal=false
 Type=Application
 MimeType=text/plain;
-X-GNOME-Gettext-Domain=evolve-journal
+X-GNOME-Gettext-Domain=journal
 X-GNOME-Keywords=Evolve;Journal;Text;Editor;

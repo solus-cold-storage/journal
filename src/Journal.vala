@@ -22,11 +22,13 @@ class Application : Gtk.Application{
 
 	public override void activate(){
 		EvolveJournal.EvolveNotebook notebook = get_notebook();
+		notebook.new_tab (notebook.null_buffer, false, "");
 		run_application(notebook);	
 	}
 
 	public override void open(File[] files, string hint){
 		EvolveJournal.EvolveNotebook notebook = get_notebook();
+		//Load any files requested at startup.
 		foreach (File file in files){
 			EvolveJournal.Files file_class = new EvolveJournal.Files();
 			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	

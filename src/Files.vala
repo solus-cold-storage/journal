@@ -25,7 +25,7 @@ namespace EvolveJournal {
 	private string text_buffer_load;
 
 	public class Files {
-		
+
 		public string on_open_clicked (EvolveNotebook notebook) {
 			var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
 				FileChooserAction.OPEN, Stock.CANCEL, ResponseType.CANCEL,
@@ -37,6 +37,8 @@ namespace EvolveJournal {
 				text_buffer_load = open_file (file_chooser.get_filename ());
 				notebook.new_tab(text_buffer_load, true, file_chooser.get_filename());
 				notebook.set_label(file.get_basename());
+				EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+				tab.set_lang(file_chooser.get_filename());
 			}
 			else {
 				text_buffer_load = null;
@@ -78,6 +80,7 @@ namespace EvolveJournal {
 						notebook.set_label(file_chooser.get_current_name());
 						tab.save_path = file_chooser.get_filename();
 						tab.saved = true;
+						tab.set_lang(tab.save_path);
 					}
 					catch(Error e) {
 						stderr.printf("Error: %s\n", e.message);

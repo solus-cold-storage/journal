@@ -42,6 +42,8 @@ namespace EvolveJournal
       text_view.set_wrap_mode(Gtk.WrapMode.WORD);
       text_view.editable = true;
       text_view.cursor_visible = true;
+      text_view.set_show_line_numbers(true);
+      text_view.set_auto_indent(true);
 
       var s =  SourceStyleSchemeManager.get_default();
       message("Found %d styles", s.get_scheme_ids().length);

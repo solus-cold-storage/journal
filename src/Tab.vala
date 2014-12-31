@@ -29,7 +29,6 @@ namespace EvolveJournal
     //private SourceUndoManager undo_manager;
     public string save_path;
     public bool saved;
-    public CssProvider style_provider;
     public SourceStyleSchemeManager style_scheme_manager;
 
     public EvolveTab(){

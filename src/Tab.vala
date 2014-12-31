@@ -23,13 +23,14 @@ namespace EvolveJournal
   public class EvolveTab : Gtk.Box
   {
     public ScrolledWindow scroller;
-    public TextView text_view;
+    public SourceView text_view;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
     //private SourceUndoManager undo_manager;
     public string save_path;
     public bool saved;
     public CssProvider style_provider;
+    public SourceStyleSchemeManager style_scheme_manager;
 
     private const string TEXTVIEW_STYLESHEET = """
     .Text_View {
@@ -46,13 +47,24 @@ namespace EvolveJournal
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
       scroller.set_shadow_type (ShadowType.NONE);
-      text_view = new TextView.with_buffer (text_buffer);
+      text_view = new SourceView.with_buffer (text_buffer);
       /*The following causing the text to go to next line instead of going on
       horizonally forever.*/
       text_view.set_wrap_mode(Gtk.WrapMode.WORD);
       text_view.editable = true;
       text_view.cursor_visible = true;
+      //style_scheme_manager = new SourceStyleSchemeManager ();
 
+      var s =  SourceStyleSchemeManager.get_default();
+      message("Found %d styles", s.get_scheme_ids().length);
+
+      foreach (var v in s.get_scheme_ids()){
+        message("Got style %s", v);
+      }
+
+      var scheme = s.get_scheme("oblivion");
+      text_buffer.set_style_scheme(scheme);
+      text_buffer.set_highlight_syntax(true);
       /*try  {
                 style_provider.load_from_data (TEXTVIEW_STYLESHEET, -1);
             } catch (Error e) {
@@ -119,12 +131,20 @@ namespace EvolveJournal
       return text_view.get_buffer().text;
     }
 
-    public void set_lang(string path)
+    public void set_lang(File file)
     {
+      FileInfo? info = null;
+      try {
+          info = file.query_info ("standard::*", FileQueryInfoFlags.NONE, null);
+      } 
+      catch (Error e) {
+          warning (e.message);
+          return;
+      }
+      var mime_type = ContentType.get_mime_type (info.get_attribute_as_string (FileAttribute.STANDARD_CONTENT_TYPE));
       SourceLanguageManager language_manager = new SourceLanguageManager();
-      text_buffer.set_language(language_manager.guess_language(path, null));
-      text_buffer.set_highlight_syntax(true);        
+      text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
+      //text_buffer.set_highlight_syntax(true);
     }
-
   }
 }

@@ -38,7 +38,7 @@ namespace EvolveJournal {
 				notebook.new_tab(text_buffer_load, true, file_chooser.get_filename());
 				notebook.set_label(file.get_basename());
 				EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
-				tab.set_lang(file_chooser.get_filename());
+				tab.set_lang(file_chooser.get_file());
 			}
 			else {
 				text_buffer_load = null;
@@ -52,6 +52,9 @@ namespace EvolveJournal {
 			text_buffer_load = open_file(file_path);
 			notebook.new_tab(text_buffer_load, true, file_path);
 			notebook.set_label(file_name);
+			EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+			File file = File.new_for_path(file_path);
+			tab.set_lang(file);
 			return success;
 		}
 
@@ -80,7 +83,7 @@ namespace EvolveJournal {
 						notebook.set_label(file_chooser.get_current_name());
 						tab.save_path = file_chooser.get_filename();
 						tab.saved = true;
-						tab.set_lang(tab.save_path);
+						tab.set_lang(file_chooser.get_file());
 					}
 					catch(Error e) {
 						stderr.printf("Error: %s\n", e.message);

@@ -1,4 +1,4 @@
-# Chimera Journal
+# Evolve Journal
 project (evolve-journal)
 
 # the oldest stable cmake version we support
@@ -11,10 +11,10 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
 # what to call that directory where we install data too
-set (PKGDATADIR "${DATADIR}/evolve-journal")
+set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
 set (RELEASE_NAME "Evolve Journal")
-set (VERSION "0.2")
+set (VERSION "0.3")
 set (VERSION_INFO "Alpha Build of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
@@ -24,7 +24,9 @@ find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED 
 	gtk+-3.0
 	libsoup-2.4
-	json-glib-1.0)
+	json-glib-1.0
+	gtksourceview-3.0
+	)
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
 link_directories(${DEPS_LIBRARY_DIRS})
@@ -53,6 +55,7 @@ PACKAGES
     gtk+-3.0
     libsoup-2.4
     json-glib-1.0
+    gtksourceview-3.0
 )
 
 # tell cmake what to call the executable we just made

@@ -7,6 +7,7 @@ ____
 * gtk+-3.0
 * libsoup-2.4
 * json-glib-1.0
+* gtksourceview-3.0
 
 ____
 ###To Build

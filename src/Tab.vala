@@ -32,18 +32,7 @@ namespace EvolveJournal
     public CssProvider style_provider;
     public SourceStyleSchemeManager style_scheme_manager;
 
-    private const string TEXTVIEW_STYLESHEET = """
-    .Text_View {
-      background-color: #FAE7B6;
-      color: #99601F;
-    }
-    .Text_View:selected {
-      background: #F4F2F5;
-    }
-    """;
-
     public EvolveTab(){
-      //style_provider = new CssProvider();
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
       scroller.set_shadow_type (ShadowType.NONE);
@@ -53,7 +42,6 @@ namespace EvolveJournal
       text_view.set_wrap_mode(Gtk.WrapMode.WORD);
       text_view.editable = true;
       text_view.cursor_visible = true;
-      //style_scheme_manager = new SourceStyleSchemeManager ();
 
       var s =  SourceStyleSchemeManager.get_default();
       message("Found %d styles", s.get_scheme_ids().length);
@@ -65,14 +53,6 @@ namespace EvolveJournal
       var scheme = s.get_scheme("oblivion");
       text_buffer.set_style_scheme(scheme);
       text_buffer.set_highlight_syntax(true);
-      /*try  {
-                style_provider.load_from_data (TEXTVIEW_STYLESHEET, -1);
-            } catch (Error e) {
-                stderr.printf ("\nCouldn't load style provider.\n");
-            }
-      */
-      //text_view.get_style_context().add_class("Text_View");
-      //text_view.get_style_context().add_provider(style_provider, STYLE_PROVIDER_PRIORITY_APPLICATION);
 
       scroller.add (text_view);
 
@@ -144,7 +124,6 @@ namespace EvolveJournal
       var mime_type = ContentType.get_mime_type (info.get_attribute_as_string (FileAttribute.STANDARD_CONTENT_TYPE));
       SourceLanguageManager language_manager = new SourceLanguageManager();
       text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
-      //text_buffer.set_highlight_syntax(true);
     }
   }
 }

@@ -33,7 +33,6 @@ namespace EvolveJournal {
 			file_chooser.set_select_multiple(true);
 			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
-				//File[] files = file_chooser.get_files;
 				foreach (File file in file_chooser.get_files()){
 					//This is needed to pull the filename out (and not the whole path)
 					text_buffer_load = open_file (file.get_path ());

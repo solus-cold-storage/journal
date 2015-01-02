@@ -30,15 +30,18 @@ namespace EvolveJournal {
 			var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
 				FileChooserAction.OPEN, "Cancel", ResponseType.CANCEL,
 				"Open", ResponseType.ACCEPT);
+			file_chooser.set_select_multiple(true);
 			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
-				//This is needed to pull the filename out (and not the whole path)
-				File file = File.new_for_path(file_chooser.get_filename());
-				text_buffer_load = open_file (file_chooser.get_filename ());
-				notebook.new_tab(text_buffer_load, true, file_chooser.get_filename());
-				notebook.set_label(file.get_basename());
-				EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
-				tab.set_lang(file_chooser.get_file());
+				//File[] files = file_chooser.get_files;
+				foreach (File file in file_chooser.get_files()){
+					//This is needed to pull the filename out (and not the whole path)
+					text_buffer_load = open_file (file.get_path ());
+					notebook.new_tab(text_buffer_load, true, file.get_path());
+					notebook.set_label(file.get_basename());
+					EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+					tab.set_lang(file);
+				}
 			}
 			else {
 				text_buffer_load = null;

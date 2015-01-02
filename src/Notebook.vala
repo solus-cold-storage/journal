@@ -65,7 +65,7 @@ namespace EvolveJournal{
         stdout.printf(text);
         tab.show ();
         tab_count += 1;
-        tab.move_focus(this);
+        tab.change_focus(this);
       } 
 
       public string get_text(){

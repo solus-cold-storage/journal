@@ -28,8 +28,8 @@ namespace EvolveJournal {
 
 		public string on_open_clicked (EvolveNotebook notebook) {
 			var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
-				FileChooserAction.OPEN, Stock.CANCEL, ResponseType.CANCEL,
-				Stock.OPEN, ResponseType.ACCEPT);
+				FileChooserAction.OPEN, "Cancel", ResponseType.CANCEL,
+				"Open", ResponseType.ACCEPT);
 			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
 				//This is needed to pull the filename out (and not the whole path)
@@ -73,7 +73,7 @@ namespace EvolveJournal {
 			EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
 			if (tab.saved == false){
 				var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
-					FileChooserAction.SAVE, Stock.CANCEL, ResponseType.CANCEL, Stock.SAVE, ResponseType.ACCEPT);
+					FileChooserAction.SAVE, "Cancel", ResponseType.CANCEL, "Save", ResponseType.ACCEPT);
 				file_chooser.set_local_only(true);
 				file_chooser.set_do_overwrite_confirmation(true);
 				file_chooser.set_create_folders(true);

@@ -30,6 +30,7 @@ namespace EvolveJournal
     public string save_path;
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
+    public string language;
 
     public EvolveTab(){
       scroller = new ScrolledWindow (null, null);
@@ -99,7 +100,7 @@ namespace EvolveJournal
         return content;
     }
 
-    public void move_focus(EvolveNotebook notebook){
+    public void change_focus(EvolveNotebook notebook){
       notebook.set_current_page(notebook.page_num(scroller));
     }
 
@@ -125,6 +126,8 @@ namespace EvolveJournal
       var mime_type = ContentType.get_mime_type (info.get_attribute_as_string (FileAttribute.STANDARD_CONTENT_TYPE));
       SourceLanguageManager language_manager = new SourceLanguageManager();
       text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
+      language = language_manager.guess_language(file.get_path(), mime_type).get_name();
+      stdout.printf(language + "\n");
     }
   }
 }

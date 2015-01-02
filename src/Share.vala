@@ -57,7 +57,7 @@ namespace EvolveJournal {
         string url = "https://paste.ee/api?key=" + dev_key + "&paste=" + post;
 
         //Create Session
-        var session = new Soup.SessionAsync();
+        var session = new Soup.Session();
 
         var message = new Soup.Message("POST", url);
 
@@ -72,7 +72,7 @@ namespace EvolveJournal {
       		stdout.printf ("Data: \n%s\n", (string) mess.response_body.data);
             var dialog = new Dialog.with_buttons("Paste.ee Link", window,
                                                     DialogFlags.MODAL,
-                                                    Stock.OK,
+                                                    "OK",
                                                     ResponseType.OK, null);
             var content_area = dialog.get_content_area();
             parser.load_from_data((string)mess.response_body.data, -1);

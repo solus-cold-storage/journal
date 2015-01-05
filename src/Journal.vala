@@ -20,15 +20,23 @@ using GLib;
 
 class Application : Gtk.Application{
 
+	public bool window_created;
+	public EvolveJournal.EvolveWindow win;
+	public EvolveJournal.EvolveNotebook notebook;
+
 	public override void activate(){
-		EvolveJournal.EvolveNotebook notebook = get_notebook();
+		set_notebook();
+		notebook = get_notebook();
 		notebook.new_tab (notebook.null_buffer, false, "");
 		run_application(notebook);	
 	}
 
 	public override void open(File[] files, string hint){
-		EvolveJournal.EvolveNotebook notebook = get_notebook();
+		if (window_created != true){
+			set_notebook();
+		}
 		//Load any files requested at startup.
+		notebook = get_notebook();
 		foreach (File file in files){
 			EvolveJournal.Files file_class = new EvolveJournal.Files();
 			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	
@@ -41,19 +49,28 @@ class Application : Gtk.Application{
 			flags:ApplicationFlags.HANDLES_OPEN);
 	}
 
+	public void set_notebook(){
+		notebook = new EvolveJournal.EvolveNotebook();
+	}
+
 	public EvolveJournal.EvolveNotebook get_notebook(){
-		var notebook = new EvolveJournal.EvolveNotebook();
 		return notebook;
 	}
 
 	public void run_application(EvolveJournal.EvolveNotebook notebook){
-		var win = new EvolveJournal.EvolveWindow ();
-		win.MainWindow(notebook);
+		if (window_created == false){
+			var win = new EvolveJournal.EvolveWindow ();
+			win.MainWindow(notebook);
+			window_created = true;
+			
+			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
+			win.present ();	
 
-		win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
-		win.present ();	
-
-		Gtk.main();
+			Gtk.main();
+		}
+		else {
+			win.present();
+		}
 	}
 
 }

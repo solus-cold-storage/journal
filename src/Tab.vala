@@ -125,9 +125,14 @@ namespace EvolveJournal
       }
       var mime_type = ContentType.get_mime_type (info.get_attribute_as_string (FileAttribute.STANDARD_CONTENT_TYPE));
       SourceLanguageManager language_manager = new SourceLanguageManager();
-      text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
       language = language_manager.guess_language(file.get_path(), mime_type).get_name();
-      stdout.printf(language + "\n");
+      if (language != null){
+        text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
+        stdout.printf(language + "\n");
+      }
+      else {
+        stdout.printf("No language.");
+      }
     }
   }
 }

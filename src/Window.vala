@@ -24,7 +24,9 @@ namespace EvolveJournal {
 
   public class EvolveWindow : Window {
 
-    public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook) {
+    public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) {
+
+    //Object(notebook: notebook);
 
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -72,13 +74,19 @@ namespace EvolveJournal {
     var popover = new Popover(menu_button);
     popover.set_modal(true);
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
-    menu_button.use_popover = true;
     menu_button.set_popover(popover);
     headbar.pack_end (menu_button);
     menu_button.show();
-    menu_button.clicked.connect(() => {
+    GLib.Menu menu = new GLib.Menu();
+    menu_button.set_menu_model(menu);
+    menu_button.set_use_popover(true);
+    menu.append("Use Line Numbers", "linenum");
+    
+    /* toggle linenum */
+    /*var paction = new PropertyAction("linenum", notebook, "use_linenum");
+    application.add_action(paction);*/
 
-      });
+    // update_actions();
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 

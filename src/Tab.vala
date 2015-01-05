@@ -131,7 +131,7 @@ namespace EvolveJournal
         stdout.printf(language + "\n");
       }
       else {
-        stdout.printf("No language.");
+        stdout.printf("No language.\n");
       }
     }
   }

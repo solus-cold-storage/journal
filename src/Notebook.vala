@@ -26,11 +26,13 @@ namespace EvolveJournal{
     public Gtk.Button newtabbutton;
     public int tab_count;
     public string null_buffer = "";
+    public bool use_linenum;
 
     construct {
         this.show_border = false;
         this.set_scrollable(true);
         int tab_count = 0;
+        use_linenum = true;
       }
 
       public EvolveNotebook()
@@ -78,6 +80,10 @@ namespace EvolveJournal{
       public void set_label(string label_name){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         this.set_tab_label(tab, tab.update_content(this, label_name));
+      }
+
+      public bool get_linenum(){
+        return use_linenum;
       }
 
   }

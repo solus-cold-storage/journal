@@ -64,6 +64,7 @@ namespace EvolveJournal {
     var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
+    //save_button.set_accel_path("Save File");
     save_button.clicked.connect (() => {
       var file = new EvolveJournal.Files();
       string typed_text = notebook.get_text();

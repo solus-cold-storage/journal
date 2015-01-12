@@ -24,19 +24,16 @@ namespace EvolveJournal{
 
     public Gtk.Box newtabbuttonbox;
     public Gtk.Button newtabbutton;
-    public int tab_count;
     public string null_buffer = "";
     public bool use_linenum;
 
-    construct {
-        this.show_border = false;
-        this.set_scrollable(true);
-        int tab_count = 0;
-        use_linenum = true;
-      }
-
       public EvolveNotebook()
       {
+        //Old Construct Stuff
+        this.show_border = false;
+        this.set_scrollable(true);
+        use_linenum = true;
+        //Done here.
         this.newtabbuttonbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 8);
         this.newtabbuttonbox.show_all();
         this.newtabbutton = new Gtk.Button();
@@ -54,8 +51,8 @@ namespace EvolveJournal{
       public void new_tab (string text, bool open_file, string save_path)
       {
         EvolveTab tab = new EvolveJournal.EvolveTab (this);
-        int tab_number = tab_count;
-        append_page (tab, tab.create_content(this, tab_number));
+        tab.set_content(this, "Untitled");
+        append_page (tab, tab.get_content());
         tab.set_text(text);
         if (open_file == true){
           tab.save_path = save_path;
@@ -66,20 +63,20 @@ namespace EvolveJournal{
         }
         stdout.printf(text);
         tab.show ();
-        tab_count += 1;
         tab.change_focus(this);
       } 
 
       public string get_text(){
-        EvolveTab scroller = (EvolveTab)this.get_nth_page(this.get_current_page());
-        TextView text_view = scroller.text_view;
-        string typed_text = text_view.get_buffer().text;
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        SourceBuffer buffer = tab.text_buffer;
+        string typed_text = buffer.text;
         return typed_text;
       }
 
       public void set_label(string label_name){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        this.set_tab_label(tab, tab.update_content(this, label_name));
+        tab.set_content(this, label_name);
+        this.set_tab_label(tab, tab.get_content());
       }
 
       public bool get_linenum(){

@@ -23,7 +23,6 @@ namespace EvolveJournal
   public class EvolveTab : Gtk.Box
   {
     public ScrolledWindow scroller;
-    public SourceView text_view;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
     //private SourceUndoManager undo_manager;
@@ -32,27 +31,30 @@ namespace EvolveJournal
     public SourceStyleSchemeManager style_scheme_manager;
     public string language;
     public bool edited = false;
+    public Box content;
+    public Button close_btn;
+    public SourceView source_view;
 
-    public EvolveTab(EvolveNotebook notebook){
+    public EvolveTab(EvolveNotebook notebook){  
       scroller = new ScrolledWindow (null, null);
-      scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
+      scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);    
+      source_view = new SourceView();
+      source_view.set_wrap_mode(Gtk.WrapMode.WORD);
+      source_view.editable = true;
+      source_view.cursor_visible = true;
+      source_view.set_show_line_numbers(true);
+      source_view.set_auto_indent(true);
+      //source_view.set_insert_spaces_instead_of_tabs(true);
+      source_view.set_buffer(text_buffer);
       scroller.set_shadow_type (ShadowType.NONE);
-      text_view = new SourceView.with_buffer (text_buffer);
-      /*The following causing the text to go to next line instead of going on
-      horizonally forever.*/
-      text_view.set_wrap_mode(Gtk.WrapMode.WORD);
-      text_view.editable = true;
-      text_view.cursor_visible = true;
-      text_view.set_show_line_numbers(true);
-      text_view.set_auto_indent(true);
-      text_view.set_insert_spaces_instead_of_tabs(true);
-      text_view.get_buffer().changed.connect(() => {
+      text_buffer.changed.connect(() => {
           if (edited == false){
             edited = true;
-            update_content(notebook, label.get_text() + "*");
+            label.set_use_underline(true);
+            stdout.printf("Has been edited.");
           }
           else {
-            //Do nothing.
+            stdout.printf("Edited = true\n");
           }
         });
 
@@ -65,64 +67,51 @@ namespace EvolveJournal
       }
 
       var scheme = s.get_scheme("oblivion");
+      //var scheme = s.get_scheme("classic");
       text_buffer.set_style_scheme(scheme);
       text_buffer.set_highlight_syntax(true);
 
-      scroller.add (text_view);
-
       pack_start(scroller, true, true, 0);
+      scroller.add(source_view);
 
-      text_view.show();
+      source_view.show();
       scroller.show();
 
     }
 
-    public Gtk.Box create_content(EvolveNotebook notebook, int tab_number){
-      Label label = new Label("Untitled " + tab_number.to_string());
-        label.show();
-        //Close Button here.
-        Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
-        close_btn.set_relief(Gtk.ReliefStyle.NONE);
-        close_btn.show();
-        //(Label) Content Box here.
-        Box content = new Gtk.Box(Orientation.HORIZONTAL, 0);
-        content.pack_start(label, false, false, 0);
-        content.pack_end(close_btn, false, false, 0);
-        content.show();
-        close_btn.clicked.connect(() => {
-            notebook.remove_page(notebook.page_num(this));
-          });
-        return content;
+    public void set_content(EvolveNotebook notebook, string label_name){
+      label = new Label(label_name);
+      close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
+      close_btn.show();
+      label.show();
+      content = new Gtk.Box(Orientation.HORIZONTAL, 0);
+      content.pack_start(label, false, false, 0);
+      content.pack_end(close_btn, false, false, 0);
+      close_btn.clicked.connect(() => {
+        remove_tab(notebook);
+        });
+      content.show();
     }
 
-    public Gtk.Box update_content(EvolveNotebook notebook, string label_name){
-      Label label = new Label(label_name);
-        label.show();
-        //Close Button here.
-        Button close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
-        close_btn.show();
-        //(Label) Content Box here.
-        Box content = new Gtk.Box(Orientation.HORIZONTAL, 0);
-        content.pack_start(label, false, false, 0);
-        content.pack_end(close_btn, false, false, 0);
-        content.show();
-        close_btn.clicked.connect(() => {
-            notebook.remove_page(notebook.page_num(this));
-          });
-        return content;
+    public void remove_tab(EvolveNotebook notebook) {
+      notebook.remove_page(notebook.page_num(this));
+    }
+
+    public Gtk.Box get_content(){
+      return content;
     }
 
     public void change_focus(EvolveNotebook notebook){
-      notebook.set_current_page(notebook.page_num(scroller));
+      notebook.set_current_page(notebook.page_num(content));
     }
 
     public void set_text(string text){
-      text_view.buffer.text = text;
+      text_buffer.set_text(text);
     }
 
     public string get_text()
     {
-      return text_view.get_buffer().text;
+      return text_buffer.text;
     }
 
     public void set_lang(File file)

@@ -24,6 +24,12 @@ class Application : Gtk.Application{
 	public EvolveJournal.EvolveWindow win;
 	public EvolveJournal.EvolveNotebook notebook;
 
+	public Application(){
+		Object(application_id:"com.evolve-os.journal", 
+			flags:ApplicationFlags.HANDLES_OPEN);
+		//this.set_accels_for_action("Save File", string["<Control>s"]);
+	}
+
 	public override void activate(){
 		set_notebook();
 		notebook = get_notebook();
@@ -42,11 +48,6 @@ class Application : Gtk.Application{
 			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	
 		}
 		run_application(notebook);
-	}
-
-	public Application(){
-		Object(application_id:"com.evolve-os.journal", 
-			flags:ApplicationFlags.HANDLES_OPEN);
 	}
 
 	public void set_notebook(){

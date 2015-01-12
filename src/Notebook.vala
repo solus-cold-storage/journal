@@ -51,7 +51,7 @@ namespace EvolveJournal{
       public void new_tab (string text, bool open_file, string save_path)
       {
         EvolveTab tab = new EvolveJournal.EvolveTab (this);
-        tab.set_content(this, "Untitled");
+        tab.set_content("Untitled");
         append_page (tab, tab.get_content());
         tab.set_text(text);
         if (open_file == true){
@@ -75,7 +75,7 @@ namespace EvolveJournal{
 
       public void set_label(string label_name){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        tab.set_content(this, label_name);
+        tab.set_content(label_name);
         this.set_tab_label(tab, tab.get_content());
       }
 

@@ -33,9 +33,12 @@ namespace EvolveJournal
     public bool edited = false;
     public Box content;
     public Button close_btn;
+    public Image close_btn_indicator;
     public SourceView source_view;
+    public EvolveNotebook parent_notebook;
 
     public EvolveTab(EvolveNotebook notebook){  
+      parent_notebook = notebook;
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);    
       source_view = new SourceView();
@@ -50,8 +53,7 @@ namespace EvolveJournal
       text_buffer.changed.connect(() => {
           if (edited == false){
             edited = true;
-            label.set_use_underline(true);
-            stdout.printf("Has been edited.");
+            set_close_btn_indicator();
           }
           else {
             stdout.printf("Edited = true\n");
@@ -79,30 +81,51 @@ namespace EvolveJournal
 
     }
 
-    public void set_content(EvolveNotebook notebook, string label_name){
+    public void set_content(string label_name){
       label = new Label(label_name);
-      close_btn = new Button.from_icon_name("window-close", IconSize.BUTTON);
+      close_btn = new Button();
+      set_close_btn_indicator();
       close_btn.show();
       label.show();
       content = new Gtk.Box(Orientation.HORIZONTAL, 0);
       content.pack_start(label, false, false, 0);
       content.pack_end(close_btn, false, false, 0);
-      close_btn.clicked.connect(() => {
-        remove_tab(notebook);
-        });
       content.show();
+      close_btn.clicked.connect(remove_tab);
     }
 
-    public void remove_tab(EvolveNotebook notebook) {
-      notebook.remove_page(notebook.page_num(this));
+    public void remove_tab() {
+      if (edited == true){
+        stdout.printf("Don't close this, it is not saved.\n");
+      }
+      else{
+        parent_notebook.remove_page(parent_notebook.page_num(this));
+      }
     }
 
     public Gtk.Box get_content(){
       return content;
     }
 
+    public void set_close_btn_indicator(){
+      if (edited == true){
+        close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
+      }
+      else {
+        close_btn.set_image(new Image.from_icon_name("window-close-symbolic", IconSize.BUTTON));
+      }
+    }
+
     public void change_focus(EvolveNotebook notebook){
       notebook.set_current_page(notebook.page_num(content));
+    }
+
+    public void save_file(File file){
+      save_path = file.get_path();
+      saved = true;
+      set_lang(file);
+      edited = false;
+      set_close_btn_indicator();
     }
 
     public void set_text(string text){

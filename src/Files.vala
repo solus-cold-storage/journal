@@ -83,10 +83,7 @@ namespace EvolveJournal {
 					try {
 						FileUtils.set_contents(file_chooser.get_filename(), text_to_save);
 						notebook.set_label(file_chooser.get_current_name());
-						tab.save_path = file_chooser.get_filename();
-						tab.saved = true;
-						tab.set_lang(file_chooser.get_file());
-						tab.edited = false;
+						tab.save_file(file_chooser.get_file());
 					}
 					catch(Error e) {
 						stderr.printf("Error: %s\n", e.message);
@@ -100,6 +97,7 @@ namespace EvolveJournal {
 			else{
 				try {
 					FileUtils.set_contents(tab.save_path, text_to_save);
+					tab.save_file(File.new_for_path(tab.save_path));
 				}
 				catch(Error e){
 					stderr.printf("Error: %s\n", e.message);

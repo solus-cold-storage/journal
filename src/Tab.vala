@@ -31,8 +31,9 @@ namespace EvolveJournal
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
     public string language;
+    public bool edited = false;
 
-    public EvolveTab(){
+    public EvolveTab(EvolveNotebook notebook){
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);
       scroller.set_shadow_type (ShadowType.NONE);
@@ -44,7 +45,18 @@ namespace EvolveJournal
       text_view.cursor_visible = true;
       text_view.set_show_line_numbers(true);
       text_view.set_auto_indent(true);
+      text_view.set_insert_spaces_instead_of_tabs(true);
+      text_view.get_buffer().changed.connect(() => {
+          if (edited == false){
+            edited = true;
+            update_content(notebook, label.get_text() + "*");
+          }
+          else {
+            //Do nothing.
+          }
+        });
 
+      //Displays styles schemes and sets to Oblivion.
       var s =  SourceStyleSchemeManager.get_default();
       message("Found %d styles", s.get_scheme_ids().length);
 

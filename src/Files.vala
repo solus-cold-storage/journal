@@ -86,6 +86,7 @@ namespace EvolveJournal {
 						tab.save_path = file_chooser.get_filename();
 						tab.saved = true;
 						tab.set_lang(file_chooser.get_file());
+						tab.edited = false;
 					}
 					catch(Error e) {
 						stderr.printf("Error: %s\n", e.message);

@@ -53,7 +53,7 @@ namespace EvolveJournal{
 
       public void new_tab (string text, bool open_file, string save_path)
       {
-        EvolveTab tab = new EvolveJournal.EvolveTab ();
+        EvolveTab tab = new EvolveJournal.EvolveTab (this);
         int tab_number = tab_count;
         append_page (tab, tab.create_content(this, tab_number));
         tab.set_text(text);

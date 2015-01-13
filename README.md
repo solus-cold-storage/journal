@@ -26,5 +26,4 @@ Change to this folder (Journal's root folder)
 
 +Icons
 +------
-+ * Quirky icon copyright of Alejandro Seoane, many thanks!
-+ 
++ Journal icon copyright of Alejandro Seoane, many thanks!

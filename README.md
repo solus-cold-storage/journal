@@ -23,3 +23,8 @@ Change to this folder (Journal's root folder)
 >make
 >
 >sudo make install
+
++Icons
++------
++ * Quirky icon copyright of Alejandro Seoane, many thanks!
++ 

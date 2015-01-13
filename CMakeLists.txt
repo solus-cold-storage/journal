@@ -14,7 +14,7 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
 set (RELEASE_NAME "Evolve Journal")
-set (VERSION "0.3")
+set (VERSION "0.4")
 set (VERSION_INFO "Alpha Build of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
@@ -66,3 +66,30 @@ install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
 # install our .desktop file so the Applications menu will see it
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/journal.desktop DESTINATION ${DATADIR}/applications/)
+
+#install icons
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/16x16/journal.png DESTINATION ${DATADIR}/icons/hicolor/16x16/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/22x22/journal.png DESTINATION ${DATADIR}/icons/hicolor/22x22/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/24x24/journal.png DESTINATION ${DATADIR}/icons/hicolor/24x24/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/32x32/journal.png DESTINATION ${DATADIR}/icons/hicolor/32x32/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/36x36/journal.png DESTINATION ${DATADIR}/icons/hicolor/36x36/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/48x48/journal.png DESTINATION ${DATADIR}/icons/hicolor/48x48/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/64x64/journal.png DESTINATION ${DATADIR}/icons/hicolor/64x64/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/72x72/journal.png DESTINATION ${DATADIR}/icons/hicolor/72x72/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/96x96/journal.png DESTINATION ${DATADIR}/icons/hicolor/96x96/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/128x128/journal.png DESTINATION ${DATADIR}/icons/hicolor/128x128/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/192x192/journal.png DESTINATION ${DATADIR}/icons/hicolor/192x192/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/256x256/journal.png DESTINATION ${DATADIR}/icons/hicolor/256x256/apps/)
+
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/512x512/journal.png DESTINATION ${DATADIR}/icons/hicolor/512x512/apps/)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>Journal 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Rectangle-7-+-Paper-3-+-Journal-2" sketch:type="MSLayerGroup">
+            <g id="Paper-3-+-Journal-2" transform="translate(1.205394, 0.608549)" sketch:type="MSShapeGroup">
+                <g id="Paper-3" transform="translate(0.000000, 0.000000)" fill="#27B9E5">
+                    <path d="M332.774895,0 C384.064369,0 409.70272,0 437.312269,8.73497582 C467.455,19.7154796 491.194529,43.4746138 502.165972,73.6422376 C510.89374,101.270327 510.89374,126.938373 510.89374,178.265943 L510.89374,333.049714 C510.89374,384.381546 510.89374,410.04107 502.165972,437.67342 C491.194529,467.841044 467.455,491.600178 437.312269,502.576421 C409.70272,511.315657 384.064369,511.315657 332.774895,511.315657 L178.118845,511.315657 C126.829371,511.315657 101.186763,511.315657 73.5814709,502.576421 C43.4387403,491.600178 19.6992111,467.841044 8.72776806,437.67342 C0,410.04107 0,384.381546 0,333.049714 L0,178.265943 C0,126.938373 0,101.270327 8.72776806,73.6422376 C19.6992111,43.4746138 43.4387403,19.7154796 73.5814709,8.73497582 C101.186763,0 126.829371,0 178.118845,0 L332.774895,0 Z" id="Icon-Shape"></path>
+                </g>
+                <g id="Journal-2" transform="translate(109.784503, 82.856229)" stroke-width="2">
+                    <g id="Group">
+                        <path d="M180.564045,350.067566 L16.4149132,350.067566 C8.2074566,350.067566 0,341.862857 0,333.658149 L0,16.4094171 C0,8.20470857 8.2074566,0 16.4149132,0 L268.110249,0 C276.317706,0 283.977998,10.3926309 283.977998,18.5973394 L283.977998,234.654665" id="Shape" stroke="#50E3C2"></path>
+                        <g transform="translate(54.716377, 76.577280)" id="Shape" stroke="#FFFFFF">
+                            <path d="M0,65.6376686 L175.092408,65.6376686"></path>
+                            <path d="M0,136.745143 L175.092408,136.745143"></path>
+                            <path d="M0,202.382811 L93.0178415,202.382811"></path>
+                            <path d="M0,0 L175.092408,0"></path>
+                        </g>
+                    </g>
+                    <g id="Group" transform="translate(213.393872, 268.020480)" stroke="#8DEE2A">
+                        <path d="M0.547163774,37.7416594 L77.1500921,37.7416594" id="Shape"></path>
+                        <path d="M38.8486279,76.57728 L38.8486279,-0.546980571" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

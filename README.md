@@ -24,6 +24,6 @@ Change to this folder (Journal's root folder)
 >
 >sudo make install
 
-+Icons
-+------
-+ Journal icon copyright of Alejandro Seoane, many thanks!
+Icons
+------
+*Journal icon copyright of Alejandro Seoane, many thanks!

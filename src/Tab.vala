@@ -97,7 +97,7 @@ namespace EvolveJournal
     public void remove_tab() {
       if (edited == true){
         stdout.printf("Don't close this, it is not saved.\n");
-        
+        //"Are you sure you want to close this unsaved tab?" Dialog box goes here.
       }
       else{
         parent_notebook.remove_page(parent_notebook.page_num(this));

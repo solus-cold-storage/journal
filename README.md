@@ -1,6 +1,8 @@
 #Evolve Journal
 
 ##DISCLAIMER: This project is very much a WIP.
+
+Version: 0.4 (pre-alpha)
 ____
 ###Dependencies
 
@@ -24,8 +26,9 @@ Change to this folder (Journal's root folder)
 >
 >sudo make install
 
-Icons
 ____
+###Icons
+
 * Journal icon copyright of Alejandro Seoane, many thanks!
 
 To use the new icons, after having had Journal previously installed, run this command:

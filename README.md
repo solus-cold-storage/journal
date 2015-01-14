@@ -25,5 +25,8 @@ Change to this folder (Journal's root folder)
 >sudo make install
 
 Icons
-------
-*Journal icon copyright of Alejandro Seoane, many thanks!
+____
+* Journal icon copyright of Alejandro Seoane, many thanks!
+
+To use the new icons, after having had Journal previously installed, run this command:
+>sudo gtk-update-icon-cache /usr/share/icons/hicolor

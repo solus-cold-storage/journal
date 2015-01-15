@@ -96,14 +96,16 @@ namespace EvolveJournal
 
     public void remove_tab() {
       if (edited == true){
+        EvolveWindow win = (EvolveWindow)this.get_toplevel();
         stdout.printf("Don't close this, it is not saved.\n");
         //"Are you sure you want to close this unsaved tab?" Dialog box goes here.
         // The MessageDialog
-        /*Gtk.MessageDialog msg = new Gtk.MessageDialog (this.get_toplevel(), Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "My message!");
+        Gtk.MessageDialog msg = new Gtk.MessageDialog (win, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
           msg.response.connect ((response_id) => {
           switch (response_id) {
             case Gtk.ResponseType.OK:
               stdout.puts ("Ok\n");
+              parent_notebook.remove_page(parent_notebook.page_num(this));
               break;
             case Gtk.ResponseType.CANCEL:
               stdout.puts ("Cancel\n");
@@ -115,7 +117,7 @@ namespace EvolveJournal
 
           msg.destroy();
         });
-        msg.show (); */
+        msg.show ();
       }
       else{
         parent_notebook.remove_page(parent_notebook.page_num(this));

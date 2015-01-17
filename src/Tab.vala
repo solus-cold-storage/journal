@@ -81,6 +81,7 @@ namespace EvolveJournal
 
     }
 
+    //Content setter and getter.
     public void set_content(string label_name){
       label = new Label(label_name);
       close_btn = new Button();
@@ -94,11 +95,13 @@ namespace EvolveJournal
       close_btn.clicked.connect(remove_tab);
     }
 
+    public Gtk.Box get_content(){
+      return content;
+    }
+
     public void remove_tab() {
       if (edited == true){
         EvolveWindow win = (EvolveWindow)this.get_toplevel();
-        stdout.printf("Don't close this, it is not saved.\n");
-        //"Are you sure you want to close this unsaved tab?" Dialog box goes here.
         // The MessageDialog
         Gtk.MessageDialog msg = new Gtk.MessageDialog (win, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
           msg.response.connect ((response_id) => {
@@ -124,10 +127,6 @@ namespace EvolveJournal
       }
     }
 
-    public Gtk.Box get_content(){
-      return content;
-    }
-
     public void set_close_btn_indicator(){
       if (edited == true){
         close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
@@ -149,6 +148,16 @@ namespace EvolveJournal
       set_close_btn_indicator();
     }
 
+    //Edited setter and getter.
+    public void set_edited(bool boolean){
+      edited = boolean;
+    }
+
+    public bool get_edited(){
+      return edited;
+    }
+
+    //Text setter and getter.
     public void set_text(string text){
       text_buffer.set_text(text);
     }
@@ -158,6 +167,7 @@ namespace EvolveJournal
       return text_buffer.text;
     }
 
+    //Set Language.
     public void set_lang(File file)
     {
       FileInfo? info = null;

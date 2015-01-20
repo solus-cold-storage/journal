@@ -22,7 +22,7 @@ namespace EvolveJournal {
 
   public string buffer;
 
-  public class EvolveWindow : Window {
+  public class EvolveWindow : ApplicationWindow {
 
     public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) {
 
@@ -99,6 +99,10 @@ namespace EvolveJournal {
     headbar.show_all();
 
     return this;
+    }
+    public void enable_window_action (string name)
+    {
+        ((SimpleAction) this.lookup_action (name)).set_enabled (true);
     }
   }
 }

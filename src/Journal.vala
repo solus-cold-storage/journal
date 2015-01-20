@@ -16,6 +16,8 @@
 * with Evolve Journal. If not, see http://www.gnu.org/licenses/.
 */
 
+
+
 using GLib;
 
 class Application : Gtk.Application{
@@ -23,18 +25,50 @@ class Application : Gtk.Application{
 	public bool window_created;
 	public EvolveJournal.EvolveWindow win;
 	public EvolveJournal.EvolveNotebook notebook;
+	
+	public void save_temp()
+	{
+		stdout.printf("SAVE CODE");
+	}
+	
+    	private const string SAVE_NAME = "save";
+    	
+    	private const ActionEntry[] window_entries =
+    	{
+        	{ SAVE_NAME, save_temp},
+    	};
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
-		//this.set_accels_for_action("Save File", string["<Control>s"]);
 	}
 
 	public override void activate(){
 		set_notebook();
 		notebook = get_notebook();
 		notebook.new_tab (notebook.null_buffer, false, "");
-		run_application(notebook);	
+		//string accels = ;
+		
+		//set_accels_for_action("win."+, "<Control>s");
+               /*const Accel[] single_accels = {
+                        {"app.new", "<Primary>N",},
+                        {"app.quit", "<Primary>Q"},
+                        {"app.help", "F1"},
+ 
+                        {"win.search", "<Primary>F"},
+                        {"win.gear-menu", "F10"},
+                        {"win.open-repository", "<Primary>O"},
+                        {"win.close", "<Primary>W"}
+                };*/
+                
+                stdout.printf ("...Before set_accels...\n");
+                win.add_action_entries (window_entries, this);
+		set_accels_for_action("win."+SAVE_NAME,{"<Control>S"});
+		win.enable_window_action (SAVE_NAME);
+		stdout.printf ("...After...\n");
+		
+		run_application(notebook);
+		stdout.printf ("...Program End\n");
 	}
 
 	public override void open(File[] files, string hint){

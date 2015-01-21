@@ -95,7 +95,7 @@ class Application : Gtk.Application{
 	public void run_application(EvolveJournal.EvolveNotebook notebook){
 		if (window_created == false){
 			var win = new EvolveJournal.EvolveWindow ();
-			win.EvolveWindow(notebook, this);
+			win.MainWindow(notebook, this);
 			window_created = true;
 			
 			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });

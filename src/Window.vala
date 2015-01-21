@@ -24,9 +24,8 @@ namespace EvolveJournal {
 
   public class EvolveWindow : ApplicationWindow {
 
-    public Gtk.Window MainWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) {
-
-    //Object(notebook: notebook);
+    public Gtk.Window EvolveWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) 
+    {
 
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -64,12 +63,18 @@ namespace EvolveJournal {
     var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
-    //save_button.set_accel_path("Save File");
     save_button.clicked.connect (() => {
-      var file = new EvolveJournal.Files();
-      string typed_text = notebook.get_text();
-      file.on_save_clicked(typed_text, notebook);
-      });
+        save_file(notebook);
+    });
+
+    /*set_accels_for_action("win.EvolveWindow.save_action", {"<Control>s"});
+
+    var action = new SimpleAction("save_action", null);
+    action.activate.connect(()=> {
+      save_file(notebook);
+    });
+
+    application.add_action(action);*/
 
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
@@ -104,5 +109,11 @@ namespace EvolveJournal {
     {
         ((SimpleAction) this.lookup_action (name)).set_enabled (true);
     }
+  }
+
+  public void save_file(EvolveNotebook notebook){
+    var file = new EvolveJournal.Files();
+    string typed_text = notebook.get_text();
+    file.on_save_clicked(typed_text, notebook);
   }
 }

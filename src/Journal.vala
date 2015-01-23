@@ -27,7 +27,6 @@ class Application : Gtk.Application{
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
-		//this.set_accels_for_action("Save File", string["<Control>s"]);
 	}
 
 	public override void activate(){
@@ -60,8 +59,7 @@ class Application : Gtk.Application{
 
 	public void run_application(EvolveJournal.EvolveNotebook notebook){
 		if (window_created == false){
-			var win = new EvolveJournal.EvolveWindow ();
-			win.EvolveWindow(notebook, this);
+			var win = new EvolveJournal.EvolveWindow (notebook, this);
 			window_created = true;
 			
 			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });

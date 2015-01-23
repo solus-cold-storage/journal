@@ -22,10 +22,11 @@ namespace EvolveJournal {
 
   public string buffer;
 
-  public class EvolveWindow : Window {
+  public class EvolveWindow : Gtk.ApplicationWindow {
 
-    public Gtk.Window EvolveWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) 
+    public EvolveWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) 
     {
+      Object(application: application);
 
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -67,14 +68,15 @@ namespace EvolveJournal {
         save_file(notebook);
     });
 
-    /*set_accels_for_action("win.EvolveWindow.save_action", {"<Control>s"});
-
     var action = new SimpleAction("save_action", null);
     action.activate.connect(()=> {
+      message("Saving...");
       save_file(notebook);
     });
 
-    application.add_action(action);*/
+    application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
+
+    application.add_action(action);
 
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
@@ -102,8 +104,6 @@ namespace EvolveJournal {
     this.add (vbox);
 
     headbar.show_all();
-
-    return this;
     }
   }
 

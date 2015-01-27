@@ -44,8 +44,7 @@ namespace EvolveJournal {
     headbar.add (open_button);
     open_button.show();
     open_button.clicked.connect (() => {
-      var file = new EvolveJournal.Files();
-      buffer = file.on_open_clicked(notebook);
+      open_file(notebook);
       });
 
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
@@ -68,15 +67,24 @@ namespace EvolveJournal {
         save_file(notebook);
     });
 
-    var action = new SimpleAction("save_action", null);
-    action.activate.connect(()=> {
+    //Define actions.
+    var save_action = new SimpleAction("save_action", null);
+    save_action.activate.connect(()=> {
       message("Saving...");
       save_file(notebook);
     });
 
-    application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
+    var open_action = new SimpleAction("open_action", null);
+    open_action.activate.connect(()=> {
+      message("Opening...");
+      open_file(notebook);
+      });
 
-    application.add_action(action);
+    application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
+    application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
+
+    application.add_action(save_action);
+    application.add_action(open_action);
 
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
@@ -111,5 +119,10 @@ namespace EvolveJournal {
     var file = new EvolveJournal.Files();
     string typed_text = notebook.get_text();
     file.on_save_clicked(typed_text, notebook);
+  }
+
+  public void open_file(EvolveNotebook notebook){
+    var file = new EvolveJournal.Files();
+      buffer = file.on_open_clicked(notebook);
   }
 }

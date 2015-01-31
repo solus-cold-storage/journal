@@ -29,24 +29,22 @@ namespace EvolveJournal{
 
       public EvolveNotebook()
       {
-        //Old Construct Stuff
-        this.show_border = false;
-        this.set_scrollable(true);
+        show_border = false;
+        set_scrollable(true);
         use_linenum = true;
-        //Done here.
-        this.newtabbuttonbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 8);
-        this.newtabbuttonbox.show_all();
-        this.newtabbutton = new Gtk.Button();
-        this.newtabbutton.set_tooltip_text("New Tab");
-        this.newtabbutton.show_all();
-        this.newtabbutton.set_border_width(4);
-        this.newtabbutton.clicked.connect (() => {
-          this.new_tab(null_buffer, false, "");
+        newtabbuttonbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 8);
+        newtabbuttonbox.show_all();
+        newtabbutton = new Gtk.Button();
+        newtabbutton.set_tooltip_text("New Tab");
+        newtabbutton.show_all();
+        newtabbutton.set_border_width(4);
+        newtabbutton.clicked.connect (() => {
+          new_tab(null_buffer, false, "");
           });
-        this.newtabbutton.set_relief(Gtk.ReliefStyle.NONE);
-        this.newtabbutton.set_image(new Gtk.Image.from_icon_name("tab-new-symbolic", Gtk.IconSize.MENU));
-        this.newtabbuttonbox.add(this.newtabbutton);
-        this.set_action_widget(this.newtabbuttonbox, Gtk.PackType.END);
+        newtabbutton.set_relief(Gtk.ReliefStyle.NONE);
+        newtabbutton.set_image(new Gtk.Image.from_icon_name("tab-new-symbolic", Gtk.IconSize.MENU));
+        newtabbuttonbox.add(newtabbutton);
+        set_action_widget(newtabbuttonbox, Gtk.PackType.END);
       }
 
       public void new_tab (string text, bool open_file, string save_path)

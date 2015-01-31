@@ -21,10 +21,12 @@ using Gtk;
 namespace EvolveJournal {
 
   public string buffer;
+  private EvolveNotebook notebook;
+  private bool file_loaded;
 
   public class EvolveWindow : Gtk.ApplicationWindow {
 
-    public EvolveWindow (EvolveJournal.EvolveNotebook notebook, Gtk.Application application) 
+    public EvolveWindow (Gtk.Application application) 
     {
       Object(application: application);
 
@@ -36,9 +38,7 @@ namespace EvolveJournal {
     headbar.set_show_close_button(true);
     this.set_titlebar(headbar);
 
-    headbar.show();
-
-    notebook.show();
+    set_notebook();
 
     var open_button = new Button.from_icon_name("emblem-documents-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (open_button);
@@ -97,32 +97,45 @@ namespace EvolveJournal {
     menu_button.set_menu_model(menu);
     menu_button.set_use_popover(true);
     menu.append("Use Line Numbers", "linenum");
-    
-    /* toggle linenum */
-    /*var paction = new PropertyAction("linenum", notebook, "use_linenum");
-    application.add_action(paction);*/
-
-    // update_actions();
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 
-    vbox.pack_start(headbar, false, true, 0);
     vbox.pack_start(notebook, true, true, 0);
-    vbox.show();
+    vbox.show_all();
     this.add (vbox);
-
+    notebook.show_all();
     headbar.show_all();
+    }
+    public void set_notebook(){
+      notebook = new EvolveNotebook();
+    }
+
+    public EvolveNotebook get_notebook(){
+      return notebook;
+    }
+
+    public void set_loaded(bool loaded){
+      file_loaded = loaded;
+    }
+
+    public void open_tabs (){
+      if (file_loaded != true){
+        notebook.new_tab (notebook.null_buffer, false, "");
+      }
+      else {
+        message("File already loaded.");
+      }
     }
   }
 
-  public void save_file(EvolveNotebook notebook){
+  public void save_file(EvolveNotebook save_notebook){
     var file = new EvolveJournal.Files();
-    string typed_text = notebook.get_text();
-    file.on_save_clicked(typed_text, notebook);
+    string typed_text = save_notebook.get_text();
+    file.on_save_clicked(typed_text, save_notebook);
   }
 
-  public void open_file(EvolveNotebook notebook){
+  public void open_file(EvolveNotebook open_notebook){
     var file = new EvolveJournal.Files();
-      buffer = file.on_open_clicked(notebook);
+    buffer = file.on_open_clicked(open_notebook);
   }
 }

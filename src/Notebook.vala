@@ -20,7 +20,7 @@ using Gtk;
 
 namespace EvolveJournal{
 
-  public class EvolveNotebook: Notebook{
+  public class EvolveNotebook: Gtk.Notebook{
 
     public Gtk.Box newtabbuttonbox;
     public Gtk.Button newtabbutton;

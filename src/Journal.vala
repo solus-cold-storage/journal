@@ -22,7 +22,7 @@ class Application : Gtk.Application{
 
 	public bool window_created;
 	public EvolveJournal.EvolveWindow win;
-	public EvolveJournal.EvolveNotebook notebook;
+	private File[] loaded_files;
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
@@ -30,37 +30,33 @@ class Application : Gtk.Application{
 	}
 
 	public override void activate(){
-		set_notebook();
-		notebook = get_notebook();
-		notebook.new_tab (notebook.null_buffer, false, "");
-		run_application(notebook);	
+		run_application();	
 	}
 
 	public override void open(File[] files, string hint){
-		if (window_created != true){
-			set_notebook();
-		}
 		//Load any files requested at startup.
-		notebook = get_notebook();
-		foreach (File file in files){
-			EvolveJournal.Files file_class = new EvolveJournal.Files();
-			file_class.open_at_start(notebook, file.get_path(), file.get_basename());	
-		}
-		run_application(notebook);
+		loaded_files = files;
+		run_application();
 	}
 
-	public void set_notebook(){
-		notebook = new EvolveJournal.EvolveNotebook();
-	}
-
-	public EvolveJournal.EvolveNotebook get_notebook(){
-		return notebook;
-	}
-
-	public void run_application(EvolveJournal.EvolveNotebook notebook){
+	public void run_application(){
 		if (window_created == false){
-			var win = new EvolveJournal.EvolveWindow (notebook, this);
+			win = new EvolveJournal.EvolveWindow (this);
 			window_created = true;
+
+			if (loaded_files != null){
+				foreach (File file in loaded_files){
+					EvolveJournal.Files file_class = new EvolveJournal.Files();
+					file_class.open_at_start(win.get_notebook(), file.get_path(), file.get_basename());	
+				}
+				win.set_loaded(true);
+			}
+			else {
+				message("No files loaded.");
+				win.set_loaded(false);
+			}
+
+			win.open_tabs();
 			
 			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
 			win.present ();	

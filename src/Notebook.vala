@@ -37,6 +37,7 @@ namespace EvolveJournal{
         this.newtabbuttonbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 8);
         this.newtabbuttonbox.show_all();
         this.newtabbutton = new Gtk.Button();
+        this.newtabbutton.set_tooltip_text("New Tab");
         this.newtabbutton.show_all();
         this.newtabbutton.set_border_width(4);
         this.newtabbutton.clicked.connect (() => {

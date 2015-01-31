@@ -43,6 +43,7 @@ namespace EvolveJournal {
     var open_button = new Button.from_icon_name("emblem-documents-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (open_button);
     open_button.show();
+    open_button.set_tooltip_text("Open");
     open_button.clicked.connect (() => {
       open_file(notebook);
       });
@@ -50,6 +51,7 @@ namespace EvolveJournal {
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (share_button);
     share_button.show();
+    share_button.set_tooltip_text("Share");
     share_button.clicked.connect (() => {
 
       int current_tab = notebook.get_current_page();
@@ -63,6 +65,7 @@ namespace EvolveJournal {
     var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
+    save_button.set_tooltip_text("Save");
     save_button.clicked.connect (() => {
         save_file(notebook);
     });

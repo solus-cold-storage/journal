@@ -1,8 +1,8 @@
 #Evolve Journal
 
-##DISCLAIMER: This project is very much a WIP.
+##DISCLAIMER: This project is still in development and is subject to change.
 
-Version: 0.4 (pre-alpha)
+Version: 0.5 (Beta)
 ____
 ###Dependencies
 

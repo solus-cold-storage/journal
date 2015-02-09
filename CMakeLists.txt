@@ -56,7 +56,11 @@ PACKAGES
     libsoup-2.4
     json-glib-1.0
     gtksourceview-3.0
+OPTIONS
+    --thread
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
 )
+
 
 # tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})

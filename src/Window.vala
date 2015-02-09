@@ -58,7 +58,7 @@ namespace EvolveJournal {
       stdout.printf(current_tab.to_string() +"\n");
       string typed_text = notebook.get_text();
       var share = new EvolveJournal.Share();
-      share.generate_paste(typed_text, true, "Evolve Test", "10M", "vala", this);
+      share.generate_paste(typed_text, this);
 
     });
 

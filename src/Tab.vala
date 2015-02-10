@@ -25,7 +25,6 @@ namespace EvolveJournal
     public ScrolledWindow scroller;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
-    //private SourceUndoManager undo_manager;
     public string save_path;
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
@@ -38,21 +37,25 @@ namespace EvolveJournal
     public EvolveNotebook parent_notebook;
 
     public EvolveTab(EvolveNotebook notebook){  
+      //Grab Notebook
       parent_notebook = notebook;
+      //Set up Scrolled Window.
       scroller = new ScrolledWindow (null, null);
       scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);    
+      //Set up Source View
       source_view = new SourceView();
       source_view.set_wrap_mode(Gtk.WrapMode.WORD);
       source_view.editable = true;
       source_view.cursor_visible = true;
       source_view.set_show_line_numbers(true);
       source_view.set_auto_indent(true);
-      //source_view.set_insert_spaces_instead_of_tabs(true);
       source_view.set_buffer(text_buffer);
       scroller.set_shadow_type (ShadowType.NONE);
+      //Watch for the Buffer to change.
       text_buffer.changed.connect(() => {
           if (edited == false){
             edited = true;
+            //Change the close button when text has been changed.
             set_close_btn_indicator();
           }
           else {

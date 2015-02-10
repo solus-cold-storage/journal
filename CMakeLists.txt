@@ -14,8 +14,8 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
 set (RELEASE_NAME "Evolve Journal")
-set (VERSION "0.4")
-set (VERSION_INFO "Alpha Build of Evolve Journal.")
+set (VERSION "0.5")
+set (VERSION_INFO "Beta Build of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)
@@ -56,7 +56,10 @@ PACKAGES
     libsoup-2.4
     json-glib-1.0
     gtksourceview-3.0
+OPTIONS
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
 )
+
 
 # tell cmake what to call the executable we just made
 add_executable(${EXEC_NAME} ${VALA_C})

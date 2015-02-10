@@ -67,7 +67,12 @@ namespace EvolveJournal {
     save_button.show();
     save_button.set_tooltip_text("Save");
     save_button.clicked.connect (() => {
+      if (notebook.get_n_pages() <= 0){
+        stdout.printf("No pages! \n");
+      }
+      else{
         save_file(notebook);
+      }
     });
 
     //Define actions.
@@ -83,12 +88,30 @@ namespace EvolveJournal {
       open_file(notebook);
       });
 
+    var undo_action = new SimpleAction("undo_action", null);
+    undo_action.activate.connect(()=> {
+      message("Undo...");
+      notebook.undo_source();
+      });
+
+    var redo_action = new SimpleAction("redo_action", null);
+    redo_action.activate.connect(()=> {
+      message("Redo...");
+      notebook.redo_source();
+      });
+
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
+    application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
+    application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
 
     application.add_action(save_action);
     application.add_action(open_action);
-
+    application.add_action(undo_action);
+    application.add_action(redo_action);
+    
+    /*
+    //Menu button not finished an ready for Beta release.
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
     popover.set_modal(true);
@@ -100,6 +123,7 @@ namespace EvolveJournal {
     menu_button.set_menu_model(menu);
     menu_button.set_use_popover(true);
     menu.append("Use Line Numbers", "linenum");
+    */
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 

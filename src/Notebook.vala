@@ -65,6 +65,16 @@ namespace EvolveJournal{
         tab.change_focus(this);
       } 
 
+      public void undo_source(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        tab.source_view.undo();        
+      }
+
+      public void redo_source(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        tab.source_view.redo();
+      }
+
       public string get_text(){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         SourceBuffer buffer = tab.text_buffer;

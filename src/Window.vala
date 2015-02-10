@@ -40,7 +40,7 @@ namespace EvolveJournal {
 
     set_notebook();
 
-    var open_button = new Button.from_icon_name("emblem-documents-symbolic", IconSize.SMALL_TOOLBAR);
+    var open_button = new Button.from_icon_name("document-open-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (open_button);
     open_button.show();
     open_button.set_tooltip_text("Open");

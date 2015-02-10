@@ -57,7 +57,6 @@ PACKAGES
     json-glib-1.0
     gtksourceview-3.0
 OPTIONS
-    --thread
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
 )
 

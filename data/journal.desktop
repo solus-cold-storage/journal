@@ -2,7 +2,7 @@
 Name=Journal
 GenericName=Journal
 Comment=Text editor for Evolve OS.
-Categories=GTK;Utility;TextEditor;Development;Utility;
+Categories=GTK;TextEditor;Development;Utility;
 Exec=journal %F
 Icon=journal
 Terminal=false

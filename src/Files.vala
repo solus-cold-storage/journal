@@ -76,9 +76,9 @@ namespace EvolveJournal {
 			tab.set_close_btn_indicator();
 		}
 
-		public void on_save_clicked(string text_to_save, EvolveNotebook notebook) {
+		public void on_save_clicked(string text_to_save, EvolveNotebook notebook, bool save_as) {
 			EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
-			if (tab.saved == false){
+			if (tab.saved == false || save_as == true){
 				var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
 					FileChooserAction.SAVE, "Cancel", ResponseType.CANCEL, "Save", ResponseType.ACCEPT);
 				file_chooser.set_local_only(true);

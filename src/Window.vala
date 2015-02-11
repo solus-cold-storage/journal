@@ -29,7 +29,7 @@ namespace EvolveJournal {
     public EvolveWindow (Gtk.Application application) 
     {
       Object(application: application);
-
+    
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
 
@@ -67,19 +67,14 @@ namespace EvolveJournal {
     save_button.show();
     save_button.set_tooltip_text("Save");
     save_button.clicked.connect (() => {
-      if (notebook.get_n_pages() <= 0){
-        stdout.printf("No pages! \n");
-      }
-      else{
-        save_file(notebook);
-      }
+        save_file(notebook, false);
     });
 
     //Define actions.
     var save_action = new SimpleAction("save_action", null);
     save_action.activate.connect(()=> {
       message("Saving...");
-      save_file(notebook);
+      save_file(notebook, false);
     });
 
     var open_action = new SimpleAction("open_action", null);
@@ -100,6 +95,19 @@ namespace EvolveJournal {
       notebook.redo_source();
       });
 
+    var print_action = new SimpleAction("print_action", null);
+    print_action.activate.connect(()=> {
+      message("Printing...");
+        Gtk.PrintOperation print_operation = new Gtk.PrintOperation();
+        print_operation.run(Gtk.PrintOperationAction.PRINT, this);
+      });
+
+    var saveas_action = new SimpleAction("saveas_action", null);
+    saveas_action.activate.connect(()=> {
+        message("Saving As...");
+        save_file(notebook, true);
+      });
+
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
     application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
@@ -109,8 +117,10 @@ namespace EvolveJournal {
     application.add_action(open_action);
     application.add_action(undo_action);
     application.add_action(redo_action);
+    application.add_action(print_action);
+    application.add_action(saveas_action);
     
-    /*
+    
     //Menu button not finished an ready for Beta release.
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
@@ -122,8 +132,9 @@ namespace EvolveJournal {
     GLib.Menu menu = new GLib.Menu();
     menu_button.set_menu_model(menu);
     menu_button.set_use_popover(true);
-    menu.append("Use Line Numbers", "linenum");
-    */
+    menu.append("Print", "app.print_action");
+    menu.append("Save As...", "app.saveas_action");
+    
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 
@@ -155,10 +166,15 @@ namespace EvolveJournal {
     }
   }
 
-  public void save_file(EvolveNotebook save_notebook){
-    var file = new EvolveJournal.Files();
-    string typed_text = save_notebook.get_text();
-    file.on_save_clicked(typed_text, save_notebook);
+  public void save_file(EvolveNotebook save_notebook, bool save_as){
+    if (save_notebook.get_n_pages() <= 0){
+      stdout.printf("No pages! \n");
+    }
+    else{
+      var file = new EvolveJournal.Files();
+      string typed_text = save_notebook.get_text();
+      file.on_save_clicked(typed_text, save_notebook, save_as);
+    }
   }
 
   public void open_file(EvolveNotebook open_notebook){

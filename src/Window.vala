@@ -4,7 +4,7 @@
 *
 * Evolve Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
-* published by the Free Software Foundation, either version 3 of the
+* published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
 * Evolve Journal is distributed in the hope that it will be
@@ -137,7 +137,7 @@ namespace EvolveJournal {
     GLib.Menu menu = new GLib.Menu();
     menu_button.set_menu_model(menu);
     menu_button.set_use_popover(true);
-    menu.append("Print", "app.print_action");
+    //menu.append("Print", "app.print_action");
     menu.append("Save As...", "app.saveas_action");
     
 

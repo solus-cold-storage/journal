@@ -54,11 +54,16 @@ namespace EvolveJournal {
     share_button.set_tooltip_text("Share");
     share_button.clicked.connect (() => {
 
-      int current_tab = notebook.get_current_page();
-      stdout.printf(current_tab.to_string() +"\n");
-      string typed_text = notebook.get_text();
-      var share = new EvolveJournal.Share();
-      share.generate_paste(typed_text, this);
+      if (notebook.get_n_pages() <= 0){
+        stdout.printf("No pages! \n");
+      }
+      else{
+        int current_tab = notebook.get_current_page();
+        stdout.printf(current_tab.to_string() +"\n");
+        string typed_text = notebook.get_text();
+        var share = new EvolveJournal.Share();
+        share.generate_paste(typed_text, this);
+      }
 
     });
 
@@ -99,7 +104,7 @@ namespace EvolveJournal {
     print_action.activate.connect(()=> {
       message("Printing...");
         Gtk.PrintOperation print_operation = new Gtk.PrintOperation();
-        print_operation.run(Gtk.PrintOperationAction.PRINT, this);
+        print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
       });
 
     var saveas_action = new SimpleAction("saveas_action", null);

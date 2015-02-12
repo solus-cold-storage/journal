@@ -33,3 +33,7 @@ ____
 
 To use the new icons, after having had Journal previously installed, run this command:
 >sudo gtk-update-icon-cache /usr/share/icons/hicolor
+
+###License
+
+Journal is licensed under GPLv2

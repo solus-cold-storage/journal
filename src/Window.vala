@@ -113,10 +113,17 @@ namespace EvolveJournal {
         save_file(notebook, true);
       });
 
+    var newtab_action = new SimpleAction("newtab_action", null);
+    newtab_action.activate.connect(()=> {
+        message("Generating Tab...");
+        notebook.new_tab(notebook.null_buffer, false, "");
+      });
+
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
     application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
     application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
+    application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
 
     application.add_action(save_action);
     application.add_action(open_action);
@@ -124,6 +131,7 @@ namespace EvolveJournal {
     application.add_action(redo_action);
     application.add_action(print_action);
     application.add_action(saveas_action);
+    application.add_action(newtab_action);
     
     
     //Menu button not finished an ready for Beta release.

@@ -40,6 +40,14 @@ namespace EvolveJournal {
 
     set_notebook();
 
+    var new_button = new Button.from_icon_name("tab-new-symbolic", IconSize.SMALL_TOOLBAR);
+    headbar.add (new_button);
+    new_button.show();
+    new_button.set_tooltip_text("New Tab");
+    new_button.clicked.connect(()=> {
+        notebook.new_tab(notebook.null_buffer, false, "");
+      });
+
     var open_button = new Button.from_icon_name("document-open-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (open_button);
     open_button.show();
@@ -49,7 +57,6 @@ namespace EvolveJournal {
       });
 
     var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
-    headbar.add (share_button);
     share_button.show();
     share_button.set_tooltip_text("Share");
     share_button.clicked.connect (() => {
@@ -140,7 +147,6 @@ namespace EvolveJournal {
     popover.set_modal(true);
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_popover(popover);
-    headbar.pack_end (menu_button);
     menu_button.show();
     GLib.Menu menu = new GLib.Menu();
     menu_button.set_menu_model(menu);
@@ -148,6 +154,8 @@ namespace EvolveJournal {
     //menu.append("Print", "app.print_action");
     menu.append("Save As...", "app.saveas_action");
     
+    headbar.pack_end (menu_button);
+    headbar.pack_end (share_button);
 
     var vbox = new Box (Orientation.VERTICAL, 0);
 

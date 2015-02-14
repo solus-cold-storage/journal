@@ -128,6 +128,7 @@ namespace EvolveJournal
       else{
         parent_notebook.remove_page(parent_notebook.page_num(this));
       }
+      parent_notebook.update_tab();
     }
 
     public void set_close_btn_indicator(){

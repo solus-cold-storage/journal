@@ -127,6 +127,31 @@ namespace EvolveJournal {
         notebook.new_tab(notebook.null_buffer, false, "");
       });
 
+    var about_action = new SimpleAction("about_action", null);
+    about_action.activate.connect(()=> {
+        queue_draw();
+        Idle.add(()=>{
+          Gtk.show_about_dialog(this,
+            "program-name", "Journal",
+            "copyright", "Copyright \u00A9 2015 Ryan Sipes",
+            "website", "https://evolve-os.com",
+            "website-label", "Evolve OS",
+            "license-type", Gtk.License.GPL_2_0,
+            "comments", "A simple text-editor with sharing features.",
+            "version", "0.7 (Beta 3)",
+            "logo-icon-name", "journal",
+            "artists", new string[]{
+              "Alejandro Seoane <asetrigo@gmail.com>"
+              },
+            "authors", new string[]{
+              "Ryan Sipes <ryan@evolve-os.com>",
+              "Ikey Doherty <ikey@evolve-os.com>",
+              "Barry Smith <barry.of.smith@gmail.com>"
+              });
+          return false;
+          });
+      });
+
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
     application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
@@ -140,6 +165,7 @@ namespace EvolveJournal {
     application.add_action(print_action);
     application.add_action(saveas_action);
     application.add_action(newtab_action);
+    application.add_action(about_action);
     
     
     //Menu button not finished an ready for Beta release.
@@ -154,6 +180,7 @@ namespace EvolveJournal {
     menu_button.set_use_popover(true);
     //menu.append("Print", "app.print_action");
     menu.append("Save As...", "app.saveas_action");
+    menu.append("About", "app.about_action");
     
     headbar.pack_end (menu_button);
     headbar.pack_end (share_button);

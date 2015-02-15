@@ -14,8 +14,8 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
 set (RELEASE_NAME "Evolve Journal")
-set (VERSION "0.")
-set (VERSION_INFO "Beta 2 Build of Evolve Journal.")
+set (VERSION "0.7")
+set (VERSION_INFO "Beta 3 Build of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)

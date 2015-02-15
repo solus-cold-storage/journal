@@ -2,7 +2,7 @@
 
 ##DISCLAIMER: This project is still in development and is subject to change.
 
-Version: 0.6 (Beta2)
+Version: 0.7 (Beta3)
 ____
 ###Dependencies
 

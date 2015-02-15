@@ -42,7 +42,7 @@ namespace EvolveJournal{
         update_tab();
         tab.set_text(text);
         if (open_file == true){
-          tab.save_path = save_path;
+          tab.set_save_path(save_path);
           tab.saved = true;
         }
         else {
@@ -74,6 +74,11 @@ namespace EvolveJournal{
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         tab.set_content(label_name);
         this.set_tab_label(tab, tab.get_content());
+      }
+
+      public string get_label(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        return tab.label.get_text();
       }
 
       public void update_tab(){

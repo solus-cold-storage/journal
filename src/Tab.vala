@@ -25,7 +25,7 @@ namespace EvolveJournal
     public ScrolledWindow scroller;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
-    public string save_path;
+    private string save_path;
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
     public string language;
@@ -150,6 +150,14 @@ namespace EvolveJournal
       set_lang(file);
       edited = false;
       set_close_btn_indicator();
+    }
+
+    public string get_save_path(){
+      return save_path;
+    }
+
+    public void set_save_path(string path){
+      save_path = path;
     }
 
     //Edited setter and getter.

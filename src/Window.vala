@@ -23,6 +23,7 @@ namespace EvolveJournal {
   public string buffer;
   private EvolveNotebook notebook;
   private bool file_loaded;
+  public Gtk.HeaderBar headbar;
 
   public class EvolveWindow : Gtk.ApplicationWindow {
 
@@ -201,5 +202,9 @@ namespace EvolveJournal {
   public void open_file(EvolveNotebook open_notebook){
     var file = new EvolveJournal.Files();
     buffer = file.on_open_clicked(open_notebook);
+  }
+
+  public HeaderBar get_headerbar(){
+    return headbar;
   }
 }

@@ -33,12 +33,28 @@ namespace EvolveJournal {
 			file_chooser.set_select_multiple(true);
 			file_chooser.set_local_only(true);
 			if (file_chooser.run () == ResponseType.ACCEPT) {
+				bool file_open = false;
 				foreach (File file in file_chooser.get_files()){
-					//This is needed to pull the filename out (and not the whole path)
-					text_buffer_load = open_file (file.get_path ());
-					notebook.new_tab(text_buffer_load, true, file.get_path());
-					notebook.set_label(file.get_basename());
-					file_setup(notebook, file);
+					for (int count = 0; count < notebook.get_n_pages(); count++){
+						EvolveTab tab = (EvolveTab)notebook.get_nth_page(count);
+						if (tab.get_save_path() != file.get_path()){
+							
+						}
+						else {
+							message("File already exists");
+							file_open = true;
+						}
+					}
+					if (file_open != true){
+						text_buffer_load = open_file (file.get_path ());
+						notebook.new_tab(text_buffer_load, true, file.get_path());
+						notebook.set_label(file.get_basename());
+						file_setup(notebook, file);
+					}
+					else {
+						message("File is open");
+					}
+					
 				}
 			}
 			else {
@@ -101,8 +117,8 @@ namespace EvolveJournal {
 			}
 			else{
 				try {
-					FileUtils.set_contents(tab.save_path, text_to_save);
-					tab.save_file(File.new_for_path(tab.save_path));
+					FileUtils.set_contents(tab.get_save_path(), text_to_save);
+					tab.save_file(File.new_for_path(tab.get_save_path()));
 				}
 				catch(Error e){
 					stderr.printf("Error: %s\n", e.message);

@@ -137,12 +137,16 @@ namespace EvolveJournal
         if (parent_notebook.get_n_pages() == 1){
           EvolveWindow win = (EvolveWindow)this.get_toplevel();
           win.get_save_button().get_style_context().add_class("suggested-action");
+          message("I iz run!");
         }
         else {
+          message("More than one tab.");
         }
       }
       else {
+        EvolveWindow win = (EvolveWindow)this.get_toplevel();
         close_btn.set_image(new Image.from_icon_name("window-close-symbolic", IconSize.BUTTON));
+        win.get_save_button().get_style_context().remove_class("suggested-action");
       }
     }
 

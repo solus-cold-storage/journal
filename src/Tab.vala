@@ -111,7 +111,7 @@ namespace EvolveJournal
           switch (response_id) {
             case Gtk.ResponseType.OK:
               stdout.puts ("Ok\n");
-              parent_notebook.remove_page(parent_notebook.page_num(this));
+              parent_notebook.remove_tab(this);
               break;
             case Gtk.ResponseType.CANCEL:
               stdout.puts ("Cancel\n");
@@ -126,7 +126,7 @@ namespace EvolveJournal
         msg.show ();
       }
       else{
-        parent_notebook.remove_page(parent_notebook.page_num(this));
+        parent_notebook.remove_tab(this);
       }
       parent_notebook.update_tab();
     }

@@ -53,6 +53,11 @@ namespace EvolveJournal{
         tab.change_focus(this);
       } 
 
+      public void remove_tab(EvolveTab tab){
+        this.remove_page(this.page_num(tab));
+        update_tab();
+      }
+
       public void undo_source(){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         tab.source_view.undo();        

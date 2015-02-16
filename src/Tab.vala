@@ -189,11 +189,6 @@ namespace EvolveJournal
       return text_buffer.text;
     }
 
-    public Label get_label()
-    {
-      return label;
-    }
-
     //Set Language.
     public void set_lang(File file)
     {

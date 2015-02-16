@@ -85,8 +85,7 @@ namespace EvolveJournal{
         this.set_show_tabs(this.get_n_pages() != 1);
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         if (this.get_n_pages() == 1){
-          EvolveWindow win = (EvolveWindow)this.get_toplevel();
-          win.get_headerbar().set_subtitle(tab.get_label().get_text());
+          message("Just one tab.");
         }
         else{
           message("More than one tab!");

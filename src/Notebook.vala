@@ -83,6 +83,14 @@ namespace EvolveJournal{
 
       public void update_tab(){
         this.set_show_tabs(this.get_n_pages() != 1);
+        if (this.get_n_pages() == 1){
+          EvolveWindow win = (EvolveWindow)this.get_toplevel();
+          EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+          win.get_headerbar().set_subtitle(tab.get_label().get_text());
+        }
+        else{
+          message("More than one tab!");
+        }
       }
 
       public bool get_linenum(){

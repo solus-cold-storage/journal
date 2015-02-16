@@ -24,6 +24,7 @@ namespace EvolveJournal {
   private EvolveNotebook notebook;
   private bool file_loaded;
   public Gtk.HeaderBar headbar;
+  private Gtk.Button save_button;
 
   public class EvolveWindow : Gtk.ApplicationWindow {
 
@@ -75,7 +76,7 @@ namespace EvolveJournal {
 
     });
 
-    var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
+    save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
     save_button.set_tooltip_text("Save");
@@ -213,6 +214,13 @@ namespace EvolveJournal {
         message("File already loaded.");
       }
     }
+    public HeaderBar get_headerbar(){
+    return headbar;
+    }
+
+    public Button get_save_button(){
+      return save_button;
+    }
   }
 
   public void save_file(EvolveNotebook save_notebook, bool save_as){
@@ -229,9 +237,5 @@ namespace EvolveJournal {
   public void open_file(EvolveNotebook open_notebook){
     var file = new EvolveJournal.Files();
     buffer = file.on_open_clicked(open_notebook);
-  }
-
-  public HeaderBar get_headerbar(){
-    return headbar;
   }
 }

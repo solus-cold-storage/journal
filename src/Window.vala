@@ -21,16 +21,19 @@ using Gtk;
 namespace EvolveJournal {
 
   public string buffer;
-  private EvolveNotebook notebook;
+  
   private bool file_loaded;
-  public Gtk.HeaderBar headbar;
 
   public class EvolveWindow : Gtk.ApplicationWindow {
+
+    private Gtk.Button save_button;
+    public Gtk.HeaderBar headbar;
+    private EvolveNotebook notebook;
 
     public EvolveWindow (Gtk.Application application) 
     {
       Object(application: application);
-    
+        
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
 
@@ -75,7 +78,7 @@ namespace EvolveJournal {
 
     });
 
-    var save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
+    save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
     headbar.add (save_button);
     save_button.show();
     save_button.set_tooltip_text("Save");
@@ -213,7 +216,21 @@ namespace EvolveJournal {
         message("File already loaded.");
       }
     }
+
+    public void set_headerbar(string current_file){
+      headbar.set_has_subtitle(true);
+      headbar.set_subtitle(current_file);
+    }
+
+    public Button get_save_button(){
+      return save_button;
+    }
   }
+
+  public void open_file(EvolveNotebook open_notebook){
+    var file = new EvolveJournal.Files();
+    buffer = file.on_open_clicked(open_notebook);
+    }
 
   public void save_file(EvolveNotebook save_notebook, bool save_as){
     if (save_notebook.get_n_pages() <= 0){
@@ -224,14 +241,5 @@ namespace EvolveJournal {
       string typed_text = save_notebook.get_text();
       file.on_save_clicked(typed_text, save_notebook, save_as);
     }
-  }
-
-  public void open_file(EvolveNotebook open_notebook){
-    var file = new EvolveJournal.Files();
-    buffer = file.on_open_clicked(open_notebook);
-  }
-
-  public HeaderBar get_headerbar(){
-    return headbar;
   }
 }

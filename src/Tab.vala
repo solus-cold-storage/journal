@@ -81,6 +81,8 @@ namespace EvolveJournal
 
       source_view.show();
       scroller.show();
+      
+      this.parent_notebook.mother.change_scheme.connect((scheme) => {text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); stdout.printf(scheme + "\n");});
 
     }
 

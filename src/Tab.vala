@@ -4,7 +4,7 @@
 *
 * Evolve Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
-* published by the Free Software Foundation, either version 3 of the
+* published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
 * Evolve Journal is distributed in the hope that it will be
@@ -25,7 +25,7 @@ namespace EvolveJournal
     public ScrolledWindow scroller;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
-    public string save_path;
+    private string save_path;
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
     public string language;
@@ -81,6 +81,8 @@ namespace EvolveJournal
 
       source_view.show();
       scroller.show();
+      
+      this.parent_notebook.mother.change_scheme.connect((scheme) => {text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); stdout.printf(scheme + "\n");});
 
     }
 
@@ -111,7 +113,7 @@ namespace EvolveJournal
           switch (response_id) {
             case Gtk.ResponseType.OK:
               stdout.puts ("Ok\n");
-              parent_notebook.remove_page(parent_notebook.page_num(this));
+              parent_notebook.remove_tab(this);
               break;
             case Gtk.ResponseType.CANCEL:
               stdout.puts ("Cancel\n");
@@ -126,16 +128,27 @@ namespace EvolveJournal
         msg.show ();
       }
       else{
-        parent_notebook.remove_page(parent_notebook.page_num(this));
+        parent_notebook.remove_tab(this);
       }
+      parent_notebook.update_tab();
     }
 
     public void set_close_btn_indicator(){
       if (edited == true){
         close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
+        if (parent_notebook.get_n_pages() == 1){
+          EvolveWindow win = (EvolveWindow)this.get_toplevel();
+          win.get_save_button().get_style_context().add_class("suggested-action");
+          message("I iz run!");
+        }
+        else {
+          message("More than one tab.");
+        }
       }
       else {
+        EvolveWindow win = (EvolveWindow)this.get_toplevel();
         close_btn.set_image(new Image.from_icon_name("window-close-symbolic", IconSize.BUTTON));
+        win.get_save_button().get_style_context().remove_class("suggested-action");
       }
     }
 
@@ -149,6 +162,14 @@ namespace EvolveJournal
       set_lang(file);
       edited = false;
       set_close_btn_indicator();
+    }
+
+    public string get_save_path(){
+      return save_path;
+    }
+
+    public void set_save_path(string path){
+      save_path = path;
     }
 
     //Edited setter and getter.

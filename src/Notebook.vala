@@ -26,12 +26,9 @@ namespace EvolveJournal{
     public Gtk.Button newtabbutton;
     public string null_buffer = "";
     public bool use_linenum;
-    
-    public EvolveWindow mother;
 
-      public EvolveNotebook(EvolveWindow mother)
+      public EvolveNotebook()
       {
-      	this.mother = mother;
         show_border = false;
         set_scrollable(true);
         use_linenum = true;

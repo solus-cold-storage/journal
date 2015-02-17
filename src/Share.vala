@@ -41,6 +41,18 @@ namespace EvolveJournal {
 
       MainLoop loop = new MainLoop ();
 
+      if (text == ""){
+        var dialog = new Dialog.with_buttons("Wait!", window,
+          DialogFlags.MODAL,
+          "OK",
+          ResponseType.OK, null);
+        var content_area = dialog.get_content_area();
+        var label = new Label("Nothing to upload to Hastebin!");
+        content_area.add(label);
+        dialog.response.connect(on_response);
+        dialog.show_all();
+      }
+      else {
     	// Send a request:
     	session.queue_message (message, (sess, mess) => {
     		// Process the result:
@@ -68,7 +80,7 @@ namespace EvolveJournal {
     	});
 
     	loop.run ();
-
+      }
     }
     void on_response (Dialog dialog, int response_id) {
                 dialog.destroy();

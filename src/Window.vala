@@ -1,4 +1,4 @@
-/* Copyright 2014 Ryan Sipes & Barry Smith
+/* Copyright 2014 Ryan Sipes
 *
 * This file is part of Evolve Journal.
 *
@@ -29,13 +29,6 @@ namespace EvolveJournal {
     private Gtk.Button save_button;
     public Gtk.HeaderBar headbar;
     private EvolveNotebook notebook;
-    
-    public Gtk.ComboBoxText combo_box;
-    
-    public SimpleAction about_action;
-    public SimpleAction saveas_action;
-    
-    public signal void change_scheme(string scheme);
 
     public EvolveWindow (Gtk.Application application) 
     {
@@ -125,7 +118,7 @@ namespace EvolveJournal {
         print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
       });
 
-    saveas_action = new SimpleAction("saveas_action", null);
+    var saveas_action = new SimpleAction("saveas_action", null);
     saveas_action.activate.connect(()=> {
         message("Saving As...");
         save_file(notebook, true);
@@ -137,7 +130,7 @@ namespace EvolveJournal {
         notebook.new_tab(notebook.null_buffer, false, "");
       });
 
-    about_action = new SimpleAction("about_action", null);
+    var about_action = new SimpleAction("about_action", null);
     about_action.activate.connect(()=> {
         queue_draw();
         Idle.add(()=>{
@@ -181,71 +174,16 @@ namespace EvolveJournal {
     //Menu button not finished an ready for Beta release.
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
-   // popover.set_modal(true);
-    
-    Gtk.Box menu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-    menu_box.width_request = 100;
-    menu_box.visible = true;
-    popover.add(menu_box);
-    
-    Gtk.Button saveas_button = new Gtk.Button();
-    saveas_button.visible = true;
-    saveas_button.set_relief(ReliefStyle.NONE);
-    saveas_button.clicked.connect(()=> {
-        message("Saving As...");
-        save_file(notebook, true);
-      });
-    saveas_button.set_label("Save As...");
-    menu_box.add(saveas_button);
-    
-    Gtk.Button about_button = new Gtk.Button();
-    about_button.visible = true;
-    about_button.set_relief(ReliefStyle.NONE);
-    about_button.clicked.connect(()=> {
-        queue_draw();
-        Idle.add(()=>{
-          Gtk.show_about_dialog(this,
-            "program-name", "Journal",
-            "copyright", "Copyright \u00A9 2015 Ryan Sipes",
-            "website", "https://evolve-os.com",
-            "website-label", "Evolve OS",
-            "license-type", Gtk.License.GPL_2_0,
-            "comments", "A simple text-editor with sharing features.",
-            "version", "0.7.1 (Beta 3)",
-            "logo-icon-name", "journal",
-            "artists", new string[]{
-              "Alejandro Seoane <asetrigo@gmail.com>"
-              },
-            "authors", new string[]{
-              "Ryan Sipes <ryan@evolve-os.com>",
-              "Ikey Doherty <ikey@evolve-os.com>",
-              "Barry Smith <barry.of.smith@gmail.com>"
-              });
-          return false;
-          });
-      });
-    about_button.set_label("About");
-    menu_box.add(about_button);
-    
-    combo_box = new Gtk.ComboBoxText();
-    combo_box.set_halign(Gtk.Align.END);
-    string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
-    for (int count = 0; count < schemes.length; count ++)
-        combo_box.append_text(schemes[count]);
-    combo_box.changed.connect(() => {this.change_scheme(combo_box.get_active_text());});
-    combo_box.set_active(0);
-    combo_box.visible = true;
-    menu_box.add(combo_box);
-    
-    //menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
+    popover.set_modal(true);
+    menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_popover(popover);
     menu_button.show();
-    //Gtk.Menu menu = new Gtk.Menu();
-    //menu_button.set_menu_model(menu);
+    GLib.Menu menu = new GLib.Menu();
+    menu_button.set_menu_model(menu);
     menu_button.set_use_popover(true);
     //menu.append("Print", "app.print_action");
-    //menu.append("Save As...", "app.saveas_action");
-    //menu.append("About", "app.about_action");
+    menu.append("Save As...", "app.saveas_action");
+    menu.append("About", "app.about_action");
     
     headbar.pack_end (menu_button);
     headbar.pack_end (share_button);
@@ -258,9 +196,8 @@ namespace EvolveJournal {
     notebook.show_all();
     headbar.show_all();
     }
-    
     public void set_notebook(){
-      notebook = new EvolveNotebook(this);
+      notebook = new EvolveNotebook();
     }
 
     public EvolveNotebook get_notebook(){

@@ -1,8 +1,6 @@
 #Evolve Journal
 
-##DISCLAIMER: This project is still in development and is subject to change.
-
-Version: 1.0 (Stable)
+###Version: 1.0 (Stable)
 ____
 ###Dependencies
 

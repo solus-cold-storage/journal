@@ -29,12 +29,7 @@ namespace EvolveJournal {
     private Gtk.Button save_button;
     public Gtk.HeaderBar headbar;
     private EvolveNotebook notebook;
-    
-    public Gtk.ComboBoxText combo_box;
-    
-    public SimpleAction about_action;
-    public SimpleAction saveas_action;
-    
+
     public signal void change_scheme(string scheme);
 
     public EvolveWindow (Gtk.Application application) 
@@ -162,10 +157,17 @@ namespace EvolveJournal {
           });
       });
 
-    var change_scheme_action = new SimpleAction("change_scheme_action", null);
-    change_scheme_action.activate.connect(()=> {
-        this.change_scheme("classic");
-      });
+    var classic_action = new SimpleAction("classic_action", null);
+    classic_action.activate.connect(()=> {
+      this.change_scheme("classic");
+      notebook.set_current_scheme("classic");
+    });
+
+    var cobalt_action = new SimpleAction("cobalt_action", null);
+    cobalt_action.activate.connect(()=> {
+      this.change_scheme("cobalt");
+      notebook.set_current_scheme("cobalt");
+    });
 
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
@@ -181,8 +183,9 @@ namespace EvolveJournal {
     application.add_action(saveas_action);
     application.add_action(newtab_action);
     application.add_action(about_action);
-    application.add_action(change_scheme_action);
-    
+    application.add_action(classic_action);
+    application.add_action(cobalt_action);
+
     //Menu button + Menu
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
@@ -201,7 +204,7 @@ namespace EvolveJournal {
     
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
     for (int count = 0; count < schemes.length; count ++) {
-        appearance_menu.append_item(schemes[count], "app.change_scheme_action");
+        appearance_menu.append(schemes[count], "app." + schemes[count] + "_action");
       }
     
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);

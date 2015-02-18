@@ -64,12 +64,12 @@ namespace EvolveJournal
         });
 
       //Displays styles schemes and sets to Oblivion.
-      var s =  SourceStyleSchemeManager.get_default();
+      /*var s =  SourceStyleSchemeManager.get_default();
       message("Found %d styles", s.get_scheme_ids().length);
 
       foreach (var v in s.get_scheme_ids()){
         message("Got style %s", v);
-      }
+      }*/
 
       pack_start(scroller, true, true, 0);
       scroller.add(source_view);

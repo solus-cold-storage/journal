@@ -26,6 +26,7 @@ namespace EvolveJournal{
     public Gtk.Button newtabbutton;
     public string null_buffer = "";
     public bool use_linenum;
+    private string current_scheme;
     
     public EvolveWindow mother;
 
@@ -54,7 +55,7 @@ namespace EvolveJournal{
         stdout.printf(text);
         tab.show ();
         tab.change_focus(this);
-        tab.scheme_selector();
+        tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
       } 
 
       public void remove_tab(EvolveTab tab){
@@ -100,6 +101,14 @@ namespace EvolveJournal{
           message("More than one tab!");
         }
         tab.set_close_btn_indicator();
+      }
+
+      public void set_current_scheme(string scheme){
+        current_scheme = scheme;
+      }
+
+      public string get_current_scheme(){
+        return current_scheme;
       }
 
       public bool get_linenum(){

@@ -78,7 +78,6 @@ namespace EvolveJournal
       scroller.show();
       
       scheme_selector();
-
     }
 
     public void scheme_selector(){

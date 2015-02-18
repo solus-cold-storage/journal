@@ -54,6 +54,7 @@ namespace EvolveJournal{
         stdout.printf(text);
         tab.show ();
         tab.change_focus(this);
+        tab.scheme_selector();
       } 
 
       public void remove_tab(EvolveTab tab){

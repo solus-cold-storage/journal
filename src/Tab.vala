@@ -71,19 +71,21 @@ namespace EvolveJournal
         message("Got style %s", v);
       }
 
-      var scheme = s.get_scheme("oblivion");
-      //var scheme = s.get_scheme("classic");
-      text_buffer.set_style_scheme(scheme);
-      text_buffer.set_highlight_syntax(true);
-
       pack_start(scroller, true, true, 0);
       scroller.add(source_view);
 
       source_view.show();
       scroller.show();
       
-      this.parent_notebook.mother.change_scheme.connect((scheme) => {text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); stdout.printf(scheme + "\n");});
+      scheme_selector();
 
+    }
+
+    public void scheme_selector(){
+      this.parent_notebook.mother.change_scheme.connect((scheme) => {
+        text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); 
+        stdout.printf(scheme + "\n");
+        });
     }
 
     //Content setter and getter.

@@ -177,11 +177,9 @@ namespace EvolveJournal {
     application.add_action(newtab_action);
     application.add_action(about_action);
     
-    
-    //Menu button not finished an ready for Beta release.
+    //Menu button + Menu
     MenuButton menu_button = new MenuButton();
     var popover = new Popover(menu_button);
-   // popover.set_modal(true);
     
     Gtk.Box menu_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
     menu_box.width_request = 100;
@@ -211,7 +209,7 @@ namespace EvolveJournal {
             "website-label", "Evolve OS",
             "license-type", Gtk.License.GPL_2_0,
             "comments", "A simple text-editor with sharing features.",
-            "version", "0.7.1 (Beta 3)",
+            "version", "1.0",
             "logo-icon-name", "journal",
             "artists", new string[]{
               "Alejandro Seoane <asetrigo@gmail.com>"

@@ -36,6 +36,14 @@ namespace EvolveJournal{
         show_border = false;
         set_scrollable(true);
         use_linenum = true;
+
+        create_window.connect((p, x, y)=> {
+          var w = new EvolveWindow(mother.application);
+          w.move(x, y);
+          w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
+          w.show_all();
+          return w.get_notebook();
+        });
       }
 
       public void new_tab (string text, bool open_file, string save_path)

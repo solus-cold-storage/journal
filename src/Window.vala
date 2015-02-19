@@ -143,7 +143,7 @@ namespace EvolveJournal {
             "website-label", "Evolve OS",
             "license-type", Gtk.License.GPL_2_0,
             "comments", "A simple text-editor with sharing features.",
-            "version", "0.7.1 (Beta 3)",
+            "version", "1",
             "logo-icon-name", "journal",
             "artists", new string[]{
               "Alejandro Seoane <asetrigo@gmail.com>"

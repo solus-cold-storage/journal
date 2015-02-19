@@ -56,6 +56,8 @@ namespace EvolveJournal{
         tab.show ();
         tab.change_focus(this);
         tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
+        set_tab_detachable(tab, true);
+        set_tab_reorderable(tab, true);
       } 
 
       public void remove_tab(EvolveTab tab){

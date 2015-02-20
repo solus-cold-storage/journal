@@ -190,6 +190,7 @@ namespace EvolveJournal {
     GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);
     action_menu.append_item(appearance_item);
     
+    if (app_mother.scheme_action_added != true){
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
     foreach (var scheme in schemes) {
         appearance_menu.append(scheme, "app." + scheme + "_action");
@@ -198,8 +199,12 @@ namespace EvolveJournal {
           change_action(scheme);
         });
         application.add_action(scheme_action);
+        app_mother.scheme_action_added = true;
       }
-    
+    }
+    else {
+
+    }
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_use_popover(true);
     menu_button.set_popover(popover);

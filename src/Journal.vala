@@ -23,6 +23,7 @@ public class Application : Gtk.Application{
 	public bool window_created;
 	public DynamicList<EvolveJournal.EvolveWindow> wins;
 	private File[] loaded_files;
+	public bool scheme_action_added;
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 

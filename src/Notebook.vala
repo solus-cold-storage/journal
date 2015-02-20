@@ -38,12 +38,12 @@ namespace EvolveJournal{
         use_linenum = true;
 
         create_window.connect((p, x, y)=> {
-          var w = new EvolveWindow(mother.application);
+          var w = new EvolveWindow(mother.app_mother);
           w.move(x, y);
           w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
           w.show_all();
           this.mother.app_mother.wins.add(w);
-          return this.mother.app_mother.wins[-1].get_notebook();
+          return w.get_notebook();
         });
       }
 

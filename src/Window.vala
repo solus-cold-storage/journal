@@ -159,41 +159,6 @@ namespace EvolveJournal {
           });
       });
 
-    var classic_action = new SimpleAction("classic_action", null);
-    classic_action.activate.connect(()=> {
-      change_action("classic");
-    });
-
-    var cobalt_action = new SimpleAction("cobalt_action", null);
-    cobalt_action.activate.connect(()=> {
-      change_action("cobalt");
-    });
-
-    var kate_action = new SimpleAction("kate_action", null);
-    kate_action.activate.connect(()=> {
-      change_action("kate");
-    });
-
-    var oblivion_action = new SimpleAction("oblivion_action", null);
-    oblivion_action.activate.connect(()=> {
-      change_action("oblivion");
-    });
-
-    var solarized_dark_action = new SimpleAction("solarized-dark_action", null);
-    solarized_dark_action.activate.connect(()=> {
-      change_action("solarized-dark");
-      });
-
-    var solarized_light_action = new SimpleAction("solarized-light_action", null);
-    solarized_light_action.activate.connect(()=> {
-      change_action("solarized-light");
-      });
-
-    var tango_action = new SimpleAction("tango_action", null);
-    tango_action.activate.connect(()=> {
-      change_action("tango");
-      });
-
     application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
     application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
     application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
@@ -208,13 +173,6 @@ namespace EvolveJournal {
     application.add_action(saveas_action);
     application.add_action(newtab_action);
     application.add_action(about_action);
-    application.add_action(classic_action);
-    application.add_action(cobalt_action);
-    application.add_action(kate_action);
-    application.add_action(oblivion_action);
-    application.add_action(solarized_dark_action);
-    application.add_action(solarized_light_action);
-    application.add_action(tango_action);
 
     //Menu button + Menu
     MenuButton menu_button = new MenuButton();
@@ -233,8 +191,13 @@ namespace EvolveJournal {
     action_menu.append_item(appearance_item);
     
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
-    for (int count = 0; count < schemes.length; count ++) {
-        appearance_menu.append(schemes[count], "app." + schemes[count] + "_action");
+    foreach (var scheme in schemes) {
+        appearance_menu.append(scheme, "app." + scheme + "_action");
+        var scheme_action = new SimpleAction(scheme+"_action", null);
+        scheme_action.activate.connect(()=> {
+          change_action(scheme);
+        });
+        application.add_action(scheme_action);
       }
     
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);

@@ -18,15 +18,16 @@
 
 using GLib;
 
-class Application : Gtk.Application{
+public class Application : Gtk.Application{
 
 	public bool window_created;
-	public EvolveJournal.EvolveWindow win;
+	public DynamicList<EvolveJournal.EvolveWindow> wins;
 	private File[] loaded_files;
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
+		this.wins = new DynamicList<EvolveJournal.EvolveWindow>();
 	}
 
 	public override void activate(){
@@ -41,30 +42,30 @@ class Application : Gtk.Application{
 
 	public void run_application(){
 		if (window_created == false){
-			win = new EvolveJournal.EvolveWindow (this);
+			this.wins.add(new EvolveJournal.EvolveWindow (this));
 			window_created = true;
 
 			if (loaded_files != null){
 				foreach (File file in loaded_files){
 					EvolveJournal.Files file_class = new EvolveJournal.Files();
-					file_class.open_at_start(win.get_notebook(), file.get_path(), file.get_basename());	
+					file_class.open_at_start(wins[0].get_notebook(), file.get_path(), file.get_basename());	
 				}
-				win.set_loaded(true);
+				wins[0].set_loaded(true);
 			}
 			else {
 				message("No files loaded.");
-				win.set_loaded(false);
+				wins[0].set_loaded(false);
 			}
 
-			win.open_tabs();
+			wins[0].open_tabs();
 			
-			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
-			win.present ();	
+			wins[0].delete_event.connect((win, e) => { Gtk.main_quit (); return false; });
+			wins[0].present ();	
 
 			Gtk.main();
 		}
 		else {
-			win.present();
+			wins[0].present();
 		}
 	}
 

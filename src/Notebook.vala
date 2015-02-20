@@ -42,7 +42,8 @@ namespace EvolveJournal{
           w.move(x, y);
           w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
           w.show_all();
-          return w.get_notebook();
+          this.mother.app_mother.wins.add(w);
+          return this.mother.app_mother.wins[-1].get_notebook();
         });
       }
 

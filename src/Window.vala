@@ -29,12 +29,14 @@ namespace EvolveJournal {
     private Gtk.Button save_button;
     public Gtk.HeaderBar headbar;
     private EvolveNotebook notebook;
+    public Application app_mother;
 
     public signal void change_scheme(string scheme);
 
     public EvolveWindow (Gtk.Application application) 
     {
       Object(application: application);
+      this.app_mother = (Application)application;
         
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -257,7 +259,7 @@ namespace EvolveJournal {
       notebook = new EvolveNotebook(this);
     }
 
-    public EvolveNotebook get_notebook(){
+    public unowned EvolveNotebook get_notebook(){
       return notebook;
     }
 

@@ -49,6 +49,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
 	src/Tab.vala 
 	src/Window.vala 
 	src/Files.vala
+	src/dynamiclist.vala
 
 # tell what libraries to use when compiling
 PACKAGES

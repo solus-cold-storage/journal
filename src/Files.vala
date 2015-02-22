@@ -90,6 +90,7 @@ namespace EvolveJournal {
 			tab.set_lang(file);
 			tab.set_edited(false);
 			tab.set_close_btn_indicator();
+			notebook.set_subtitle_text(tab);
 		}
 
 		public void on_save_clicked(string text_to_save, EvolveNotebook notebook, bool save_as) {

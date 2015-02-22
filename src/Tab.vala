@@ -25,6 +25,7 @@ namespace EvolveJournal
     public ScrolledWindow scroller;
     public SourceBuffer text_buffer = new SourceBuffer(null);
     public Label label;
+    public string label_name;
     private string save_path;
     public bool saved;
     public SourceStyleSchemeManager style_scheme_manager;
@@ -63,14 +64,6 @@ namespace EvolveJournal
           }
         });
 
-      //Displays styles schemes and sets to Oblivion.
-      /*var s =  SourceStyleSchemeManager.get_default();
-      message("Found %d styles", s.get_scheme_ids().length);
-
-      foreach (var v in s.get_scheme_ids()){
-        message("Got style %s", v);
-      }*/
-
       pack_start(scroller, true, true, 0);
       scroller.add(source_view);
 
@@ -88,8 +81,9 @@ namespace EvolveJournal
     }
 
     //Content setter and getter.
-    public void set_content(string label_name){
-      label = new Label(label_name);
+    public void set_content(string new_label_name){
+      label_name = new_label_name;
+      label = new Label(new_label_name);
       close_btn = new Button();
       set_close_btn_indicator();
       close_btn.show();

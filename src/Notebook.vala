@@ -40,11 +40,21 @@ namespace EvolveJournal{
         create_window.connect((p, x, y)=> {
           var w = new EvolveWindow(mother.app_mother);
           w.move(x, y);
-          w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
+          //w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
           w.show_all();
           this.mother.app_mother.wins.add(w);
           return w.get_notebook();
         });
+
+        switch_page.connect((page, number)=> {
+          EvolveTab tab = (EvolveTab)page;
+          set_subtitle_text(tab);
+        });
+      }
+
+      public void set_subtitle_text(EvolveTab tab){
+        var headbar = (Gtk.HeaderBar)mother.get_headerbar();
+        headbar.set_subtitle(tab.label_name);
       }
 
       public void new_tab (string text, bool open_file, string save_path)
@@ -67,6 +77,7 @@ namespace EvolveJournal{
         tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
         set_tab_detachable(tab, true);
         set_tab_reorderable(tab, true);
+        set_subtitle_text(tab);
       } 
 
       public void remove_tab(EvolveTab tab){
@@ -100,6 +111,11 @@ namespace EvolveJournal{
       public string get_label(){
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         return tab.label.get_text();
+      }
+
+      public EvolveTab get_current_tab(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        return tab;
       }
 
       public void update_tab(){

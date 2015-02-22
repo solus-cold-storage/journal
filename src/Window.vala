@@ -41,7 +41,7 @@ namespace EvolveJournal {
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
 
-    var headbar = new HeaderBar();
+    headbar = new HeaderBar();
     headbar.set_title("Journal");
     headbar.set_show_close_button(true);
     this.set_titlebar(headbar);
@@ -145,7 +145,7 @@ namespace EvolveJournal {
             "website-label", "Evolve OS",
             "license-type", Gtk.License.GPL_2_0,
             "comments", "A simple text-editor with sharing features.",
-            "version", "1",
+            "version", "1.0 (Stable)",
             "logo-icon-name", "journal",
             "artists", new string[]{
               "Alejandro Seoane <asetrigo@gmail.com>"
@@ -164,6 +164,7 @@ namespace EvolveJournal {
     application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
     application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
     application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
+    application.set_accels_for_action("app.saveas_action", {"<Shift><Ctrl>S"});
 
     application.add_action(save_action);
     application.add_action(open_action);
@@ -180,15 +181,18 @@ namespace EvolveJournal {
     popover.set_modal(true);  
     GLib.Menu action_menu = new GLib.Menu();
 
+    GLib.Menu file_menu = new GLib.Menu();
+    GLib.MenuItem file_menu_item = new GLib.MenuItem.submenu("File", file_menu);
+    action_menu.append_item(file_menu_item);
     GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
-    action_menu.append_item(saveas_item);
-    
-    GLib.MenuItem about_item = new GLib.MenuItem("About", "app.about_action");
-    action_menu.append_item(about_item);
+    file_menu.append_item(saveas_item);
 
     GLib.Menu appearance_menu = new GLib.Menu();
     GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);
     action_menu.append_item(appearance_item);
+    
+    GLib.MenuItem about_item = new GLib.MenuItem("About", "app.about_action");
+    action_menu.append_item(about_item);
     
     if (app_mother.scheme_action_added != true){
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
@@ -200,17 +204,17 @@ namespace EvolveJournal {
         });
         application.add_action(scheme_action);
         app_mother.scheme_action_added = true;
+        change_action("classic");
       }
     }
     else {
-
+      message("Actions already exist.");
     }
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_use_popover(true);
     menu_button.set_popover(popover);
     menu_button.show();
     menu_button.set_menu_model(action_menu);
-
     headbar.pack_end (menu_button);
     headbar.pack_end (share_button);
 
@@ -244,9 +248,8 @@ namespace EvolveJournal {
       }
     }
 
-    public void set_headerbar(string current_file){
-      headbar.set_has_subtitle(true);
-      headbar.set_subtitle(current_file);
+    public Gtk.HeaderBar get_headerbar(){
+      return headbar;
     }
 
     public Button get_save_button(){

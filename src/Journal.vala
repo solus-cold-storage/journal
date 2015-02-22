@@ -24,6 +24,7 @@ public class Application : Gtk.Application{
 	public DynamicList<EvolveJournal.EvolveWindow> wins;
 	private File[] loaded_files;
 	public bool scheme_action_added;
+	private string current_scheme;
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
@@ -33,6 +34,17 @@ public class Application : Gtk.Application{
 
 	public override void activate(){
 		run_application();	
+	}
+
+	public void set_current_scheme(string scheme){
+		current_scheme = scheme;
+		for (int count = 0; count < wins.length; count++){
+			wins[count].change_scheme(scheme);
+		}
+	}
+
+	public string get_current_scheme(){
+		return current_scheme;
 	}
 
 	public override void open(File[] files, string hint){

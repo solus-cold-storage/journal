@@ -26,7 +26,6 @@ namespace EvolveJournal{
     public Gtk.Button newtabbutton;
     public string null_buffer = "";
     public bool use_linenum;
-    private string current_scheme;
     
     public EvolveWindow mother;
 
@@ -69,9 +68,8 @@ namespace EvolveJournal{
           tab.saved = true;
         }
         else {
-          stdout.printf("This is a new tab\n");
+          message("New Tab created.\n");
         }
-        stdout.printf(text);
         tab.show ();
         tab.change_focus(this);
         tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
@@ -130,12 +128,8 @@ namespace EvolveJournal{
         tab.set_close_btn_indicator();
       }
 
-      public void set_current_scheme(string scheme){
-        current_scheme = scheme;
-      }
-
       public string get_current_scheme(){
-        return current_scheme;
+        return mother.app_mother.get_current_scheme();
       }
 
       public bool get_linenum(){

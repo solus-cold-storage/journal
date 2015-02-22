@@ -60,7 +60,7 @@ namespace EvolveJournal
             set_close_btn_indicator();
           }
           else {
-            stdout.printf("Edited = true\n");
+            //It is edited.
           }
         });
 
@@ -76,7 +76,6 @@ namespace EvolveJournal
     public void scheme_selector(){
       this.parent_notebook.mother.change_scheme.connect((scheme) => {
         text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); 
-        stdout.printf(scheme + "\n");
         });
     }
 
@@ -134,7 +133,6 @@ namespace EvolveJournal
         close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
         if (parent_notebook.get_n_pages() == 1){
           win.get_save_button().get_style_context().add_class("suggested-action");
-          message("I iz run!");
         }
         else {
           message("More than one tab.");
@@ -202,10 +200,10 @@ namespace EvolveJournal
       language = language_manager.guess_language(file.get_path(), mime_type).get_name();
       if (language != null){
         text_buffer.set_language(language_manager.guess_language(file.get_path(), mime_type));
-        stdout.printf(language + "\n");
+        message(language + "\n");
       }
       else {
-        stdout.printf("No language.\n");
+        message("No language.\n");
       }
     }
   }

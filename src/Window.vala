@@ -73,8 +73,6 @@ namespace EvolveJournal {
         stdout.printf("No pages! \n");
       }
       else{
-        int current_tab = notebook.get_current_page();
-        stdout.printf(current_tab.to_string() +"\n");
         string typed_text = notebook.get_text();
         var share = new EvolveJournal.Share();
         share.generate_paste(typed_text, this);
@@ -194,22 +192,23 @@ namespace EvolveJournal {
     GLib.MenuItem about_item = new GLib.MenuItem("About", "app.about_action");
     action_menu.append_item(about_item);
     
-    if (app_mother.scheme_action_added != true){
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
     foreach (var scheme in schemes) {
         appearance_menu.append(scheme, "app." + scheme + "_action");
+      if (app_mother.scheme_action_added != true){
         var scheme_action = new SimpleAction(scheme+"_action", null);
         scheme_action.activate.connect(()=> {
           change_action(scheme);
         });
         application.add_action(scheme_action);
-        app_mother.scheme_action_added = true;
         change_action("classic");
       }
+      else {
+        message("Actions already exist.");
+      }
     }
-    else {
-      message("Actions already exist.");
-    }
+    app_mother.scheme_action_added = true;
+
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_use_popover(true);
     menu_button.set_popover(popover);
@@ -258,7 +257,7 @@ namespace EvolveJournal {
 
     private void change_action(string new_scheme){
       this.change_scheme(new_scheme);
-      notebook.set_current_scheme(new_scheme);
+      app_mother.set_current_scheme(new_scheme);
     }
   }
 

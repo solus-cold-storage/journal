@@ -132,6 +132,12 @@ namespace EvolveJournal {
         notebook.new_tab(notebook.null_buffer, false, "");
       });
 
+    var show_tabs_action = new SimpleAction("show_tabs_action", null);
+    show_tabs_action.activate.connect(()=> {
+        message("Show Tabs");
+        //Include show tabs toggle here.
+      });
+
     var about_action = new SimpleAction("about_action", null);
     about_action.activate.connect(()=> {
         queue_draw();
@@ -172,6 +178,7 @@ namespace EvolveJournal {
     application.add_action(saveas_action);
     application.add_action(newtab_action);
     application.add_action(about_action);
+    application.add_action(show_tabs_action);
 
     //Menu button + Menu
     MenuButton menu_button = new MenuButton();
@@ -184,6 +191,12 @@ namespace EvolveJournal {
     action_menu.append_item(file_menu_item);
     GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
     file_menu.append_item(saveas_item);
+
+    GLib.Menu view_menu = new GLib.Menu();
+    GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
+    action_menu.append_item(view_menu_item);
+    GLib.MenuItem show_tabs_item = new GLib.MenuItem("Always Show Tabs", "app.show_tabs_action");
+    view_menu.append_item(show_tabs_item);
 
     GLib.Menu appearance_menu = new GLib.Menu();
     GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);

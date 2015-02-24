@@ -25,6 +25,7 @@ public class Application : Gtk.Application{
 	private File[] loaded_files;
 	public bool scheme_action_added;
 	private string current_scheme;
+	private bool show_tabs_setting;
 
 	public Application(){
 		Object(application_id:"com.evolve-os.journal", 
@@ -36,6 +37,8 @@ public class Application : Gtk.Application{
 		run_application();	
 	}
 
+	//Global Setters and Getters
+
 	public void set_current_scheme(string scheme){
 		current_scheme = scheme;
 		for (int count = 0; count < wins.length; count++){
@@ -45,6 +48,14 @@ public class Application : Gtk.Application{
 
 	public string get_current_scheme(){
 		return current_scheme;
+	}
+
+	public void set_show_tabs_setting(bool setting){
+		show_tabs_setting = setting;
+	}
+
+	public bool get_show_tabs_setting(){
+		return show_tabs_setting;
 	}
 
 	public override void open(File[] files, string hint){

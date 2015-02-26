@@ -78,11 +78,7 @@ public class App : Gtk.Application{
 		}
 
 			first_window.open_tabs();
-			
-			first_window.delete_event.connect((win, e) => { Gtk.main_quit (); return false; });
 			first_window.present ();	
-
-			Gtk.main();
 		}
 	}
 

@@ -39,8 +39,6 @@ public class Share {
 		var message = new Soup.Message("POST", url);
 		message.set_request("data", MemoryUse.COPY, text.data);
 
-		MainLoop loop = new MainLoop ();
-
 		if (text == "") {
 			var dialog = new Dialog.with_buttons("Wait!", window,
 				DialogFlags.MODAL,
@@ -79,9 +77,7 @@ public class Share {
 
 				dialog.show_all();
 
-				loop.quit ();
 			});
-			loop.run ();
 		}
 	}
 

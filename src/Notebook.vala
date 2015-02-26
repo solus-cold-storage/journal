@@ -37,10 +37,9 @@ public class EvolveNotebook: Gtk.Notebook{
 		use_linenum = true;
 
 		create_window.connect((p, x, y)=> {
-			var w = new EvolveWindow(mother.application);
+			var w = (mother.application as EvolveJournal.App).create_window();
 			w.move(x, y);
 			w.show_all();
-			(mother.application as EvolveJournal.App).create_window();
 			return w.get_notebook();
 		});
 

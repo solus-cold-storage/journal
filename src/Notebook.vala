@@ -20,6 +20,7 @@ using Gtk;
 
 namespace EvolveJournal{
 
+<<<<<<< HEAD
 public class EvolveNotebook: Gtk.Notebook{
 
 	public Gtk.Box newtabbuttonbox;
@@ -139,6 +140,91 @@ public class EvolveNotebook: Gtk.Notebook{
 	public bool get_linenum(){
 		return use_linenum;
 	}
+=======
+  public class EvolveNotebook: Gtk.Notebook{
+
+    public Gtk.Box newtabbuttonbox;
+    public Gtk.Button newtabbutton;
+    public string null_buffer = "";
+    public bool use_linenum;
+
+      public EvolveNotebook()
+      {
+        show_border = false;
+        set_scrollable(true);
+        use_linenum = true;
+      }
+
+      public void new_tab (string text, bool open_file, string save_path)
+      {
+        EvolveTab tab = new EvolveJournal.EvolveTab (this);
+        tab.set_content("Untitled");
+        append_page (tab, tab.get_content());
+        update_tab();
+        tab.set_text(text);
+        if (open_file == true){
+          tab.set_save_path(save_path);
+          tab.saved = true;
+        }
+        else {
+          stdout.printf("This is a new tab\n");
+        }
+        stdout.printf(text);
+        tab.show ();
+        tab.change_focus(this);
+      } 
+
+      public void remove_tab(EvolveTab tab){
+        this.remove_page(this.page_num(tab));
+        update_tab();
+      }
+
+      public void undo_source(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        tab.source_view.undo();        
+      }
+
+      public void redo_source(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        tab.source_view.redo();
+      }
+
+      public string get_text(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        SourceBuffer buffer = tab.text_buffer;
+        string typed_text = buffer.text;
+        return typed_text;
+      }
+
+      public void set_label(string label_name){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        tab.set_content(label_name);
+        this.set_tab_label(tab, tab.get_content());
+      }
+
+      public string get_label(){
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        return tab.label.get_text();
+      }
+
+      public void update_tab(){
+        this.set_show_tabs(this.get_n_pages() != 1);
+        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+        if (this.get_n_pages() == 1){
+          message("Just one tab.");
+        }
+        else{
+          message("More than one tab!");
+        }
+        tab.set_close_btn_indicator();
+      }
+
+      public bool get_linenum(){
+        return use_linenum;
+      }
+
+  }
+>>>>>>> master
 }
  
 } // End namespace

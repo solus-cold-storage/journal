@@ -65,7 +65,12 @@ namespace EvolveJournal {
           "OK",
           ResponseType.OK, null);
         var content_area = dialog.get_content_area();
-        parser.load_from_data((string)mess.response_body.data, -1);
+        try {
+          parser.load_from_data((string)mess.response_body.data, -1);
+        }
+        catch (Error e) {
+          warning("Error sharing: %s", e.message);
+        }
         var root_object = parser.get_root().get_object();
         string id = root_object.get_string_member("key");
         string link = "http://hastebin.com/" + (string)id;

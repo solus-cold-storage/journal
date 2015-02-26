@@ -117,7 +117,12 @@ namespace EvolveJournal {
     print_action.activate.connect(()=> {
       message("Printing...");
         Gtk.PrintOperation print_operation = new Gtk.PrintOperation();
-        print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
+        try {
+          print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
+        }
+        catch (Error e) {
+          warning("Error printing: %s", e.message);
+        }
       });
 
     var saveas_action = new SimpleAction("saveas_action", null);
@@ -132,11 +137,18 @@ namespace EvolveJournal {
         notebook.new_tab(notebook.null_buffer, false, "");
       });
 
-    var show_tabs_action = new SimpleAction("show_tabs_action", null);
-    show_tabs_action.activate.connect(()=> {
-        message("Show Tabs");
-        //Include show tabs toggle here.
-      });
+    var show_tabs_action = new PropertyAction("show_tabs_action", get_settings(), "prefer-tabs");
+    
+    get_settings().notify["prefer-tabs"].connect(()=> {
+      try {
+        bool tabs;
+        get_settings().get("prefer-no-tabs", out tabs);
+        app_mother.set_show_tabs_setting(tabs);
+      }
+      catch (Error e) {
+        warning("Error settings boolean: %s", e.message);
+      }
+    });
 
     var about_action = new SimpleAction("about_action", null);
     about_action.activate.connect(()=> {

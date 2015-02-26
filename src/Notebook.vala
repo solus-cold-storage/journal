@@ -117,14 +117,8 @@ namespace EvolveJournal{
       }
 
       public void update_tab(){
-        this.set_show_tabs(this.get_n_pages() != 1);
+        this.set_show_tabs(this.get_n_pages() != 1 && mother.app_mother.get_show_tabs_setting() != false);
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        if (this.get_n_pages() == 1){
-          message("Just one tab.");
-        }
-        else{
-          message("More than one tab!");
-        }
         tab.set_close_btn_indicator();
       }
 

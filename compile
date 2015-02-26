@@ -14,5 +14,4 @@ src/Notebook.vala \
 src/Share.vala \
 src/Tab.vala \
 src/Window.vala \
-src/Files.vala \
-src/dynamiclist.vala
+src/Files.vala 

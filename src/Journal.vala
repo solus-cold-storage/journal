@@ -23,17 +23,15 @@ namespace EvolveJournal{
 public class App : Gtk.Application{
 
 	public bool window_created;
-	public DynamicList<EvolveJournal.EvolveWindow> wins;
 	private File[] loaded_files;
 	public bool scheme_action_added;
 	private string current_scheme;
 
-	public bool show_tabs { public set; public get; default = true; }
+	public bool show_tabs { public set; public get; default = false; }
 
 	public App() {
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
-		this.wins = new DynamicList<EvolveJournal.EvolveWindow>();
 	}
 
 	public override void activate(){
@@ -44,9 +42,9 @@ public class App : Gtk.Application{
 
 	public void set_current_scheme(string scheme){
 		current_scheme = scheme;
-		for (int count = 0; count < wins.length; count++){
-			wins[count].change_scheme(scheme);
-		}
+		this.get_windows().foreach((win)=>{
+			(win as EvolveJournal.EvolveWindow).change_scheme(scheme);
+		});
 	}
 
 	public string get_current_scheme(){
@@ -59,36 +57,34 @@ public class App : Gtk.Application{
 		run_application();
 	}
 
+	public EvolveWindow create_window(){
+		EvolveWindow new_window = new EvolveWindow(this);
+		return new_window;
+	}
+
 	public void run_application(){
-		if (window_created == false){
-			this.wins.add(new EvolveJournal.EvolveWindow (this));
-			window_created = true;
+		EvolveWindow first_window = create_window();
 
-			if (loaded_files != null){
-				foreach (File file in loaded_files){
-					EvolveJournal.Files file_class = new EvolveJournal.Files();
-					file_class.open_at_start(wins[0].get_notebook(), file.get_path(), file.get_basename());	
-				}
-				wins[0].set_loaded(true);
+		if (loaded_files != null){
+			foreach (File file in loaded_files){
+				EvolveJournal.Files file_class = new EvolveJournal.Files();
+				file_class.open_at_start(first_window.get_notebook(), file.get_path(), file.get_basename());	
 			}
-			else {
-				message("No files loaded.");
-				wins[0].set_loaded(false);
-			}
+			first_window.set_loaded(true);
+		}
+		else {
+			message("No files loaded.");
+			first_window.set_loaded(false);
+		}
 
-			wins[0].open_tabs();
+			first_window.open_tabs();
 			
-			wins[0].delete_event.connect((win, e) => { Gtk.main_quit (); return false; });
-			wins[0].present ();	
+			first_window.delete_event.connect((win, e) => { Gtk.main_quit (); return false; });
+			first_window.present ();	
 
 			Gtk.main();
 		}
-		else {
-			wins[0].present();
-		}
 	}
-
-}
 
 } // End namespace
 

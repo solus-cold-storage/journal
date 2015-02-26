@@ -39,9 +39,8 @@ public class EvolveNotebook: Gtk.Notebook{
 		create_window.connect((p, x, y)=> {
 			var w = new EvolveWindow(mother.application);
 			w.move(x, y);
-			//w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
 			w.show_all();
-			(mother.application as EvolveJournal.App).wins.add(w);
+			(mother.application as EvolveJournal.App).create_window();
 			return w.get_notebook();
 		});
 
@@ -128,7 +127,7 @@ public class EvolveNotebook: Gtk.Notebook{
 	public void update_tab(){
 		bool tabs;
 		mother.application.get("show-tabs", out tabs);
-		this.set_show_tabs(this.get_n_pages() != 1 && tabs);
+		this.set_show_tabs(this.get_n_pages() != 1 | tabs == true);
 		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
 		tab.set_close_btn_indicator();
 	}

@@ -18,16 +18,19 @@
 
 using GLib;
 
-public class Application : Gtk.Application{
+namespace EvolveJournal{
+
+public class App : Gtk.Application{
 
 	public bool window_created;
 	public DynamicList<EvolveJournal.EvolveWindow> wins;
 	private File[] loaded_files;
 	public bool scheme_action_added;
 	private string current_scheme;
-	private bool show_tabs_setting;
 
-	public Application(){
+	public bool show_tabs { public set; public get; default = true; }
+
+	public App() {
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
 		this.wins = new DynamicList<EvolveJournal.EvolveWindow>();
@@ -48,14 +51,6 @@ public class Application : Gtk.Application{
 
 	public string get_current_scheme(){
 		return current_scheme;
-	}
-
-	public void set_show_tabs_setting(bool setting){
-		show_tabs_setting = setting;
-	}
-
-	public bool get_show_tabs_setting(){
-		return show_tabs_setting;
 	}
 
 	public override void open(File[] files, string hint){
@@ -95,6 +90,8 @@ public class Application : Gtk.Application{
 
 }
 
+} // End namespace
+
 static int main(string[] args){
-	return new Application ().run (args);
+	return new EvolveJournal.App ().run (args);
 }

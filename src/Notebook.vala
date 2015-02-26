@@ -37,11 +37,11 @@ namespace EvolveJournal{
         use_linenum = true;
 
         create_window.connect((p, x, y)=> {
-          var w = new EvolveWindow(mother.app_mother);
+          var w = new EvolveWindow(mother.application);
           w.move(x, y);
           //w.set_default_size(p.get_allocated_width(), p.get_allocated_height());
           w.show_all();
-          this.mother.app_mother.wins.add(w);
+          (mother.application as EvolveJournal.App).wins.add(w);
           return w.get_notebook();
         });
 
@@ -49,6 +49,16 @@ namespace EvolveJournal{
           EvolveTab tab = (EvolveTab)page;
           set_subtitle_text(tab);
         });
+
+        mother.application.notify["show-tabs"].connect(()=> {
+			bool tabs;
+			mother.application.get("show-tabs", out tabs);
+			if (get_n_pages() != -1 && tabs) {
+				this.show_tabs = true;
+			} else {
+				this.show_tabs = false;
+			}
+		});
       }
 
       public void set_subtitle_text(EvolveTab tab){
@@ -117,13 +127,16 @@ namespace EvolveJournal{
       }
 
       public void update_tab(){
-        this.set_show_tabs(this.get_n_pages() != 1 && mother.app_mother.get_show_tabs_setting() != false);
+		bool tabs;
+		mother.application.get("show-tabs", out tabs);
+        this.set_show_tabs(this.get_n_pages() != 1 && tabs);
         EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
         tab.set_close_btn_indicator();
       }
 
       public string get_current_scheme(){
-        return mother.app_mother.get_current_scheme();
+        string scheme = ((mother.application as EvolveJournal.App).get_current_scheme());
+        return scheme;
       }
 
       public bool get_linenum(){

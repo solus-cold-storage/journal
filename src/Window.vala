@@ -29,14 +29,12 @@ namespace EvolveJournal {
     private Gtk.Button save_button;
     public Gtk.HeaderBar headbar;
     private EvolveNotebook notebook;
-    public Application app_mother;
 
     public signal void change_scheme(string scheme);
 
     public EvolveWindow (Gtk.Application application) 
     {
       Object(application: application);
-      this.app_mother = (Application)application;
         
     this.window_position = WindowPosition.CENTER;
     set_default_size (600, 400);
@@ -137,18 +135,7 @@ namespace EvolveJournal {
         notebook.new_tab(notebook.null_buffer, false, "");
       });
 
-    var show_tabs_action = new PropertyAction("show_tabs_action", get_settings(), "prefer-tabs");
-    
-    get_settings().notify["prefer-tabs"].connect(()=> {
-      try {
-        bool tabs;
-        get_settings().get("prefer-no-tabs", out tabs);
-        app_mother.set_show_tabs_setting(tabs);
-      }
-      catch (Error e) {
-        warning("Error settings boolean: %s", e.message);
-      }
-    });
+    var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
 
     var about_action = new SimpleAction("about_action", null);
     about_action.activate.connect(()=> {
@@ -220,7 +207,7 @@ namespace EvolveJournal {
     string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
     foreach (var scheme in schemes) {
         appearance_menu.append(scheme, "app." + scheme + "_action");
-      if (app_mother.scheme_action_added != true){
+      if ((application as EvolveJournal.App).scheme_action_added != true){
         var scheme_action = new SimpleAction(scheme+"_action", null);
         scheme_action.activate.connect(()=> {
           change_action(scheme);
@@ -232,7 +219,7 @@ namespace EvolveJournal {
         message("Actions already exist.");
       }
     }
-    app_mother.scheme_action_added = true;
+    (application as EvolveJournal.App).scheme_action_added = true;
 
     menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
     menu_button.set_use_popover(true);
@@ -282,7 +269,7 @@ namespace EvolveJournal {
 
     private void change_action(string new_scheme){
       this.change_scheme(new_scheme);
-      app_mother.set_current_scheme(new_scheme);
+      (application as EvolveJournal.App).set_current_scheme(new_scheme);
     }
   }
 

@@ -14,8 +14,8 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
 set (RELEASE_NAME "Evolve Journal")
-set (VERSION "0.7.1")
-set (VERSION_INFO "Beta 3 Build of Evolve Journal.")
+set (VERSION "1.0")
+set (VERSION_INFO "First stable version of Evolve Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)
@@ -49,6 +49,7 @@ vala_precompile(VALA_C ${EXEC_NAME}
 	src/Tab.vala 
 	src/Window.vala 
 	src/Files.vala
+	src/dynamiclist.vala
 
 # tell what libraries to use when compiling
 PACKAGES

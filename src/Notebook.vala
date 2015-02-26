@@ -20,87 +20,125 @@ using Gtk;
 
 namespace EvolveJournal{
 
-  public class EvolveNotebook: Gtk.Notebook{
+public class EvolveNotebook: Gtk.Notebook{
 
-    public Gtk.Box newtabbuttonbox;
-    public Gtk.Button newtabbutton;
-    public string null_buffer = "";
-    public bool use_linenum;
+	public Gtk.Box newtabbuttonbox;
+	public Gtk.Button newtabbutton;
+	public string null_buffer = "";
+	public bool use_linenum;
 
-      public EvolveNotebook()
-      {
-        show_border = false;
-        set_scrollable(true);
-        use_linenum = true;
-      }
+	public EvolveWindow mother;
 
-      public void new_tab (string text, bool open_file, string save_path)
-      {
-        EvolveTab tab = new EvolveJournal.EvolveTab (this);
-        tab.set_content("Untitled");
-        append_page (tab, tab.get_content());
-        update_tab();
-        tab.set_text(text);
-        if (open_file == true){
-          tab.set_save_path(save_path);
-          tab.saved = true;
-        }
-        else {
-          stdout.printf("This is a new tab\n");
-        }
-        stdout.printf(text);
-        tab.show ();
-        tab.change_focus(this);
-      } 
+	public EvolveNotebook(EvolveWindow mother)
+	{
+		this.mother = mother;
+		show_border = false;
+		set_scrollable(true);
+		use_linenum = true;
 
-      public void remove_tab(EvolveTab tab){
-        this.remove_page(this.page_num(tab));
-        update_tab();
-      }
+		create_window.connect((p, x, y)=> {
+			var w = (mother.application as EvolveJournal.App).create_window();
+			w.move(x, y);
+			w.show_all();
+			return w.get_notebook();
+		});
 
-      public void undo_source(){
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        tab.source_view.undo();        
-      }
+		switch_page.connect((page, number)=> {
+			EvolveTab tab = (EvolveTab)page;
+			set_subtitle_text(tab);
+		});
 
-      public void redo_source(){
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        tab.source_view.redo();
-      }
+		mother.application.notify["show-tabs"].connect(()=> {
+			bool tabs;
+			mother.application.get("show-tabs", out tabs);
+			if (get_n_pages() != -1 && tabs) {
+				this.show_tabs = true;
+			} else {
+				this.show_tabs = false;
+			}
+		});
+	}
 
-      public string get_text(){
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        SourceBuffer buffer = tab.text_buffer;
-        string typed_text = buffer.text;
-        return typed_text;
-      }
+	public void set_subtitle_text(EvolveTab tab){
+		var headbar = (Gtk.HeaderBar)mother.get_headerbar();
+		headbar.set_subtitle(tab.label_name);
+	}
 
-      public void set_label(string label_name){
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        tab.set_content(label_name);
-        this.set_tab_label(tab, tab.get_content());
-      }
+	public void new_tab (string text, bool open_file, string save_path)
+	{
+		EvolveTab tab = new EvolveJournal.EvolveTab (this);
+		tab.set_content("Untitled");
+		append_page (tab, tab.get_content());
+		update_tab();
+		tab.set_text(text);
+		if (open_file == true){
+			tab.set_save_path(save_path);
+			tab.saved = true;
+		} else {
+			message("New Tab created.\n");
+		}
+		tab.show ();
+		tab.change_focus(this);
+		tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
+		set_tab_detachable(tab, true);
+		set_tab_reorderable(tab, true);
+		set_subtitle_text(tab);
+	} 
 
-      public string get_label(){
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        return tab.label.get_text();
-      }
+	public void remove_tab(EvolveTab tab){
+		this.remove_page(this.page_num(tab));
+		update_tab();
+	}
 
-      public void update_tab(){
-        this.set_show_tabs(this.get_n_pages() != 1);
-        EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
-        if (this.get_n_pages() == 1){
-          message("Just one tab.");
-        }
-        else{
-          message("More than one tab!");
-        }
-        tab.set_close_btn_indicator();
-      }
+	public void undo_source(){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		tab.source_view.undo();		
+	}
 
-      public bool get_linenum(){
-        return use_linenum;
-      }
+	public void redo_source(){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		tab.source_view.redo();
+	}
 
-  }
+	public string get_text(){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		SourceBuffer buffer = tab.text_buffer;
+		string typed_text = buffer.text;
+		return typed_text;
+	}
+
+	public void set_label(string label_name){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		tab.set_content(label_name);
+		this.set_tab_label(tab, tab.get_content());
+	}
+
+	public string get_label(){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		return tab.label.get_text();
+	}
+
+	public EvolveTab get_current_tab(){
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		return tab;
+	}
+
+	public void update_tab(){
+		bool tabs;
+		mother.application.get("show-tabs", out tabs);
+		this.set_show_tabs(this.get_n_pages() != 1 | tabs == true);
+		EvolveTab tab = (EvolveTab)this.get_nth_page(this.get_current_page());
+		tab.set_close_btn_indicator();
+	}
+
+	public string get_current_scheme(){
+		string scheme = ((mother.application as EvolveJournal.App).get_current_scheme());
+		return scheme;
+	}
+
+	public bool get_linenum(){
+		return use_linenum;
+	}
 }
+ 
+} // End namespace

@@ -18,13 +18,18 @@
 
 using GLib;
 
-class Application : Gtk.Application{
+namespace EvolveJournal{
+
+public class App : Gtk.Application{
 
 	public bool window_created;
-	public EvolveJournal.EvolveWindow win;
 	private File[] loaded_files;
+	public bool scheme_action_added;
+	private string current_scheme;
 
-	public Application(){
+	public bool show_tabs { public set; public get; default = false; }
+
+	public App() {
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
 	}
@@ -33,43 +38,52 @@ class Application : Gtk.Application{
 		run_application();	
 	}
 
+	//Global Setters and Getters
+
+	public void set_current_scheme(string scheme){
+		current_scheme = scheme;
+		this.get_windows().foreach((win)=>{
+			(win as EvolveJournal.EvolveWindow).change_scheme(scheme);
+		});
+	}
+
+	public string get_current_scheme(){
+		return current_scheme;
+	}
+
 	public override void open(File[] files, string hint){
 		//Load any files requested at startup.
 		loaded_files = files;
 		run_application();
 	}
 
+	public EvolveWindow create_window(){
+		EvolveWindow new_window = new EvolveWindow(this);
+		return new_window;
+	}
+
 	public void run_application(){
-		if (window_created == false){
-			win = new EvolveJournal.EvolveWindow (this);
-			window_created = true;
+		EvolveWindow first_window = create_window();
 
-			if (loaded_files != null){
-				foreach (File file in loaded_files){
-					EvolveJournal.Files file_class = new EvolveJournal.Files();
-					file_class.open_at_start(win.get_notebook(), file.get_path(), file.get_basename());	
-				}
-				win.set_loaded(true);
+		if (loaded_files != null){
+			foreach (File file in loaded_files){
+				EvolveJournal.Files file_class = new EvolveJournal.Files();
+				file_class.open_at_start(first_window.get_notebook(), file.get_path(), file.get_basename());	
 			}
-			else {
-				message("No files loaded.");
-				win.set_loaded(false);
-			}
-
-			win.open_tabs();
-			
-			win.delete_event.connect((win,e) => { Gtk.main_quit (); return false; });
-			win.present ();	
-
-			Gtk.main();
+			first_window.set_loaded(true);
 		}
 		else {
-			win.present();
+			message("No files loaded.");
+			first_window.set_loaded(false);
+		}
+
+			first_window.open_tabs();
+			first_window.present ();	
 		}
 	}
 
-}
+} // End namespace
 
 static int main(string[] args){
-	return new Application ().run (args);
+	return new EvolveJournal.App ().run (args);
 }

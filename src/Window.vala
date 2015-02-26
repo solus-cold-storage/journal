@@ -20,226 +20,266 @@ using Gtk;
 
 namespace EvolveJournal {
 
-  public string buffer;
-  
-  private bool file_loaded;
+public string buffer;
 
-  public class EvolveWindow : Gtk.ApplicationWindow {
+private bool file_loaded;
 
-    private Gtk.Button save_button;
-    public Gtk.HeaderBar headbar;
-    private EvolveNotebook notebook;
+public class EvolveWindow : Gtk.ApplicationWindow {
 
-    public EvolveWindow (Gtk.Application application) 
-    {
-      Object(application: application);
-        
-    this.window_position = WindowPosition.CENTER;
-    set_default_size (600, 400);
+	private Gtk.Button save_button;
+	public Gtk.HeaderBar headbar;
+	private EvolveNotebook notebook;
 
-    var headbar = new HeaderBar();
-    headbar.set_title("Journal");
-    headbar.set_show_close_button(true);
-    this.set_titlebar(headbar);
+	public signal void change_scheme(string scheme);
 
-    set_notebook();
+	public EvolveWindow (Gtk.Application application) 
+	{
+		Object(application: application);
 
-    var new_button = new Button.from_icon_name("tab-new-symbolic", IconSize.SMALL_TOOLBAR);
-    headbar.add (new_button);
-    new_button.show();
-    new_button.set_tooltip_text("New Tab");
-    new_button.clicked.connect(()=> {
-        notebook.new_tab(notebook.null_buffer, false, "");
-      });
+		this.window_position = WindowPosition.CENTER;
+		set_default_size (600, 400);
 
-    var open_button = new Button.from_icon_name("document-open-symbolic", IconSize.SMALL_TOOLBAR);
-    headbar.add (open_button);
-    open_button.show();
-    open_button.set_tooltip_text("Open");
-    open_button.clicked.connect (() => {
-      open_file(notebook);
-      });
+		headbar = new HeaderBar();
+		headbar.set_title("Journal");
+		headbar.set_show_close_button(true);
+		this.set_titlebar(headbar);
 
-    var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
-    share_button.show();
-    share_button.set_tooltip_text("Share");
-    share_button.clicked.connect (() => {
+		set_notebook();
 
-      if (notebook.get_n_pages() <= 0){
-        stdout.printf("No pages! \n");
-      }
-      else{
-        int current_tab = notebook.get_current_page();
-        stdout.printf(current_tab.to_string() +"\n");
-        string typed_text = notebook.get_text();
-        var share = new EvolveJournal.Share();
-        share.generate_paste(typed_text, this);
-      }
+		var new_button = new Button.from_icon_name("tab-new-symbolic", IconSize.SMALL_TOOLBAR);
+		headbar.add (new_button);
+		new_button.show();
+		new_button.set_tooltip_text("New Tab");
+		new_button.clicked.connect(()=> {
+			notebook.new_tab(notebook.null_buffer, false, "");
+		});
 
-    });
+		var open_button = new Button.from_icon_name("document-open-symbolic", IconSize.SMALL_TOOLBAR);
+		headbar.add (open_button);
+		open_button.show();
+		open_button.set_tooltip_text("Open");
+		open_button.clicked.connect (() => {
+			open_file(notebook);
+		});
 
-    save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
-    headbar.add (save_button);
-    save_button.show();
-    save_button.set_tooltip_text("Save");
-    save_button.clicked.connect (() => {
-        save_file(notebook, false);
-    });
+		var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
+		share_button.show();
+		share_button.set_tooltip_text("Share");
+		share_button.clicked.connect (() => {
+			if (notebook.get_n_pages() <= 0){
+				stdout.printf("No pages! \n");
+			} else{
+				string typed_text = notebook.get_text();
+				var share = new EvolveJournal.Share();
+				share.generate_paste(typed_text, this);
+			}
+		});
 
-    //Define actions.
-    var save_action = new SimpleAction("save_action", null);
-    save_action.activate.connect(()=> {
-      message("Saving...");
-      save_file(notebook, false);
-    });
+		save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
+		headbar.add (save_button);
+		save_button.show();
+		save_button.set_tooltip_text("Save");
+		save_button.clicked.connect (() => {
+			save_file(notebook, false);
+		});
 
-    var open_action = new SimpleAction("open_action", null);
-    open_action.activate.connect(()=> {
-      message("Opening...");
-      open_file(notebook);
-      });
+		//Define actions.
+		var save_action = new SimpleAction("save_action", null);
+		save_action.activate.connect(()=> {
+			message("Saving...");
+			save_file(notebook, false);
+		});
 
-    var undo_action = new SimpleAction("undo_action", null);
-    undo_action.activate.connect(()=> {
-      message("Undo...");
-      notebook.undo_source();
-      });
+		var open_action = new SimpleAction("open_action", null);
+		open_action.activate.connect(()=> {
+			message("Opening...");
+			open_file(notebook);
+		});
 
-    var redo_action = new SimpleAction("redo_action", null);
-    redo_action.activate.connect(()=> {
-      message("Redo...");
-      notebook.redo_source();
-      });
+		var undo_action = new SimpleAction("undo_action", null);
+		undo_action.activate.connect(()=> {
+			message("Undo...");
+			notebook.undo_source();
+		});
 
-    var print_action = new SimpleAction("print_action", null);
-    print_action.activate.connect(()=> {
-      message("Printing...");
-        Gtk.PrintOperation print_operation = new Gtk.PrintOperation();
-        print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
-      });
+		var redo_action = new SimpleAction("redo_action", null);
+		redo_action.activate.connect(()=> {
+			message("Redo...");
+			notebook.redo_source();
+		});
 
-    var saveas_action = new SimpleAction("saveas_action", null);
-    saveas_action.activate.connect(()=> {
-        message("Saving As...");
-        save_file(notebook, true);
-      });
+		var print_action = new SimpleAction("print_action", null);
+		print_action.activate.connect(()=> {
+			message("Printing...");
+			Gtk.PrintOperation print_operation = new Gtk.PrintOperation();
+			try {
+				print_operation.run(Gtk.PrintOperationAction.PRINT_DIALOG, this);
+			} catch (Error e) {
+				warning("Error printing: %s", e.message);
+			}
+		});
 
-    var newtab_action = new SimpleAction("newtab_action", null);
-    newtab_action.activate.connect(()=> {
-        message("Generating Tab...");
-        notebook.new_tab(notebook.null_buffer, false, "");
-      });
+		var saveas_action = new SimpleAction("saveas_action", null);
+		saveas_action.activate.connect(()=> {
+			message("Saving As...");
+			save_file(notebook, true);
+		});
 
-    var about_action = new SimpleAction("about_action", null);
-    about_action.activate.connect(()=> {
-        queue_draw();
-        Idle.add(()=>{
-          Gtk.show_about_dialog(this,
-            "program-name", "Journal",
-            "copyright", "Copyright \u00A9 2015 Ryan Sipes",
-            "website", "https://evolve-os.com",
-            "website-label", "Evolve OS",
-            "license-type", Gtk.License.GPL_2_0,
-            "comments", "A simple text-editor with sharing features.",
-            "version", "0.7.1 (Beta 3)",
-            "logo-icon-name", "journal",
-            "artists", new string[]{
-              "Alejandro Seoane <asetrigo@gmail.com>"
-              },
-            "authors", new string[]{
-              "Ryan Sipes <ryan@evolve-os.com>",
-              "Ikey Doherty <ikey@evolve-os.com>",
-              "Barry Smith <barry.of.smith@gmail.com>"
-              });
-          return false;
-          });
-      });
+		var newtab_action = new SimpleAction("newtab_action", null);
+		newtab_action.activate.connect(()=> {
+			message("Generating Tab...");
+			notebook.new_tab(notebook.null_buffer, false, "");
+		});
 
-    application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
-    application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
-    application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
-    application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
-    application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
+		var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
 
-    application.add_action(save_action);
-    application.add_action(open_action);
-    application.add_action(undo_action);
-    application.add_action(redo_action);
-    application.add_action(print_action);
-    application.add_action(saveas_action);
-    application.add_action(newtab_action);
-    application.add_action(about_action);
-    
-    
-    //Menu button not finished an ready for Beta release.
-    MenuButton menu_button = new MenuButton();
-    var popover = new Popover(menu_button);
-    popover.set_modal(true);
-    menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
-    menu_button.set_popover(popover);
-    menu_button.show();
-    GLib.Menu menu = new GLib.Menu();
-    menu_button.set_menu_model(menu);
-    menu_button.set_use_popover(true);
-    //menu.append("Print", "app.print_action");
-    menu.append("Save As...", "app.saveas_action");
-    menu.append("About", "app.about_action");
-    
-    headbar.pack_end (menu_button);
-    headbar.pack_end (share_button);
+		var about_action = new SimpleAction("about_action", null);
+		about_action.activate.connect(()=> {
+			queue_draw();
+			Idle.add(()=>{
+				Gtk.show_about_dialog(this,
+					"program-name", "Journal",
+					"copyright", "Copyright \u00A9 2015 Ryan Sipes",
+					"website", "https://evolve-os.com",
+					"website-label", "Evolve OS",
+					"license-type", Gtk.License.GPL_2_0,
+					"comments", "A simple text-editor with sharing features.",
+					"version", "1.0 (Stable)",
+					"logo-icon-name", "journal",
+					"artists", new string[]{
+					  "Alejandro Seoane <asetrigo@gmail.com>"
+					},
+					"authors", new string[]{
+					  "Ryan Sipes <ryan@evolve-os.com>",
+					  "Ikey Doherty <ikey@evolve-os.com>",
+					  "Barry Smith <barry.of.smith@gmail.com>"
+					});
+				return false;
+				});
+		});
 
-    var vbox = new Box (Orientation.VERTICAL, 0);
+		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
+		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
+		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
+		application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
+		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
+		application.set_accels_for_action("app.saveas_action", {"<Shift><Ctrl>S"});
 
-    vbox.pack_start(notebook, true, true, 0);
-    vbox.show_all();
-    this.add (vbox);
-    notebook.show_all();
-    headbar.show_all();
-    }
-    public void set_notebook(){
-      notebook = new EvolveNotebook();
-    }
+		application.add_action(save_action);
+		application.add_action(open_action);
+		application.add_action(undo_action);
+		application.add_action(redo_action);
+		application.add_action(print_action);
+		application.add_action(saveas_action);
+		application.add_action(newtab_action);
+		application.add_action(about_action);
+		application.add_action(show_tabs_action);
 
-    public EvolveNotebook get_notebook(){
-      return notebook;
-    }
+		//Menu button + Menu
+		MenuButton menu_button = new MenuButton();
+		var popover = new Popover(menu_button);
+		popover.set_modal(true);  
+		GLib.Menu action_menu = new GLib.Menu();
 
-    public void set_loaded(bool loaded){
-      file_loaded = loaded;
-    }
+		GLib.Menu file_menu = new GLib.Menu();
+		GLib.MenuItem file_menu_item = new GLib.MenuItem.submenu("File", file_menu);
+		action_menu.append_item(file_menu_item);
+		GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
+		file_menu.append_item(saveas_item);
 
-    public void open_tabs (){
-      if (file_loaded != true){
-        notebook.new_tab (notebook.null_buffer, false, "");
-      }
-      else {
-        message("File already loaded.");
-      }
-    }
+		GLib.Menu view_menu = new GLib.Menu();
+		GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
+		action_menu.append_item(view_menu_item);
+		GLib.MenuItem show_tabs_item = new GLib.MenuItem("Always Show Tabs", "app.show_tabs_action");
+		view_menu.append_item(show_tabs_item);
 
-    public void set_headerbar(string current_file){
-      headbar.set_has_subtitle(true);
-      headbar.set_subtitle(current_file);
-    }
+		GLib.Menu appearance_menu = new GLib.Menu();
+		GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);
+		action_menu.append_item(appearance_item);
 
-    public Button get_save_button(){
-      return save_button;
-    }
-  }
+		GLib.MenuItem about_item = new GLib.MenuItem("About", "app.about_action");
+		action_menu.append_item(about_item);
 
-  public void open_file(EvolveNotebook open_notebook){
-    var file = new EvolveJournal.Files();
-    buffer = file.on_open_clicked(open_notebook);
-    }
+		string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
+		foreach (var scheme in schemes) {
+			appearance_menu.append(scheme, "app." + scheme + "_action");
+			if ((application as EvolveJournal.App).scheme_action_added != true){
+				var scheme_action = new SimpleAction(scheme+"_action", null);
+				scheme_action.activate.connect(()=> {
+					change_action(scheme);
+				});
+				application.add_action(scheme_action);
+				change_action("classic");
+			} else {
+				message("Actions already exist.");
+			}
+		}
+		(application as EvolveJournal.App).scheme_action_added = true;
 
-  public void save_file(EvolveNotebook save_notebook, bool save_as){
-    if (save_notebook.get_n_pages() <= 0){
-      stdout.printf("No pages! \n");
-    }
-    else{
-      var file = new EvolveJournal.Files();
-      string typed_text = save_notebook.get_text();
-      file.on_save_clicked(typed_text, save_notebook, save_as);
-    }
-  }
+		menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
+		menu_button.set_use_popover(true);
+		menu_button.set_popover(popover);
+		menu_button.show();
+		menu_button.set_menu_model(action_menu);
+		headbar.pack_end (menu_button);
+		headbar.pack_end (share_button);
+
+		var vbox = new Box (Orientation.VERTICAL, 0);
+
+		vbox.pack_start(notebook, true, true, 0);
+		vbox.show_all();
+		this.add (vbox);
+		notebook.show_all();
+		headbar.show_all();
+	}
+
+	public void set_notebook(){
+		notebook = new EvolveNotebook(this);
+	}
+
+	public unowned EvolveNotebook get_notebook(){
+		return notebook;
+	}
+
+	public void set_loaded(bool loaded){
+	file_loaded = loaded;
+	}
+
+	public void open_tabs (){
+		if (file_loaded != true){
+			notebook.new_tab (notebook.null_buffer, false, "");
+		} else {
+			message("File already loaded.");
+		}
+	}
+
+	public Gtk.HeaderBar get_headerbar(){
+		return headbar;
+	}
+
+	public Button get_save_button(){
+		return save_button;
+	}
+
+	private void change_action(string new_scheme){
+		this.change_scheme(new_scheme);
+		(application as EvolveJournal.App).set_current_scheme(new_scheme);
+	}
+
+	public void open_file(EvolveNotebook open_notebook){
+		var file = new EvolveJournal.Files();
+		buffer = file.on_open_clicked(open_notebook);
+	}
+
+	public void save_file(EvolveNotebook save_notebook, bool save_as){
+		if (save_notebook.get_n_pages() <= 0){
+			stdout.printf("No pages! \n");
+		} else {
+		var file = new EvolveJournal.Files();
+		string typed_text = save_notebook.get_text();
+		file.on_save_clicked(typed_text, save_notebook, save_as);
+		}
+	}
 }
+
+} // End namespace

@@ -22,7 +22,7 @@ namespace EvolveJournal{
 
 public class App : Gtk.Application{
 
-	public bool window_created;
+	public bool window_created = false;
 	private File[] loaded_files;
 	public bool scheme_action_added;
 	private string current_scheme;
@@ -54,7 +54,16 @@ public class App : Gtk.Application{
 	public override void open(File[] files, string hint){
 		//Load any files requested at startup.
 		loaded_files = files;
-		run_application();
+		if (window_created == false){
+			run_application();
+		}
+		else {
+			foreach (File file in loaded_files){
+				EvolveJournal.Files file_class = new EvolveJournal.Files();
+				var active_win = (EvolveWindow)this.get_active_window();
+				file_class.open_at_start(active_win.get_notebook(), file.get_path(), file.get_basename());
+			}
+		}
 	}
 
 	public EvolveWindow create_window(){
@@ -79,6 +88,7 @@ public class App : Gtk.Application{
 
 			first_window.open_tabs();
 			first_window.present ();	
+			window_created = true;
 		}
 	}
 

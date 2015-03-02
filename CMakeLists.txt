@@ -98,3 +98,6 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/256x256/journal.png DESTINATION 
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/512x512/journal.png DESTINATION ${DATADIR}/icons/hicolor/512x512/apps/)
 
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/scalable/journal.svg DESTINATION ${DATADIR}/icons/hicolor/scalable/apps/)
+
+#subdirectories
+add_subdirectory (data)

@@ -103,17 +103,19 @@ public class Files {
 					FileUtils.set_contents(file_chooser.get_filename(), text_to_save);
 					notebook.set_label(file_chooser.get_current_name());
 					tab.save_file(file_chooser.get_file());
+					notebook.set_subtitle_text(tab);
 				} catch(Error e) {
 					stderr.printf("Error: %s\n", e.message);
 				}
 			} else {
-				stdout.printf("FileChooserDialog cancelled.");
+				message("FileChooserDialog cancelled.");
 			}
 			file_chooser.destroy();
 		} else {
 			try {
 				FileUtils.set_contents(tab.get_save_path(), text_to_save);
 				tab.save_file(File.new_for_path(tab.get_save_path()));
+				notebook.set_subtitle_text(tab);
 			} catch(Error e){
 				stderr.printf("Error: %s\n", e.message);
 			}

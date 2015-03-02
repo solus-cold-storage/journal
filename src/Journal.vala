@@ -22,16 +22,19 @@ namespace EvolveJournal{
 
 public class App : Gtk.Application{
 
-	public bool window_created = false;
+	private bool window_created = false;
 	private File[] loaded_files;
 	public bool scheme_action_added;
 	private string current_scheme;
+	private Settings settings;
 
 	public bool show_tabs { public set; public get; default = false; }
 
 	public App() {
 		Object(application_id:"com.evolve-os.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
+		settings = new Settings("com.evolve-os.journal");
+		on_settings_change("scheme");
 	}
 
 	public override void activate(){
@@ -45,10 +48,24 @@ public class App : Gtk.Application{
 		this.get_windows().foreach((win)=>{
 			(win as EvolveJournal.EvolveWindow).change_scheme(scheme);
 		});
+		set_settings("scheme", scheme);
 	}
 
 	public string get_current_scheme(){
 		return current_scheme;
+	}
+
+	public void set_settings(string key, string val){
+		if (key == "scheme"){
+			settings.set_string(key, val);
+		}
+	}
+
+	protected void on_settings_change(string key){
+		if (key == "scheme"){
+			var val = settings.get_string(key);
+			set_current_scheme(val);
+		}
 	}
 
 	public override void open(File[] files, string hint){

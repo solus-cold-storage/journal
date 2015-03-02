@@ -67,7 +67,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 		share_button.set_tooltip_text("Share");
 		share_button.clicked.connect (() => {
 			if (notebook.get_n_pages() <= 0){
-				stdout.printf("No pages! \n");
+				message("No pages! \n");
 			} else{
 				string typed_text = notebook.get_text();
 				var share = new EvolveJournal.Share();
@@ -209,7 +209,6 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 					change_action(scheme);
 				});
 				application.add_action(scheme_action);
-				change_action("classic");
 			} else {
 				message("Actions already exist.");
 			}
@@ -273,7 +272,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 
 	public void save_file(EvolveNotebook save_notebook, bool save_as){
 		if (save_notebook.get_n_pages() <= 0){
-			stdout.printf("No pages! \n");
+			message("No pages! \n");
 		} else {
 		var file = new EvolveJournal.Files();
 		string typed_text = save_notebook.get_text();

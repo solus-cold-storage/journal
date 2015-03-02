@@ -36,8 +36,16 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 	{
 		Object(application: application);
 
+		this.destroy.connect(()=>{
+			int width, height;
+			this.get_size(out width, out height);
+			(application as EvolveJournal.App).set_window_settings("window-width", width);
+			(application as EvolveJournal.App).set_window_settings("window-width", height);
+			});
+
 		this.window_position = WindowPosition.CENTER;
-		set_default_size (600, 400);
+		set_default_size ((application as EvolveJournal.App).get_window_settings("window-width"), 
+			(application as EvolveJournal.App).get_window_settings("window-height"));
 
 		headbar = new HeaderBar();
 		headbar.set_title("Journal");

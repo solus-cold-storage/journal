@@ -8,5 +8,19 @@
 				Current selected theme.
 			</description>
 		</key>
+		<key name="window-width" type="i">
+			<default>600</default>
+			<summary>Saved width of the window.</summary>
+			<description>
+				The saved width of the window.
+			</description>
+		</key>
+		<key name="window-height" type="i">
+			<default>400</default>
+			<summary>Saved height of the window.</summary>
+			<description>
+				The saved height of the window.
+			</description>
+		</key>
 	</schema>
 </schemalist>

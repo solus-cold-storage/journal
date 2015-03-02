@@ -61,6 +61,21 @@ public class App : Gtk.Application{
 		}
 	}
 
+	public void set_window_settings(string key, int val){
+		settings.set_int(key, val);
+	}
+
+	public int get_window_settings(string key){
+		int val = 500;
+		if (key == "window-width"){
+			val = settings.get_int(key);
+		}
+		if (key == "window-height"){
+			val = settings.get_int(key);
+		}
+		return val;
+	}
+
 	protected void on_settings_change(string key){
 		if (key == "scheme"){
 			var val = settings.get_string(key);

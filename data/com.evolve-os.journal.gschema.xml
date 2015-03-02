@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<schema id="com.evolve-os.journal" path="/com/evolve-os/journal/" gettext-domain="journal">
+		<key name="scheme" type="s">
+			<default>"classic"</default>
+			<summary>Current Scheme</summary>
+			<description>
+				Current selected theme.
+			</description>
+		</key>
+	</schema>
+</schemalist>

@@ -32,20 +32,22 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 
 	public signal void change_scheme(string scheme);
 
-	public EvolveWindow (Gtk.Application application) 
+	public EvolveWindow (EvolveJournal.App application) 
 	{
 		Object(application: application);
 
-		this.destroy.connect(()=>{
+		//Save settings before quitting.
+		this.delete_event.connect(()=>{
 			int width, height;
 			this.get_size(out width, out height);
-			(application as EvolveJournal.App).set_window_settings("window-width", width);
-			(application as EvolveJournal.App).set_window_settings("window-width", height);
+			application.set_window_settings("window-width", width);
+			application.set_window_settings("window-height", height);
+			return false;
 			});
 
 		this.window_position = WindowPosition.CENTER;
-		set_default_size ((application as EvolveJournal.App).get_window_settings("window-width"), 
-			(application as EvolveJournal.App).get_window_settings("window-height"));
+		set_default_size (application.get_window_settings("window-width"), 
+			application.get_window_settings("window-height"));
 
 		headbar = new HeaderBar();
 		headbar.set_title("Journal");

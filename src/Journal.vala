@@ -66,14 +66,7 @@ public class App : Gtk.Application{
 	}
 
 	public int get_window_settings(string key){
-		int val = 500;
-		if (key == "window-width"){
-			val = settings.get_int(key);
-		}
-		if (key == "window-height"){
-			val = settings.get_int(key);
-		}
-		return val;
+		return settings.get_int(key);
 	}
 
 	protected void on_settings_change(string key){

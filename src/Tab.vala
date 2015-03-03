@@ -52,6 +52,9 @@ public class EvolveTab : Gtk.Box
 		source_view.set_show_line_numbers(true);
 		source_view.set_auto_indent(true);
 		source_view.set_buffer(text_buffer);
+		var fontdec = new Pango.FontDescription();
+		fontdec.set_family("Monospace");
+		this.source_view.override_font(fontdec);
 		scroller.set_shadow_type (ShadowType.NONE);
 		//Watch for the Buffer to change.
 		text_buffer.changed.connect(() => {

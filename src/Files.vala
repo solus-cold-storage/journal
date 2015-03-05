@@ -26,7 +26,7 @@ private string text_buffer_load;
 
 public class Files {
 
-	public string on_open_clicked (EvolveNotebook notebook) {
+	public string on_open_clicked (EvolveNotebook notebook, bool tab_edited) {
 		var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
 		FileChooserAction.OPEN, "Cancel", ResponseType.CANCEL,
 		"Open", ResponseType.ACCEPT);
@@ -52,9 +52,15 @@ public class Files {
 				} else {
 					message("File is open");
 				}
-
 			}
-		} else {
+			if (tab_edited == false){
+				notebook.remove_tab((EvolveTab)notebook.get_nth_page(0));
+			}
+			else {
+				message("First tab edited.");
+			}
+		}
+		else {
 			text_buffer_load = null;
 		}
 		file_chooser.destroy();

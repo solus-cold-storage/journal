@@ -168,6 +168,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 				});
 		});
 
+		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
 		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
@@ -175,6 +176,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
 		application.set_accels_for_action("app.saveas_action", {"<Shift><Ctrl>S"});
 
+		//add actions to the application.
 		application.add_action(save_action);
 		application.add_action(open_action);
 		application.add_action(undo_action);
@@ -276,8 +278,13 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 	}
 
 	public void open_file(EvolveNotebook open_notebook){
+		bool tab_edited = true;
+		//Check if the first tab has been edited if there is only one.
+		if (open_notebook.get_n_pages() == 1 && open_notebook.get_text() == ""){
+			tab_edited = false;
+		}
 		var file = new EvolveJournal.Files();
-		buffer = file.on_open_clicked(open_notebook);
+		buffer = file.on_open_clicked(open_notebook, tab_edited);
 	}
 
 	public void save_file(EvolveNotebook save_notebook, bool save_as){

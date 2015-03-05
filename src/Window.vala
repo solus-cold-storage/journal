@@ -72,19 +72,6 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 			open_file(notebook);
 		});
 
-		var share_button = new Button.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
-		share_button.show();
-		share_button.set_tooltip_text("Share");
-		share_button.clicked.connect (() => {
-			if (notebook.get_n_pages() <= 0){
-				message("No pages! \n");
-			} else{
-				string typed_text = notebook.get_text();
-				var share = new EvolveJournal.Share();
-				share.generate_paste(typed_text, this);
-			}
-		});
-
 		save_button = new Button.from_icon_name("document-save-symbolic", IconSize.SMALL_TOOLBAR);
 		headbar.add (save_button);
 		save_button.show();
@@ -168,6 +155,17 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 				});
 		});
 
+		var hastebin_action = new SimpleAction("hastebin_action", null);
+		hastebin_action.activate.connect(()=> {
+			if (notebook.get_n_pages() <= 0){
+				message("No pages! \n");
+			} else{
+				string typed_text = notebook.get_text();
+				var share = new EvolveJournal.Share();
+				share.generate_paste(typed_text, this);
+			}
+		});
+
 		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
@@ -186,6 +184,21 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 		application.add_action(newtab_action);
 		application.add_action(about_action);
 		application.add_action(show_tabs_action);
+		application.add_action(hastebin_action);
+
+		//Share Button + Menu
+		var share_button = new MenuButton();
+		share_button.image = new Image.from_icon_name("emblem-shared-symbolic", IconSize.SMALL_TOOLBAR);
+		share_button.set_tooltip_text("Share");
+		GLib.Menu share_menu = new GLib.Menu();
+		GLib.MenuItem hastebin_item = new GLib.MenuItem("Hastebin", "app.hastebin_action");
+		share_menu.append_item(hastebin_item);
+		var share_popover = new Popover(share_button);
+		share_button.set_use_popover(true);
+		share_popover.set_modal(true);
+		share_button.set_popover(share_popover);
+		share_button.show();
+		share_button.set_menu_model(share_menu);
 
 		//Menu button + Menu
 		MenuButton menu_button = new MenuButton();

@@ -31,5 +31,10 @@
 				The saved height of the window.
 			</description>
 		</key>
+		<key name="file-location" type="s">
+			<default>"~/"</default>
+			<summary>Default location for files.</summary>
+			<description>Default location for opening and saving files.</description>
+		</key>
 	</schema>
 </schemalist>

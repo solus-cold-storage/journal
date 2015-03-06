@@ -56,9 +56,11 @@ public class App : Gtk.Application{
 	}
 
 	public void set_settings(string key, string val){
-		if (key == "scheme"){
-			settings.set_string(key, val);
-		}
+		settings.set_string(key, val);
+	}
+
+	public string get_saved_folder(){
+		return settings.get_string("file-location");
 	}
 
 	public void set_window_settings(string key, int val){

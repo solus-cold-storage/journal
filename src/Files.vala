@@ -32,6 +32,7 @@ public class Files {
 		"Open", ResponseType.ACCEPT);
 		file_chooser.set_select_multiple(true);
 		file_chooser.set_local_only(true);
+		file_chooser.set_current_folder(get_saved_folder(notebook));
 		if (file_chooser.run () == ResponseType.ACCEPT) {
 			bool file_open = false;
 			foreach (File file in file_chooser.get_files()){
@@ -94,6 +95,16 @@ public class Files {
 		tab.set_edited(false);
 		tab.set_close_btn_indicator();
 		notebook.set_subtitle_text(tab);
+		set_saved_folder(notebook, file);
+	}
+
+	public void set_saved_folder(EvolveNotebook notebook, File file){
+		string current_uri = file.get_parent().get_path();
+		(notebook.mother.application as EvolveJournal.App).set_settings("file-location", current_uri);
+	}
+
+	public string get_saved_folder(EvolveNotebook notebook){
+		return (notebook.mother.application as EvolveJournal.App).get_saved_folder();
 	}
 
 	public void on_save_clicked(string text_to_save, EvolveNotebook notebook, bool save_as) {

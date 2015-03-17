@@ -26,9 +26,6 @@ public class EvolveNotebook: Gtk.Notebook{
 	public Gtk.Button newtabbutton;
 	public string null_buffer = "";
 	public bool use_linenum;
-	private const Gtk.TargetEntry[] targets = {
-    {"EvolveJournal.EvolveNotebook", 0,0}
-   };
 
 	public EvolveWindow mother;
 
@@ -39,7 +36,7 @@ public class EvolveNotebook: Gtk.Notebook{
 		set_scrollable(true);
 		use_linenum = true;
 
-		//connect drag drop handlers
+		//Allow tabs to be moved between notebooks.
     set_group_name("notebook");
 
 		create_window.connect((p, x, y)=> {
@@ -54,6 +51,7 @@ public class EvolveNotebook: Gtk.Notebook{
 			set_subtitle_text(tab);
 		});
 
+		//Beginning of the code for always keeping a tab around, currently causes segfault if window is closed.
 		/*page_removed.connect((c,n)=> {
 			if(this.get_n_pages() <= 0){
 				this.new_tab(this.null_buffer, false, "");

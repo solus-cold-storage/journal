@@ -26,6 +26,9 @@ public class EvolveNotebook: Gtk.Notebook{
 	public Gtk.Button newtabbutton;
 	public string null_buffer = "";
 	public bool use_linenum;
+	private const Gtk.TargetEntry[] targets = {
+    {"EvolveJournal.EvolveNotebook", 0,0}
+   };
 
 	public EvolveWindow mother;
 
@@ -35,6 +38,9 @@ public class EvolveNotebook: Gtk.Notebook{
 		show_border = false;
 		set_scrollable(true);
 		use_linenum = true;
+
+		//connect drag drop handlers
+    set_group_name("notebook");
 
 		create_window.connect((p, x, y)=> {
 			var w = (mother.application as EvolveJournal.App).create_window();
@@ -47,6 +53,12 @@ public class EvolveNotebook: Gtk.Notebook{
 			EvolveTab tab = (EvolveTab)page;
 			set_subtitle_text(tab);
 		});
+
+		/*page_removed.connect((c,n)=> {
+			if(this.get_n_pages() <= 0){
+				this.new_tab(this.null_buffer, false, "");
+			}
+		});*/
 
 		mother.application.notify["show-tabs"].connect(()=> {
 			bool tabs;

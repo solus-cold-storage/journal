@@ -36,11 +36,8 @@ public class EvolveTab : Gtk.Box
 	public Button close_btn;
 	public Image close_btn_indicator;
 	public SourceView source_view;
-	public EvolveNotebook parent_notebook;
 
 	public EvolveTab(EvolveNotebook notebook){  
-		//Grab Notebook
-		parent_notebook = notebook;
 		//Set up Scrolled Window.
 		scroller = new ScrolledWindow (null, null);
 		scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);	
@@ -74,11 +71,11 @@ public class EvolveTab : Gtk.Box
 		source_view.show();
 		scroller.show();
 
-		scheme_selector();
+		scheme_selector(notebook);
 	}
 
-	public void scheme_selector(){
-		this.parent_notebook.mother.change_scheme.connect((scheme) => {
+	public void scheme_selector(EvolveNotebook notebook){
+		notebook.mother.change_scheme.connect((scheme) => {
 			text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); 
 		});
 	}
@@ -103,6 +100,7 @@ public class EvolveTab : Gtk.Box
 	}
 
 	public void remove_tab() {
+		EvolveNotebook parent_notebook = (EvolveNotebook)this.get_parent();
 		if (edited == true){
 			EvolveWindow win = (EvolveWindow)this.get_toplevel();
 			// The MessageDialog
@@ -131,6 +129,7 @@ public class EvolveTab : Gtk.Box
 
 	public void set_close_btn_indicator(){
 		EvolveWindow win = (EvolveWindow)this.get_toplevel();
+		EvolveNotebook parent_notebook = (EvolveNotebook)this.get_parent();
 		if (edited == true){
 			close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
 			if (parent_notebook.get_n_pages() == 1){

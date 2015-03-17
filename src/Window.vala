@@ -32,6 +32,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 
 	public signal void change_scheme(string scheme);
 
+
 	public EvolveWindow (EvolveJournal.App application) 
 	{
 		Object(application: application);

@@ -1,5 +1,5 @@
-# Evolve Journal
-project (evolve-journal)
+# Solus Journal
+project (solus-journal)
 
 # the oldest stable cmake version we support
 cmake_minimum_required (VERSION 2.6)
@@ -13,9 +13,9 @@ set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 # what to call that directory where we install data too
 set (PKGDATADIR "${DATADIR}/journal")
 set (EXEC_NAME "journal")
-set (RELEASE_NAME "Evolve Journal")
+set (RELEASE_NAME "Solus Journal")
 set (VERSION "1.0")
-set (VERSION_INFO "First stable version of Evolve Journal.")
+set (VERSION_INFO "First stable version of Solus Journal.")
 
 # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
 find_package(PkgConfig)
@@ -26,7 +26,7 @@ pkg_check_modules(DEPS REQUIRED
 	libsoup-2.4
 	json-glib-1.0
 	gtksourceview-3.0
-	)
+)
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
 link_directories(${DEPS_LIBRARY_DIRS})
@@ -45,10 +45,10 @@ include(ValaPrecompile)
 vala_precompile(VALA_C ${EXEC_NAME}
     src/Journal.vala
     src/Notebook.vala
-	src/Share.vala 
-	src/Tab.vala 
-	src/Window.vala 
-	src/Files.vala
+    src/Share.vala 
+    src/Tab.vala 
+    src/Window.vala 
+    src/Files.vala
 
 # tell what libraries to use when compiling
 PACKAGES

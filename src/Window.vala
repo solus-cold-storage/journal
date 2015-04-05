@@ -1,39 +1,39 @@
 /* Copyright 2014 Ryan Sipes
 *
-* This file is part of Evolve Journal.
+* This file is part of Solus Journal.
 *
-* Evolve Journal is free software: you can redistribute it
+* Solus Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
-* Evolve Journal is distributed in the hope that it will be
+* Solus Journal is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Evolve Journal. If not, see http://www.gnu.org/licenses/.
+* with Solus Journal. If not, see http://www.gnu.org/licenses/.
 */
 
 using Gtk;
 
-namespace EvolveJournal {
+namespace SolusJournal {
 
 public string buffer;
 
 private bool file_loaded;
 
-public class EvolveWindow : Gtk.ApplicationWindow {
+public class SolusWindow : Gtk.ApplicationWindow {
 
 	private Gtk.Button save_button;
 	public Gtk.HeaderBar headbar;
-	private EvolveNotebook notebook;
+	private SolusNotebook notebook;
 
 	public signal void change_scheme(string scheme);
 
 
-	public EvolveWindow (EvolveJournal.App application) 
+	public SolusWindow (SolusJournal.App application) 
 	{
 		Object(application: application);
 
@@ -138,8 +138,8 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 				Gtk.show_about_dialog(this,
 					"program-name", "Journal",
 					"copyright", "Copyright \u00A9 2015 Ryan Sipes",
-					"website", "https://evolve-os.com",
-					"website-label", "Evolve OS",
+					"website", "https://solus-project.com",
+					"website-label", "Solus Project",
 					"license-type", Gtk.License.GPL_2_0,
 					"comments", "A simple text-editor with sharing features.",
 					"version", "1.0 (Stable)",
@@ -162,7 +162,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 				message("No pages! \n");
 			} else{
 				string typed_text = notebook.get_text();
-				var share = new EvolveJournal.Share();
+				var share = new SolusJournal.Share();
 				share.generate_paste(typed_text, this);
 			}
 		});
@@ -229,7 +229,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 		string[] schemes = Gtk.SourceStyleSchemeManager.get_default().get_scheme_ids();
 		foreach (var scheme in schemes) {
 			appearance_menu.append(scheme, "app." + scheme + "_action");
-			if ((application as EvolveJournal.App).scheme_action_added != true){
+			if ((application as SolusJournal.App).scheme_action_added != true){
 				var scheme_action = new SimpleAction(scheme+"_action", null);
 				scheme_action.activate.connect(()=> {
 					change_action(scheme);
@@ -239,7 +239,7 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 				message("Actions already exist.");
 			}
 		}
-		(application as EvolveJournal.App).scheme_action_added = true;
+		(application as SolusJournal.App).scheme_action_added = true;
 
 		menu_button.image = new Image.from_icon_name("open-menu-symbolic", IconSize.SMALL_TOOLBAR);
 		menu_button.set_use_popover(true);
@@ -259,10 +259,10 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 	}
 
 	public void set_notebook(){
-		notebook = new EvolveNotebook(this);
+		notebook = new SolusNotebook(this);
 	}
 
-	public unowned EvolveNotebook get_notebook(){
+	public unowned SolusNotebook get_notebook(){
 		return notebook;
 	}
 
@@ -288,24 +288,24 @@ public class EvolveWindow : Gtk.ApplicationWindow {
 
 	private void change_action(string new_scheme){
 		this.change_scheme(new_scheme);
-		(application as EvolveJournal.App).set_current_scheme(new_scheme);
+		(application as SolusJournal.App).set_current_scheme(new_scheme);
 	}
 
-	public void open_file(EvolveNotebook open_notebook){
+	public void open_file(SolusNotebook open_notebook){
 		bool tab_edited = true;
 		//Check if the first tab has been edited if there is only one.
 		if (open_notebook.get_n_pages() == 1 && open_notebook.get_text() == ""){
 			tab_edited = false;
 		}
-		var file = new EvolveJournal.Files();
+		var file = new SolusJournal.Files();
 		buffer = file.on_open_clicked(open_notebook, tab_edited);
 	}
 
-	public void save_file(EvolveNotebook save_notebook, bool save_as){
+	public void save_file(SolusNotebook save_notebook, bool save_as){
 		if (save_notebook.get_n_pages() <= 0){
 			message("No pages! \n");
 		} else {
-		var file = new EvolveJournal.Files();
+		var file = new SolusJournal.Files();
 		string typed_text = save_notebook.get_text();
 		file.on_save_clicked(typed_text, save_notebook, save_as);
 		}

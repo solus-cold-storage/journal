@@ -1,27 +1,27 @@
 /* Copyright 2014 Ryan Sipes
 *
-* This file is part of Evolve Journal.
+* This file is part of Solus Journal.
 *
-* Evolve Journal is free software: you can redistribute it
+* Solus Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
-* Evolve Journal is distributed in the hope that it will be
+* Solus Journal is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Evolve Journal. If not, see http://www.gnu.org/licenses/.
+* with Solus Journal. If not, see http://www.gnu.org/licenses/.
 */
 
 using Gtk;
 
-namespace EvolveJournal
+namespace SolusJournal
 {
 
-public class EvolveTab : Gtk.Box
+public class SolusTab : Gtk.Box
 {
 	public ScrolledWindow scroller;
 	public SourceBuffer text_buffer = new SourceBuffer(null);
@@ -37,7 +37,7 @@ public class EvolveTab : Gtk.Box
 	public Image close_btn_indicator;
 	public SourceView source_view;
 
-	public EvolveTab(EvolveNotebook notebook){  
+	public SolusTab(SolusNotebook notebook){  
 		//Set up Scrolled Window.
 		scroller = new ScrolledWindow (null, null);
 		scroller.set_policy (PolicyType.AUTOMATIC, PolicyType.AUTOMATIC);	
@@ -74,7 +74,7 @@ public class EvolveTab : Gtk.Box
 		scheme_selector(notebook);
 	}
 
-	public void scheme_selector(EvolveNotebook notebook){
+	public void scheme_selector(SolusNotebook notebook){
 		notebook.mother.change_scheme.connect((scheme) => {
 			text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(scheme)); 
 		});
@@ -100,9 +100,9 @@ public class EvolveTab : Gtk.Box
 	}
 
 	public void remove_tab() {
-		EvolveNotebook parent_notebook = (EvolveNotebook)this.get_parent();
+		SolusNotebook parent_notebook = (SolusNotebook)this.get_parent();
 		if (edited == true){
-			EvolveWindow win = (EvolveWindow)this.get_toplevel();
+			SolusWindow win = (SolusWindow)this.get_toplevel();
 			// The MessageDialog
 			Gtk.MessageDialog msg = new Gtk.MessageDialog (win, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
 			msg.response.connect ((response_id) => {
@@ -128,8 +128,8 @@ public class EvolveTab : Gtk.Box
 	}
 
 	public void set_close_btn_indicator(){
-		EvolveWindow win = (EvolveWindow)this.get_toplevel();
-		EvolveNotebook parent_notebook = (EvolveNotebook)this.get_parent();
+		SolusWindow win = (SolusWindow)this.get_toplevel();
+		SolusNotebook parent_notebook = (SolusNotebook)this.get_parent();
 		if (edited == true){
 			close_btn.set_image(new Image.from_icon_name("software-update-urgent-symbolic", IconSize.BUTTON));
 			if (parent_notebook.get_n_pages() == 1){
@@ -144,7 +144,7 @@ public class EvolveTab : Gtk.Box
 		}
 	}
 
-	public void change_focus(EvolveNotebook notebook){
+	public void change_focus(SolusNotebook notebook){
 		notebook.set_current_page(notebook.page_num(content));
 	}
 

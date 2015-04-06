@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-	<schema id="com.evolve-os.journal" path="/com/evolve-os/journal/" gettext-domain="journal">
+	<schema id="com.solus-project.journal" path="/com/solust-project/journal/" gettext-domain="journal">
 		<!--Window State currently not being used -->
 		<key name="window-state" type="b">
 			<default>false</default>

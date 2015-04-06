@@ -1,32 +1,32 @@
 /* Copyright 2014 Ryan Sipes
 *
-* This file is part of Evolve Journal.
+* This file is part of Solus Journal.
 *
-* Evolve Journal is free software: you can redistribute it
+* Solus Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
-* Evolve Journal is distributed in the hope that it will be
+* Solus Journal is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Evolve Journal. If not, see http://www.gnu.org/licenses/.
+* with Solus Journal. If not, see http://www.gnu.org/licenses/.
 */
 
 using Gtk;
 using GLib;
 
-namespace EvolveJournal {
+namespace SolusJournal {
 
 private Window TextFileViewer;
 private string text_buffer_load;
 
 public class Files {
 
-	public string on_open_clicked (EvolveNotebook notebook, bool tab_edited) {
+	public string on_open_clicked (SolusNotebook notebook, bool tab_edited) {
 		var file_chooser = new FileChooserDialog("Open File", TextFileViewer,
 		FileChooserAction.OPEN, "Cancel", ResponseType.CANCEL,
 		"Open", ResponseType.ACCEPT);
@@ -37,7 +37,7 @@ public class Files {
 			bool file_open = false;
 			foreach (File file in file_chooser.get_files()){
 				for (int count = 0; count < notebook.get_n_pages(); count++){
-					EvolveTab tab = (EvolveTab)notebook.get_nth_page(count);
+					SolusTab tab = (SolusTab)notebook.get_nth_page(count);
 					if (tab.get_save_path() != file.get_path()){
 
 					} else {
@@ -55,7 +55,7 @@ public class Files {
 				}
 			}
 			if (tab_edited == false){
-				notebook.remove_tab((EvolveTab)notebook.get_nth_page(0));
+				notebook.remove_tab((SolusTab)notebook.get_nth_page(0));
 			}
 			else {
 				message("First tab edited.");
@@ -68,7 +68,7 @@ public class Files {
 		return text_buffer_load;
 	}
 
-	public string open_at_start(EvolveNotebook notebook, string file_path, string file_name){
+	public string open_at_start(SolusNotebook notebook, string file_path, string file_name){
 		string success = "open_at_start, started!" + "\n";
 		text_buffer_load = open_file(file_path);
 		notebook.new_tab(text_buffer_load, true, file_path);
@@ -89,8 +89,8 @@ public class Files {
 		return text;
 	}
 
-	private void file_setup(EvolveNotebook notebook, File file){
-		EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+	private void file_setup(SolusNotebook notebook, File file){
+		SolusTab tab = (SolusTab)notebook.get_nth_page(notebook.get_current_page());
 		tab.set_lang(file);
 		tab.set_edited(false);
 		tab.set_close_btn_indicator();
@@ -98,17 +98,17 @@ public class Files {
 		set_saved_folder(notebook, file);
 	}
 
-	public void set_saved_folder(EvolveNotebook notebook, File file){
+	public void set_saved_folder(SolusNotebook notebook, File file){
 		string current_uri = file.get_parent().get_path();
-		(notebook.mother.application as EvolveJournal.App).set_settings("file-location", current_uri);
+		(notebook.mother.application as SolusJournal.App).set_settings("file-location", current_uri);
 	}
 
-	public string get_saved_folder(EvolveNotebook notebook){
-		return (notebook.mother.application as EvolveJournal.App).get_saved_folder();
+	public string get_saved_folder(SolusNotebook notebook){
+		return (notebook.mother.application as SolusJournal.App).get_saved_folder();
 	}
 
-	public void on_save_clicked(string text_to_save, EvolveNotebook notebook, bool save_as) {
-		EvolveTab tab = (EvolveTab)notebook.get_nth_page(notebook.get_current_page());
+	public void on_save_clicked(string text_to_save, SolusNotebook notebook, bool save_as) {
+		SolusTab tab = (SolusTab)notebook.get_nth_page(notebook.get_current_page());
 		if (tab.saved == false || save_as == true) {
 			var file_chooser = new FileChooserDialog("Save File", TextFileViewer,
 			FileChooserAction.SAVE, "Cancel", ResponseType.CANCEL, "Save", ResponseType.ACCEPT);

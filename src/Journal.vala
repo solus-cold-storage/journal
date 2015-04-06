@@ -1,24 +1,24 @@
 /* Copyright 2014 Ryan Sipes
 *
-* This file is part of Evolve Journal.
+* This file is part of Solus Journal.
 *
-* Evolve Journal is free software: you can redistribute it
+* Solus Journal is free software: you can redistribute it
 * and/or modify it under the terms of the GNU General Public License as
 * published by the Free Software Foundation, either version 2 of the
 * License, or (at your option) any later version.
 *
-* Evolve Journal is distributed in the hope that it will be
+* Solus Journal is distributed in the hope that it will be
 * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
 * Public License for more details.
 *
 * You should have received a copy of the GNU General Public License along
-* with Evolve Journal. If not, see http://www.gnu.org/licenses/.
+* with Solus Journal. If not, see http://www.gnu.org/licenses/.
 */
 
 using GLib;
 
-namespace EvolveJournal{
+namespace SolusJournal{
 
 public class App : Gtk.Application{
 
@@ -31,9 +31,9 @@ public class App : Gtk.Application{
 	public bool show_tabs { public set; public get; default = false; }
 
 	public App() {
-		Object(application_id:"com.evolve-os.journal", 
+		Object(application_id:"com.solus-project.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
-		settings = new Settings("com.evolve-os.journal");
+		settings = new Settings("com.solus-project.journal");
 		on_settings_change("scheme");
 	}
 
@@ -46,7 +46,7 @@ public class App : Gtk.Application{
 	public void set_current_scheme(string scheme){
 		current_scheme = scheme;
 		this.get_windows().foreach((win)=>{
-			(win as EvolveJournal.EvolveWindow).change_scheme(scheme);
+			(win as SolusJournal.SolusWindow).change_scheme(scheme);
 		});
 		set_settings("scheme", scheme);
 	}
@@ -86,24 +86,24 @@ public class App : Gtk.Application{
 		}
 		else {
 			foreach (File file in loaded_files){
-				EvolveJournal.Files file_class = new EvolveJournal.Files();
-				var active_win = (EvolveWindow)this.get_active_window();
+				SolusJournal.Files file_class = new SolusJournal.Files();
+				var active_win = (SolusWindow)this.get_active_window();
 				file_class.open_at_start(active_win.get_notebook(), file.get_path(), file.get_basename());
 			}
 		}
 	}
 
-	public EvolveWindow create_window(){
-		EvolveWindow new_window = new EvolveWindow(this);
+	public SolusWindow create_window(){
+		SolusWindow new_window = new SolusWindow(this);
 		return new_window;
 	}
 
 	public void run_application(){
-		EvolveWindow first_window = create_window();
+		SolusWindow first_window = create_window();
 
 		if (loaded_files != null){
 			foreach (File file in loaded_files){
-				EvolveJournal.Files file_class = new EvolveJournal.Files();
+				SolusJournal.Files file_class = new SolusJournal.Files();
 				file_class.open_at_start(first_window.get_notebook(), file.get_path(), file.get_basename());	
 			}
 			first_window.set_loaded(true);
@@ -122,5 +122,5 @@ public class App : Gtk.Application{
 } // End namespace
 
 static int main(string[] args){
-	return new EvolveJournal.App ().run (args);
+	return new SolusJournal.App ().run (args);
 }

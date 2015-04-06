@@ -1,4 +1,4 @@
-#Evolve Journal
+#Solus Journal
 
 ###Version: 1.0 (Stable)
 ____

@@ -1,5 +1,5 @@
 #Solus Journal
-
+The core text editor in The Solus Project focussing on integation with services like pastebin.
 ###Version: 1.0 (Stable)
 ____
 ###Dependencies

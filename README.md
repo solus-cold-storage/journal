@@ -1,5 +1,7 @@
 #Solus Journal
 
+A lightweight text editor written in Vala, with advanced features available that can be enabled for advanced users.
+
 ###Version: 1.0 (Stable)
 ____
 ###Dependencies

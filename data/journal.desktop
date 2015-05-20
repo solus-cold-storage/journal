@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Journal
 GenericName=Journal
-Comment=Text editor for Evolve OS.
+Comment=Text editor for Solus.
 Categories=GTK;TextEditor;Utility;
 Exec=journal %F
 Icon=journal

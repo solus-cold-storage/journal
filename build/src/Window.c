@@ -221,6 +221,7 @@ void solus_journal_solus_window_open_tabs (SolusJournalSolusWindow* self);
 GtkHeaderBar* solus_journal_solus_window_get_headerbar (SolusJournalSolusWindow* self);
 GtkButton* solus_journal_solus_window_get_save_button (SolusJournalSolusWindow* self);
 void solus_journal_app_set_current_scheme (SolusJournalApp* self, const gchar* scheme);
+gchar* solus_journal_solus_notebook_get_label (SolusJournalSolusNotebook* self);
 gpointer solus_journal_files_ref (gpointer instance);
 void solus_journal_files_unref (gpointer instance);
 GParamSpec* solus_journal_param_spec_files (const gchar* name, const gchar* nick, const gchar* blurb, GType object_type, GParamFlags flags);
@@ -241,7 +242,7 @@ static gint _vala_array_length (gpointer array);
 static gpointer _g_object_ref0 (gpointer self) {
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return self ? g_object_ref (self) : NULL;
-#line 245 "Window.c"
+#line 246 "Window.c"
 }
 
 
@@ -250,7 +251,7 @@ static Block6Data* block6_data_ref (Block6Data* _data6_) {
 	g_atomic_int_inc (&_data6_->_ref_count_);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return _data6_;
-#line 254 "Window.c"
+#line 255 "Window.c"
 }
 
 
@@ -259,7 +260,7 @@ static void block6_data_unref (void * _userdata_) {
 	_data6_ = (Block6Data*) _userdata_;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (g_atomic_int_dec_and_test (&_data6_->_ref_count_)) {
-#line 263 "Window.c"
+#line 264 "Window.c"
 		SolusJournalSolusWindow* self;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 		self = _data6_->self;
@@ -269,7 +270,7 @@ static void block6_data_unref (void * _userdata_) {
 		_g_object_unref0 (self);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_slice_free (Block6Data, _data6_);
-#line 273 "Window.c"
+#line 274 "Window.c"
 	}
 }
 
@@ -303,7 +304,7 @@ static gboolean __lambda11_ (Block6Data* _data6_) {
 	result = FALSE;
 #line 46 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 307 "Window.c"
+#line 308 "Window.c"
 }
 
 
@@ -312,7 +313,7 @@ static gboolean ___lambda11__gtk_widget_delete_event (GtkWidget* _sender, GdkEve
 	result = __lambda11_ (self);
 #line 41 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 316 "Window.c"
+#line 317 "Window.c"
 }
 
 
@@ -328,14 +329,14 @@ static void __lambda12_ (SolusJournalSolusWindow* self) {
 	_tmp2_ = _tmp1_->null_buffer;
 #line 65 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_new_tab (_tmp0_, _tmp2_, FALSE, "");
-#line 332 "Window.c"
+#line 333 "Window.c"
 }
 
 
 static void ___lambda12__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 64 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda12_ ((SolusJournalSolusWindow*) self);
-#line 339 "Window.c"
+#line 340 "Window.c"
 }
 
 
@@ -345,14 +346,14 @@ static void __lambda13_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 73 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_open_file (self, _tmp0_);
-#line 349 "Window.c"
+#line 350 "Window.c"
 }
 
 
 static void ___lambda13__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 72 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda13_ ((SolusJournalSolusWindow*) self);
-#line 356 "Window.c"
+#line 357 "Window.c"
 }
 
 
@@ -362,14 +363,14 @@ static void __lambda14_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 81 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, FALSE);
-#line 366 "Window.c"
+#line 367 "Window.c"
 }
 
 
 static void ___lambda14__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 80 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda14_ ((SolusJournalSolusWindow*) self);
-#line 373 "Window.c"
+#line 374 "Window.c"
 }
 
 
@@ -381,14 +382,14 @@ static void __lambda15_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 88 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, FALSE);
-#line 385 "Window.c"
+#line 386 "Window.c"
 }
 
 
 static void ___lambda15__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 86 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda15_ ((SolusJournalSolusWindow*) self);
-#line 392 "Window.c"
+#line 393 "Window.c"
 }
 
 
@@ -400,14 +401,14 @@ static void __lambda16_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 94 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_open_file (self, _tmp0_);
-#line 404 "Window.c"
+#line 405 "Window.c"
 }
 
 
 static void ___lambda16__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 92 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda16_ ((SolusJournalSolusWindow*) self);
-#line 411 "Window.c"
+#line 412 "Window.c"
 }
 
 
@@ -419,14 +420,14 @@ static void __lambda17_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 100 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_undo_source (_tmp0_);
-#line 423 "Window.c"
+#line 424 "Window.c"
 }
 
 
 static void ___lambda17__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 98 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda17_ ((SolusJournalSolusWindow*) self);
-#line 430 "Window.c"
+#line 431 "Window.c"
 }
 
 
@@ -438,14 +439,14 @@ static void __lambda18_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 106 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_redo_source (_tmp0_);
-#line 442 "Window.c"
+#line 443 "Window.c"
 }
 
 
 static void ___lambda18__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 104 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda18_ ((SolusJournalSolusWindow*) self);
-#line 449 "Window.c"
+#line 450 "Window.c"
 }
 
 
@@ -459,13 +460,13 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = gtk_print_operation_new ();
 #line 112 "/home/logan/Source/Vala/journal/src/Window.vala"
 	print_operation = _tmp0_;
-#line 463 "Window.c"
+#line 464 "Window.c"
 	{
 #line 114 "/home/logan/Source/Vala/journal/src/Window.vala"
 		gtk_print_operation_run (print_operation, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, (GtkWindow*) self, &_inner_error_);
 #line 114 "/home/logan/Source/Vala/journal/src/Window.vala"
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
-#line 469 "Window.c"
+#line 470 "Window.c"
 			goto __catch2_g_error;
 		}
 	}
@@ -487,7 +488,7 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 		g_warning ("Window.vala:116: Error printing: %s", _tmp2_);
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_error_free0 (e);
-#line 491 "Window.c"
+#line 492 "Window.c"
 	}
 	__finally2:
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
@@ -500,18 +501,18 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 		g_clear_error (&_inner_error_);
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
 		return;
-#line 504 "Window.c"
+#line 505 "Window.c"
 	}
 #line 110 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (print_operation);
-#line 508 "Window.c"
+#line 509 "Window.c"
 }
 
 
 static void ___lambda19__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 110 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda19_ ((SolusJournalSolusWindow*) self);
-#line 515 "Window.c"
+#line 516 "Window.c"
 }
 
 
@@ -523,14 +524,14 @@ static void __lambda20_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 123 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, TRUE);
-#line 527 "Window.c"
+#line 528 "Window.c"
 }
 
 
 static void ___lambda20__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 121 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda20_ ((SolusJournalSolusWindow*) self);
-#line 534 "Window.c"
+#line 535 "Window.c"
 }
 
 
@@ -548,14 +549,14 @@ static void __lambda21_ (SolusJournalSolusWindow* self) {
 	_tmp2_ = _tmp1_->null_buffer;
 #line 129 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_new_tab (_tmp0_, _tmp2_, FALSE, "");
-#line 552 "Window.c"
+#line 553 "Window.c"
 }
 
 
 static void ___lambda21__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 127 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda21_ ((SolusJournalSolusWindow*) self);
-#line 559 "Window.c"
+#line 560 "Window.c"
 }
 
 
@@ -564,14 +565,14 @@ static void __lambda22_ (SolusJournalSolusWindow* self) {
 	g_message ("Window.vala:134: Closing...");
 #line 135 "/home/logan/Source/Vala/journal/src/Window.vala"
 	gtk_widget_destroy ((GtkWidget*) self);
-#line 568 "Window.c"
+#line 569 "Window.c"
 }
 
 
 static void ___lambda22__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 133 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda22_ ((SolusJournalSolusWindow*) self);
-#line 575 "Window.c"
+#line 576 "Window.c"
 }
 
 
@@ -630,7 +631,7 @@ static gboolean __lambda24_ (SolusJournalSolusWindow* self) {
 	result = FALSE;
 #line 162 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 634 "Window.c"
+#line 635 "Window.c"
 }
 
 
@@ -639,7 +640,7 @@ static gboolean ___lambda24__gsource_func (gpointer self) {
 	result = __lambda24_ ((SolusJournalSolusWindow*) self);
 #line 143 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 643 "Window.c"
+#line 644 "Window.c"
 }
 
 
@@ -648,14 +649,14 @@ static void __lambda23_ (SolusJournalSolusWindow* self) {
 	gtk_widget_queue_draw ((GtkWidget*) self);
 #line 143 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda24__gsource_func, g_object_ref (self), g_object_unref);
-#line 652 "Window.c"
+#line 653 "Window.c"
 }
 
 
 static void ___lambda23__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda23_ ((SolusJournalSolusWindow*) self);
-#line 659 "Window.c"
+#line 660 "Window.c"
 }
 
 
@@ -670,7 +671,7 @@ static void __lambda25_ (SolusJournalSolusWindow* self) {
 	if (_tmp1_ <= 0) {
 #line 169 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_message ("Window.vala:169: No pages! \n");
-#line 674 "Window.c"
+#line 675 "Window.c"
 	} else {
 		gchar* typed_text = NULL;
 		SolusJournalSolusNotebook* _tmp2_ = NULL;
@@ -699,7 +700,7 @@ static void __lambda25_ (SolusJournalSolusWindow* self) {
 		_solus_journal_share_unref0 (share);
 #line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (typed_text);
-#line 703 "Window.c"
+#line 704 "Window.c"
 	}
 }
 
@@ -707,7 +708,7 @@ static void __lambda25_ (SolusJournalSolusWindow* self) {
 static void ___lambda25__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 167 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda25_ ((SolusJournalSolusWindow*) self);
-#line 711 "Window.c"
+#line 712 "Window.c"
 }
 
 
@@ -718,17 +719,17 @@ static gchar** _vala_array_dup2 (gchar** self, int length) {
 	result = g_new0 (gchar*, length + 1);
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
 	for (i = 0; i < length; i++) {
-#line 722 "Window.c"
+#line 723 "Window.c"
 		gchar* _tmp0_ = NULL;
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp0_ = g_strdup (self[i]);
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
 		result[i] = _tmp0_;
-#line 728 "Window.c"
+#line 729 "Window.c"
 	}
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 732 "Window.c"
+#line 733 "Window.c"
 }
 
 
@@ -737,7 +738,7 @@ static Block7Data* block7_data_ref (Block7Data* _data7_) {
 	g_atomic_int_inc (&_data7_->_ref_count_);
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return _data7_;
-#line 741 "Window.c"
+#line 742 "Window.c"
 }
 
 
@@ -746,7 +747,7 @@ static void block7_data_unref (void * _userdata_) {
 	_data7_ = (Block7Data*) _userdata_;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (g_atomic_int_dec_and_test (&_data7_->_ref_count_)) {
-#line 750 "Window.c"
+#line 751 "Window.c"
 		SolusJournalSolusWindow* self;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 		self = _data7_->_data6_->self;
@@ -758,7 +759,7 @@ static void block7_data_unref (void * _userdata_) {
 		_data7_->_data6_ = NULL;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_slice_free (Block7Data, _data7_);
-#line 762 "Window.c"
+#line 763 "Window.c"
 	}
 }
 
@@ -775,14 +776,14 @@ static void _____lambda27_ (Block7Data* _data7_) {
 	_tmp0_ = _data7_->scheme;
 #line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_change_action (self, _tmp0_);
-#line 779 "Window.c"
+#line 780 "Window.c"
 }
 
 
 static void ______lambda27__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_____lambda27_ (self);
-#line 786 "Window.c"
+#line 787 "Window.c"
 }
 
 
@@ -1596,7 +1597,7 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 	_tmp155_ = schemes;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp155__length1 = schemes_length1;
-#line 1600 "Window.c"
+#line 1601 "Window.c"
 	{
 		gchar** scheme_collection = NULL;
 		gint scheme_collection_length1 = 0;
@@ -1608,14 +1609,14 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 		scheme_collection_length1 = _tmp155__length1;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 		for (scheme_it = 0; scheme_it < _tmp155__length1; scheme_it = scheme_it + 1) {
-#line 1612 "Window.c"
+#line 1613 "Window.c"
 			gchar* _tmp156_ = NULL;
 			gchar* scheme = NULL;
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 			_tmp156_ = g_strdup (scheme_collection[scheme_it]);
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 			scheme = _tmp156_;
-#line 1619 "Window.c"
+#line 1620 "Window.c"
 			{
 				Block7Data* _data7_;
 				GMenu* _tmp157_ = NULL;
@@ -1661,7 +1662,7 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 				_tmp165_ = (G_TYPE_CHECK_INSTANCE_TYPE (_tmp164_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp164_) : NULL)->scheme_action_added;
 #line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
 				if (_tmp165_ != TRUE) {
-#line 1665 "Window.c"
+#line 1666 "Window.c"
 					GSimpleAction* scheme_action = NULL;
 					const gchar* _tmp166_ = NULL;
 					gchar* _tmp167_ = NULL;
@@ -1697,17 +1698,17 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 					g_action_map_add_action ((GActionMap*) _tmp172_, (GAction*) _tmp173_);
 #line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
 					_g_object_unref0 (scheme_action);
-#line 1701 "Window.c"
+#line 1702 "Window.c"
 				} else {
 #line 251 "/home/logan/Source/Vala/journal/src/Window.vala"
 					g_message ("Window.vala:251: Actions already exist.");
-#line 1705 "Window.c"
+#line 1706 "Window.c"
 				}
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 				block7_data_unref (_data7_);
 #line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_ = NULL;
-#line 1711 "Window.c"
+#line 1712 "Window.c"
 			}
 		}
 	}
@@ -1851,14 +1852,14 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 	_data6_ = NULL;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return self;
-#line 1855 "Window.c"
+#line 1856 "Window.c"
 }
 
 
 SolusJournalSolusWindow* solus_journal_solus_window_new (SolusJournalApp* application) {
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return solus_journal_solus_window_construct (SOLUS_JOURNAL_TYPE_SOLUS_WINDOW, application);
-#line 1862 "Window.c"
+#line 1863 "Window.c"
 }
 
 
@@ -1874,7 +1875,7 @@ void solus_journal_solus_window_set_notebook (SolusJournalSolusWindow* self) {
 	_g_object_unref0 (self->priv->notebook);
 #line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
 	self->priv->notebook = _tmp0_;
-#line 1878 "Window.c"
+#line 1879 "Window.c"
 }
 
 
@@ -1889,7 +1890,7 @@ SolusJournalSolusNotebook* solus_journal_solus_window_get_notebook (SolusJournal
 	result = _tmp0_;
 #line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1893 "Window.c"
+#line 1894 "Window.c"
 }
 
 
@@ -1901,7 +1902,7 @@ void solus_journal_solus_window_set_loaded (SolusJournalSolusWindow* self, gbool
 	_tmp0_ = loaded;
 #line 282 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_file_loaded = _tmp0_;
-#line 1905 "Window.c"
+#line 1906 "Window.c"
 }
 
 
@@ -1913,7 +1914,7 @@ void solus_journal_solus_window_open_tabs (SolusJournalSolusWindow* self) {
 	_tmp0_ = solus_journal_file_loaded;
 #line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp0_ != TRUE) {
-#line 1917 "Window.c"
+#line 1918 "Window.c"
 		SolusJournalSolusNotebook* _tmp1_ = NULL;
 		SolusJournalSolusNotebook* _tmp2_ = NULL;
 		const gchar* _tmp3_ = NULL;
@@ -1925,11 +1926,11 @@ void solus_journal_solus_window_open_tabs (SolusJournalSolusWindow* self) {
 		_tmp3_ = _tmp2_->null_buffer;
 #line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
 		solus_journal_solus_notebook_new_tab (_tmp1_, _tmp3_, FALSE, "");
-#line 1929 "Window.c"
+#line 1930 "Window.c"
 	} else {
 #line 289 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_message ("Window.vala:289: File already loaded.");
-#line 1933 "Window.c"
+#line 1934 "Window.c"
 	}
 }
 
@@ -1948,7 +1949,7 @@ GtkHeaderBar* solus_journal_solus_window_get_headerbar (SolusJournalSolusWindow*
 	result = _tmp1_;
 #line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1952 "Window.c"
+#line 1953 "Window.c"
 }
 
 
@@ -1966,7 +1967,7 @@ GtkButton* solus_journal_solus_window_get_save_button (SolusJournalSolusWindow* 
 	result = _tmp1_;
 #line 298 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1970 "Window.c"
+#line 1971 "Window.c"
 }
 
 
@@ -1991,7 +1992,7 @@ static void solus_journal_solus_window_change_action (SolusJournalSolusWindow* s
 	_tmp3_ = new_scheme;
 #line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_app_set_current_scheme (G_TYPE_CHECK_INSTANCE_TYPE (_tmp2_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp2_) : NULL, _tmp3_);
-#line 1995 "Window.c"
+#line 1996 "Window.c"
 }
 
 
@@ -2017,31 +2018,31 @@ void solus_journal_solus_window_open_file (SolusJournalSolusWindow* self, SolusJ
 	_tmp2_ = gtk_notebook_get_n_pages ((GtkNotebook*) _tmp1_);
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp2_ == 1) {
-#line 2021 "Window.c"
+#line 2022 "Window.c"
 		SolusJournalSolusNotebook* _tmp3_ = NULL;
 		gchar* _tmp4_ = NULL;
 		gchar* _tmp5_ = NULL;
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp3_ = open_notebook;
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
-		_tmp4_ = solus_journal_solus_notebook_get_text (_tmp3_);
+		_tmp4_ = solus_journal_solus_notebook_get_label (_tmp3_);
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp5_ = _tmp4_;
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
-		_tmp0_ = g_strcmp0 (_tmp5_, "") == 0;
+		_tmp0_ = g_strcmp0 (_tmp5_, "Untitled") == 0;
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (_tmp5_);
-#line 2035 "Window.c"
+#line 2036 "Window.c"
 	} else {
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp0_ = FALSE;
-#line 2039 "Window.c"
+#line 2040 "Window.c"
 	}
 #line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp0_) {
 #line 310 "/home/logan/Source/Vala/journal/src/Window.vala"
 		tab_edited = FALSE;
-#line 2045 "Window.c"
+#line 2046 "Window.c"
 	}
 #line 312 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp6_ = solus_journal_files_new ();
@@ -2059,7 +2060,7 @@ void solus_journal_solus_window_open_file (SolusJournalSolusWindow* self, SolusJ
 	solus_journal_buffer = _tmp9_;
 #line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_solus_journal_files_unref0 (file);
-#line 2063 "Window.c"
+#line 2064 "Window.c"
 }
 
 
@@ -2078,7 +2079,7 @@ void solus_journal_solus_window_save_file (SolusJournalSolusWindow* self, SolusJ
 	if (_tmp1_ <= 0) {
 #line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_message ("Window.vala:318: No pages! \n");
-#line 2082 "Window.c"
+#line 2083 "Window.c"
 	} else {
 		SolusJournalFiles* file = NULL;
 		SolusJournalFiles* _tmp2_ = NULL;
@@ -2113,7 +2114,7 @@ void solus_journal_solus_window_save_file (SolusJournalSolusWindow* self, SolusJ
 		_g_free0 (typed_text);
 #line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_solus_journal_files_unref0 (file);
-#line 2117 "Window.c"
+#line 2118 "Window.c"
 	}
 }
 
@@ -2127,14 +2128,14 @@ static void solus_journal_solus_window_class_init (SolusJournalSolusWindowClass 
 	G_OBJECT_CLASS (klass)->finalize = solus_journal_solus_window_finalize;
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_new ("change_scheme", SOLUS_JOURNAL_TYPE_SOLUS_WINDOW, G_SIGNAL_RUN_LAST, 0, NULL, NULL, g_cclosure_marshal_VOID__STRING, G_TYPE_NONE, 1, G_TYPE_STRING);
-#line 2131 "Window.c"
+#line 2132 "Window.c"
 }
 
 
 static void solus_journal_solus_window_instance_init (SolusJournalSolusWindow * self) {
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	self->priv = SOLUS_JOURNAL_SOLUS_WINDOW_GET_PRIVATE (self);
-#line 2138 "Window.c"
+#line 2139 "Window.c"
 }
 
 
@@ -2150,7 +2151,7 @@ static void solus_journal_solus_window_finalize (GObject* obj) {
 	_g_object_unref0 (self->priv->notebook);
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	G_OBJECT_CLASS (solus_journal_solus_window_parent_class)->finalize (obj);
-#line 2154 "Window.c"
+#line 2155 "Window.c"
 }
 
 

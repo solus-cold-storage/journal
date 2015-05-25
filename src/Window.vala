@@ -306,7 +306,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 	public void open_file(SolusNotebook open_notebook){
 		bool tab_edited = true;
 		//Check if the first tab has been edited if there is only one.
-		if (open_notebook.get_n_pages() == 1 && open_notebook.get_text() == ""){
+		if (open_notebook.get_n_pages() == 1 && open_notebook.get_label() == "Untitled"){
 			tab_edited = false;
 		}
 		var file = new SolusJournal.Files();
@@ -317,9 +317,9 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		if (save_notebook.get_n_pages() <= 0){
 			message("No pages! \n");
 		} else {
-		var file = new SolusJournal.Files();
-		string typed_text = save_notebook.get_text();
-		file.on_save_clicked(typed_text, save_notebook, save_as);
+            var file = new SolusJournal.Files();
+            string typed_text = save_notebook.get_text();
+            file.on_save_clicked(typed_text, save_notebook, save_as);
 		}
 	}
 }

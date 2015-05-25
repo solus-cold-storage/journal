@@ -36,4 +36,4 @@ To use the new icons, after having had Journal previously installed, run this co
 
 ###License
 
-Journal is licensed under GPLv2
+Journal is licensed under GPLv2, see COPYING

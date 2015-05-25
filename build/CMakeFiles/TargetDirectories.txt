@@ -1,0 +1,1 @@
+/home/logan/Source/Vala/journal/build/CMakeFiles/journal.dir

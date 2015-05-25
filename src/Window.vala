@@ -231,16 +231,16 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
-        application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
-        application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
-        application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
-        application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
-        application.set_accels_for_action("app.switchtab4_action", {"<Alt>4"});
-        application.set_accels_for_action("app.switchtab5_action", {"<Alt>5"});
-        application.set_accels_for_action("app.switchtab6_action", {"<Alt>6"});
-        application.set_accels_for_action("app.switchtab7_action", {"<Alt>7"});
-        application.set_accels_for_action("app.switchtab8_action", {"<Alt>8"});
-        application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
+        	application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
+        	application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
+        	application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
+        	application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
+	        application.set_accels_for_action("app.switchtab4_action", {"<Alt>4"});
+        	application.set_accels_for_action("app.switchtab5_action", {"<Alt>5"});
+	        application.set_accels_for_action("app.switchtab6_action", {"<Alt>6"});
+	        application.set_accels_for_action("app.switchtab7_action", {"<Alt>7"});
+	        application.set_accels_for_action("app.switchtab8_action", {"<Alt>8"});
+	        application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
 		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
 		application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
 		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
@@ -248,22 +248,22 @@ public class SolusWindow : Gtk.ApplicationWindow {
 
 		//add actions to the application.
 		application.add_action(save_action);
-        application.add_action(quit_action);
+	        application.add_action(quit_action);
 		application.add_action(open_action);
 		application.add_action(undo_action);
 		application.add_action(redo_action);
 		application.add_action(print_action);
 		application.add_action(saveas_action);
 		application.add_action(newtab_action);
-        application.add_action(switchtab1_action);
-        application.add_action(switchtab2_action);
-        application.add_action(switchtab3_action);
-        application.add_action(switchtab4_action);
-        application.add_action(switchtab5_action);
-        application.add_action(switchtab6_action);
-        application.add_action(switchtab7_action);
-        application.add_action(switchtab8_action);
-        application.add_action(switchtab9_action);
+	        application.add_action(switchtab1_action);
+	        application.add_action(switchtab2_action);
+	        application.add_action(switchtab3_action);
+	        application.add_action(switchtab4_action);
+	        application.add_action(switchtab5_action);
+	        application.add_action(switchtab6_action);
+	        application.add_action(switchtab7_action);
+	        application.add_action(switchtab8_action);
+	        application.add_action(switchtab9_action);
 		application.add_action(about_action);
 		application.add_action(show_tabs_action);
 		application.add_action(hastebin_action);
@@ -294,7 +294,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
 		GLib.MenuItem quit_item = new GLib.MenuItem("Quit", "app.quit_action");
 		file_menu.append_item(saveas_item);
-        file_menu.append_item(quit_item);
+	        file_menu.append_item(quit_item);
 
 
 		GLib.Menu view_menu = new GLib.Menu();

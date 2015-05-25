@@ -44,7 +44,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			application.set_window_settings("window-width", width);
 			application.set_window_settings("window-height", height);
 			return false;
-			});
+        });
 
 		this.window_position = WindowPosition.CENTER;
 		set_default_size (application.get_window_settings("window-width"), 
@@ -128,6 +128,12 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			message("Generating Tab...");
 			notebook.new_tab(notebook.null_buffer, false, "");
 		});
+        
+        var quit_action = new SimpleAction("quit_action", null);
+		quit_action.activate.connect(()=> {
+			message("Closing...");
+            this.destroy();
+        });
 
 		var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
 
@@ -150,7 +156,8 @@ public class SolusWindow : Gtk.ApplicationWindow {
 					"authors", new string[]{
 					  "Ryan Sipes <ryan@evolve-os.com>",
 					  "Ikey Doherty <ikey@evolve-os.com>",
-					  "Barry Smith <barry.of.smith@gmail.com>"
+					  "Barry Smith <barry.of.smith@gmail.com>",
+                      "Michael Rutherford <michaellogan.rutherford@gmail.com>"
 					});
 				return false;
 				});
@@ -170,6 +177,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
+        application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
 		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
 		application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
 		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
@@ -177,6 +185,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 
 		//add actions to the application.
 		application.add_action(save_action);
+        application.add_action(quit_action);
 		application.add_action(open_action);
 		application.add_action(undo_action);
 		application.add_action(redo_action);
@@ -211,7 +220,10 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		GLib.MenuItem file_menu_item = new GLib.MenuItem.submenu("File", file_menu);
 		action_menu.append_item(file_menu_item);
 		GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
+		GLib.MenuItem quit_item = new GLib.MenuItem("Quit", "app.quit_action");
 		file_menu.append_item(saveas_item);
+        file_menu.append_item(quit_item);
+
 
 		GLib.Menu view_menu = new GLib.Menu();
 		GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
@@ -267,7 +279,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 	}
 
 	public void set_loaded(bool loaded){
-	file_loaded = loaded;
+        file_loaded = loaded;
 	}
 
 	public void open_tabs (){

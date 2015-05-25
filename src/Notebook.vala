@@ -37,7 +37,7 @@ public class SolusNotebook: Gtk.Notebook{
 		use_linenum = true;
 
 		//Allow tabs to be moved between notebooks.
-    set_group_name("notebook");
+        set_group_name("notebook");
 
 		create_window.connect((p, x, y)=> {
 			var w = (mother.application as SolusJournal.App).create_window();

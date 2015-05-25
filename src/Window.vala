@@ -129,6 +129,60 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			notebook.new_tab(notebook.null_buffer, false, "");
 		});
         
+        var switchtab1_action = new SimpleAction("switchtab1_action", null);
+		switchtab1_action.activate.connect(()=> {
+			message("Switching To Tab 1...");
+            notebook.set_current_page(0);
+		});
+        
+        var switchtab2_action = new SimpleAction("switchtab2_action", null);
+		switchtab2_action.activate.connect(()=> {
+			message("Switching To Tab 2...");
+            notebook.set_current_page(1);
+		});
+        
+        var switchtab3_action = new SimpleAction("switchtab3_action", null);
+		switchtab3_action.activate.connect(()=> {
+			message("Switching To Tab 3...");
+            notebook.set_current_page(2);
+		});
+        
+        var switchtab4_action = new SimpleAction("switchtab4_action", null);
+		switchtab4_action.activate.connect(()=> {
+			message("Switching To Tab 4...");
+            notebook.set_current_page(3);
+		});
+        
+        var switchtab5_action = new SimpleAction("switchtab5_action", null);
+		switchtab5_action.activate.connect(()=> {
+			message("Switching To Tab 5...");
+            notebook.set_current_page(4);
+		});
+        
+        var switchtab6_action = new SimpleAction("switchtab6_action", null);
+		switchtab6_action.activate.connect(()=> {
+			message("Switching To Tab 6...");
+            notebook.set_current_page(5);
+		});
+        
+        var switchtab7_action = new SimpleAction("switchtab7_action", null);
+		switchtab7_action.activate.connect(()=> {
+			message("Switching To Tab 7...");
+            notebook.set_current_page(6);
+		});
+        
+        var switchtab8_action = new SimpleAction("switchtab8_action", null);
+		switchtab8_action.activate.connect(()=> {
+			message("Switching To Tab 8...");
+            notebook.set_current_page(7);
+		});
+        
+        var switchtab9_action = new SimpleAction("switchtab9_action", null);
+		switchtab9_action.activate.connect(()=> {
+			message("Switching To Tab 9...");
+            notebook.set_current_page(8);
+		});
+        
         var quit_action = new SimpleAction("quit_action", null);
 		quit_action.activate.connect(()=> {
 			message("Closing...");
@@ -178,6 +232,15 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
         application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
+        application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
+        application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
+        application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
+        application.set_accels_for_action("app.switchtab4_action", {"<Alt>4"});
+        application.set_accels_for_action("app.switchtab5_action", {"<Alt>5"});
+        application.set_accels_for_action("app.switchtab6_action", {"<Alt>6"});
+        application.set_accels_for_action("app.switchtab7_action", {"<Alt>7"});
+        application.set_accels_for_action("app.switchtab8_action", {"<Alt>8"});
+        application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
 		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
 		application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
 		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
@@ -192,6 +255,15 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		application.add_action(print_action);
 		application.add_action(saveas_action);
 		application.add_action(newtab_action);
+        application.add_action(switchtab1_action);
+        application.add_action(switchtab2_action);
+        application.add_action(switchtab3_action);
+        application.add_action(switchtab4_action);
+        application.add_action(switchtab5_action);
+        application.add_action(switchtab6_action);
+        application.add_action(switchtab7_action);
+        application.add_action(switchtab8_action);
+        application.add_action(switchtab9_action);
 		application.add_action(about_action);
 		application.add_action(show_tabs_action);
 		application.add_action(hastebin_action);

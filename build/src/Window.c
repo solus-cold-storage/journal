@@ -191,10 +191,28 @@ static void ___lambda21__g_simple_action_activate (GSimpleAction* _sender, GVari
 static void __lambda22_ (SolusJournalSolusWindow* self);
 static void ___lambda22__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
 static void __lambda23_ (SolusJournalSolusWindow* self);
-static gboolean __lambda24_ (SolusJournalSolusWindow* self);
-static gboolean ___lambda24__gsource_func (gpointer self);
 static void ___lambda23__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda24_ (SolusJournalSolusWindow* self);
+static void ___lambda24__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
 static void __lambda25_ (SolusJournalSolusWindow* self);
+static void ___lambda25__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda26_ (SolusJournalSolusWindow* self);
+static void ___lambda26__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda27_ (SolusJournalSolusWindow* self);
+static void ___lambda27__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda28_ (SolusJournalSolusWindow* self);
+static void ___lambda28__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda29_ (SolusJournalSolusWindow* self);
+static void ___lambda29__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda30_ (SolusJournalSolusWindow* self);
+static void ___lambda30__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda31_ (SolusJournalSolusWindow* self);
+static void ___lambda31__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda32_ (SolusJournalSolusWindow* self);
+static gboolean __lambda33_ (SolusJournalSolusWindow* self);
+static gboolean ___lambda33__gsource_func (gpointer self);
+static void ___lambda32__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void __lambda34_ (SolusJournalSolusWindow* self);
 gchar* solus_journal_solus_notebook_get_text (SolusJournalSolusNotebook* self);
 gpointer solus_journal_share_ref (gpointer instance);
 void solus_journal_share_unref (gpointer instance);
@@ -206,13 +224,13 @@ GType solus_journal_share_get_type (void) G_GNUC_CONST;
 SolusJournalShare* solus_journal_share_new (void);
 SolusJournalShare* solus_journal_share_construct (GType object_type);
 void solus_journal_share_generate_paste (SolusJournalShare* self, const gchar* text, GtkWindow* window);
-static void ___lambda25__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void ___lambda34__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
 static gchar** _vala_array_dup2 (gchar** self, int length);
 static Block7Data* block7_data_ref (Block7Data* _data7_);
 static void block7_data_unref (void * _userdata_);
-static void _____lambda27_ (Block7Data* _data7_);
+static void _____lambda36_ (Block7Data* _data7_);
 static void solus_journal_solus_window_change_action (SolusJournalSolusWindow* self, const gchar* new_scheme);
-static void ______lambda27__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
+static void ______lambda36__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self);
 SolusJournalSolusNotebook* solus_journal_solus_notebook_new (SolusJournalSolusWindow* mother);
 SolusJournalSolusNotebook* solus_journal_solus_notebook_construct (GType object_type, SolusJournalSolusWindow* mother);
 SolusJournalSolusNotebook* solus_journal_solus_window_get_notebook (SolusJournalSolusWindow* self);
@@ -242,7 +260,7 @@ static gint _vala_array_length (gpointer array);
 static gpointer _g_object_ref0 (gpointer self) {
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return self ? g_object_ref (self) : NULL;
-#line 246 "Window.c"
+#line 264 "Window.c"
 }
 
 
@@ -251,7 +269,7 @@ static Block6Data* block6_data_ref (Block6Data* _data6_) {
 	g_atomic_int_inc (&_data6_->_ref_count_);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return _data6_;
-#line 255 "Window.c"
+#line 273 "Window.c"
 }
 
 
@@ -260,7 +278,7 @@ static void block6_data_unref (void * _userdata_) {
 	_data6_ = (Block6Data*) _userdata_;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (g_atomic_int_dec_and_test (&_data6_->_ref_count_)) {
-#line 264 "Window.c"
+#line 282 "Window.c"
 		SolusJournalSolusWindow* self;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 		self = _data6_->self;
@@ -270,7 +288,7 @@ static void block6_data_unref (void * _userdata_) {
 		_g_object_unref0 (self);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_slice_free (Block6Data, _data6_);
-#line 274 "Window.c"
+#line 292 "Window.c"
 	}
 }
 
@@ -304,7 +322,7 @@ static gboolean __lambda11_ (Block6Data* _data6_) {
 	result = FALSE;
 #line 46 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 308 "Window.c"
+#line 326 "Window.c"
 }
 
 
@@ -313,7 +331,7 @@ static gboolean ___lambda11__gtk_widget_delete_event (GtkWidget* _sender, GdkEve
 	result = __lambda11_ (self);
 #line 41 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 317 "Window.c"
+#line 335 "Window.c"
 }
 
 
@@ -329,14 +347,14 @@ static void __lambda12_ (SolusJournalSolusWindow* self) {
 	_tmp2_ = _tmp1_->null_buffer;
 #line 65 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_new_tab (_tmp0_, _tmp2_, FALSE, "");
-#line 333 "Window.c"
+#line 351 "Window.c"
 }
 
 
 static void ___lambda12__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 64 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda12_ ((SolusJournalSolusWindow*) self);
-#line 340 "Window.c"
+#line 358 "Window.c"
 }
 
 
@@ -346,14 +364,14 @@ static void __lambda13_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 73 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_open_file (self, _tmp0_);
-#line 350 "Window.c"
+#line 368 "Window.c"
 }
 
 
 static void ___lambda13__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 72 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda13_ ((SolusJournalSolusWindow*) self);
-#line 357 "Window.c"
+#line 375 "Window.c"
 }
 
 
@@ -363,14 +381,14 @@ static void __lambda14_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 81 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, FALSE);
-#line 367 "Window.c"
+#line 385 "Window.c"
 }
 
 
 static void ___lambda14__gtk_button_clicked (GtkButton* _sender, gpointer self) {
 #line 80 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda14_ ((SolusJournalSolusWindow*) self);
-#line 374 "Window.c"
+#line 392 "Window.c"
 }
 
 
@@ -382,14 +400,14 @@ static void __lambda15_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 88 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, FALSE);
-#line 386 "Window.c"
+#line 404 "Window.c"
 }
 
 
 static void ___lambda15__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 86 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda15_ ((SolusJournalSolusWindow*) self);
-#line 393 "Window.c"
+#line 411 "Window.c"
 }
 
 
@@ -401,14 +419,14 @@ static void __lambda16_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 94 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_open_file (self, _tmp0_);
-#line 405 "Window.c"
+#line 423 "Window.c"
 }
 
 
 static void ___lambda16__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 92 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda16_ ((SolusJournalSolusWindow*) self);
-#line 412 "Window.c"
+#line 430 "Window.c"
 }
 
 
@@ -420,14 +438,14 @@ static void __lambda17_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 100 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_undo_source (_tmp0_);
-#line 424 "Window.c"
+#line 442 "Window.c"
 }
 
 
 static void ___lambda17__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 98 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda17_ ((SolusJournalSolusWindow*) self);
-#line 431 "Window.c"
+#line 449 "Window.c"
 }
 
 
@@ -439,14 +457,14 @@ static void __lambda18_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 106 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_redo_source (_tmp0_);
-#line 443 "Window.c"
+#line 461 "Window.c"
 }
 
 
 static void ___lambda18__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 104 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda18_ ((SolusJournalSolusWindow*) self);
-#line 450 "Window.c"
+#line 468 "Window.c"
 }
 
 
@@ -460,13 +478,13 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = gtk_print_operation_new ();
 #line 112 "/home/logan/Source/Vala/journal/src/Window.vala"
 	print_operation = _tmp0_;
-#line 464 "Window.c"
+#line 482 "Window.c"
 	{
 #line 114 "/home/logan/Source/Vala/journal/src/Window.vala"
 		gtk_print_operation_run (print_operation, GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG, (GtkWindow*) self, &_inner_error_);
 #line 114 "/home/logan/Source/Vala/journal/src/Window.vala"
 		if (G_UNLIKELY (_inner_error_ != NULL)) {
-#line 470 "Window.c"
+#line 488 "Window.c"
 			goto __catch2_g_error;
 		}
 	}
@@ -488,7 +506,7 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 		g_warning ("Window.vala:116: Error printing: %s", _tmp2_);
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_error_free0 (e);
-#line 492 "Window.c"
+#line 510 "Window.c"
 	}
 	__finally2:
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
@@ -501,18 +519,18 @@ static void __lambda19_ (SolusJournalSolusWindow* self) {
 		g_clear_error (&_inner_error_);
 #line 113 "/home/logan/Source/Vala/journal/src/Window.vala"
 		return;
-#line 505 "Window.c"
+#line 523 "Window.c"
 	}
 #line 110 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (print_operation);
-#line 509 "Window.c"
+#line 527 "Window.c"
 }
 
 
 static void ___lambda19__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 110 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda19_ ((SolusJournalSolusWindow*) self);
-#line 516 "Window.c"
+#line 534 "Window.c"
 }
 
 
@@ -524,14 +542,14 @@ static void __lambda20_ (SolusJournalSolusWindow* self) {
 	_tmp0_ = self->priv->notebook;
 #line 123 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_save_file (self, _tmp0_, TRUE);
-#line 528 "Window.c"
+#line 546 "Window.c"
 }
 
 
 static void ___lambda20__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 121 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda20_ ((SolusJournalSolusWindow*) self);
-#line 535 "Window.c"
+#line 553 "Window.c"
 }
 
 
@@ -549,34 +567,205 @@ static void __lambda21_ (SolusJournalSolusWindow* self) {
 	_tmp2_ = _tmp1_->null_buffer;
 #line 129 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_notebook_new_tab (_tmp0_, _tmp2_, FALSE, "");
-#line 553 "Window.c"
+#line 571 "Window.c"
 }
 
 
 static void ___lambda21__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 127 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda21_ ((SolusJournalSolusWindow*) self);
-#line 560 "Window.c"
+#line 578 "Window.c"
 }
 
 
 static void __lambda22_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
 #line 134 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_message ("Window.vala:134: Closing...");
+	g_message ("Window.vala:134: Switching To Tab 1...");
 #line 135 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_destroy ((GtkWidget*) self);
-#line 569 "Window.c"
+	_tmp0_ = self->priv->notebook;
+#line 135 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 0);
+#line 590 "Window.c"
 }
 
 
 static void ___lambda22__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
 #line 133 "/home/logan/Source/Vala/journal/src/Window.vala"
 	__lambda22_ ((SolusJournalSolusWindow*) self);
-#line 576 "Window.c"
+#line 597 "Window.c"
 }
 
 
-static gboolean __lambda24_ (SolusJournalSolusWindow* self) {
+static void __lambda23_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 140 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:140: Switching To Tab 2...");
+#line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 1);
+#line 609 "Window.c"
+}
+
+
+static void ___lambda23__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 139 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda23_ ((SolusJournalSolusWindow*) self);
+#line 616 "Window.c"
+}
+
+
+static void __lambda24_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 146 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:146: Switching To Tab 3...");
+#line 147 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 147 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 2);
+#line 628 "Window.c"
+}
+
+
+static void ___lambda24__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 145 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda24_ ((SolusJournalSolusWindow*) self);
+#line 635 "Window.c"
+}
+
+
+static void __lambda25_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 152 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:152: Switching To Tab 4...");
+#line 153 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 153 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 3);
+#line 647 "Window.c"
+}
+
+
+static void ___lambda25__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 151 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda25_ ((SolusJournalSolusWindow*) self);
+#line 654 "Window.c"
+}
+
+
+static void __lambda26_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 158 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:158: Switching To Tab 5...");
+#line 159 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 159 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 4);
+#line 666 "Window.c"
+}
+
+
+static void ___lambda26__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 157 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda26_ ((SolusJournalSolusWindow*) self);
+#line 673 "Window.c"
+}
+
+
+static void __lambda27_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 164 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:164: Switching To Tab 6...");
+#line 165 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 165 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 5);
+#line 685 "Window.c"
+}
+
+
+static void ___lambda27__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 163 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda27_ ((SolusJournalSolusWindow*) self);
+#line 692 "Window.c"
+}
+
+
+static void __lambda28_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 170 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:170: Switching To Tab 7...");
+#line 171 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 171 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 6);
+#line 704 "Window.c"
+}
+
+
+static void ___lambda28__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 169 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda28_ ((SolusJournalSolusWindow*) self);
+#line 711 "Window.c"
+}
+
+
+static void __lambda29_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 176 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:176: Switching To Tab 8...");
+#line 177 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 177 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 7);
+#line 723 "Window.c"
+}
+
+
+static void ___lambda29__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 175 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda29_ ((SolusJournalSolusWindow*) self);
+#line 730 "Window.c"
+}
+
+
+static void __lambda30_ (SolusJournalSolusWindow* self) {
+	SolusJournalSolusNotebook* _tmp0_ = NULL;
+#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:182: Switching To Tab 9...");
+#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp0_ = self->priv->notebook;
+#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_notebook_set_current_page ((GtkNotebook*) _tmp0_, 8);
+#line 742 "Window.c"
+}
+
+
+static void ___lambda30__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda30_ ((SolusJournalSolusWindow*) self);
+#line 749 "Window.c"
+}
+
+
+static void __lambda31_ (SolusJournalSolusWindow* self) {
+#line 188 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_message ("Window.vala:188: Closing...");
+#line 189 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_destroy ((GtkWidget*) self);
+#line 758 "Window.c"
+}
+
+
+static void ___lambda31__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda31_ ((SolusJournalSolusWindow*) self);
+#line 765 "Window.c"
+}
+
+
+static gboolean __lambda33_ (SolusJournalSolusWindow* self) {
 	gboolean result = FALSE;
 	gchar* _tmp0_ = NULL;
 	gchar** _tmp1_ = NULL;
@@ -589,89 +778,89 @@ static gboolean __lambda24_ (SolusJournalSolusWindow* self) {
 	gchar** _tmp7_ = NULL;
 	gchar** _tmp8_ = NULL;
 	gint _tmp8__length1 = 0;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = g_strdup ("Alejandro Seoane <asetrigo@gmail.com>");
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = g_new0 (gchar*, 1 + 1);
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_[0] = _tmp0_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp2_ = _tmp1_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp2__length1 = 1;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp3_ = g_strdup ("Ryan Sipes <ryan@evolve-os.com>");
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp4_ = g_strdup ("Ikey Doherty <ikey@evolve-os.com>");
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp5_ = g_strdup ("Barry Smith <barry.of.smith@gmail.com>");
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp6_ = g_strdup ("Michael Rutherford <michaellogan.rutherford@gmail.com>");
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_ = g_new0 (gchar*, 4 + 1);
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_[0] = _tmp3_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_[1] = _tmp4_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_[2] = _tmp5_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_[3] = _tmp6_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp8_ = _tmp7_;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp8__length1 = 4;
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	gtk_show_about_dialog ((GtkWindow*) self, "program-name", "Journal", "copyright", "Copyright \u00A9 2015 Ryan Sipes", "website", "https://solus-project.com", "website-label", "Solus Project", "license-type", GTK_LICENSE_GPL_2_0, "comments", "A simple text-editor with sharing features.", "version", "1.0 (Stable)", "logo-icon-name", "journal", "artists", _tmp2_, "authors", _tmp8_, NULL);
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp8_ = (_vala_array_free (_tmp8_, _tmp8__length1, (GDestroyNotify) g_free), NULL);
-#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 198 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp2_ = (_vala_array_free (_tmp2_, _tmp2__length1, (GDestroyNotify) g_free), NULL);
-#line 162 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 216 "/home/logan/Source/Vala/journal/src/Window.vala"
 	result = FALSE;
-#line 162 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 216 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 635 "Window.c"
+#line 824 "Window.c"
 }
 
 
-static gboolean ___lambda24__gsource_func (gpointer self) {
+static gboolean ___lambda33__gsource_func (gpointer self) {
 	gboolean result;
-	result = __lambda24_ ((SolusJournalSolusWindow*) self);
-#line 143 "/home/logan/Source/Vala/journal/src/Window.vala"
+	result = __lambda33_ ((SolusJournalSolusWindow*) self);
+#line 197 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 644 "Window.c"
+#line 833 "Window.c"
 }
 
 
-static void __lambda23_ (SolusJournalSolusWindow* self) {
-#line 142 "/home/logan/Source/Vala/journal/src/Window.vala"
+static void __lambda32_ (SolusJournalSolusWindow* self) {
+#line 196 "/home/logan/Source/Vala/journal/src/Window.vala"
 	gtk_widget_queue_draw ((GtkWidget*) self);
-#line 143 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda24__gsource_func, g_object_ref (self), g_object_unref);
-#line 653 "Window.c"
+#line 197 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_idle_add_full (G_PRIORITY_DEFAULT_IDLE, ___lambda33__gsource_func, g_object_ref (self), g_object_unref);
+#line 842 "Window.c"
 }
 
 
-static void ___lambda23__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
-#line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
-	__lambda23_ ((SolusJournalSolusWindow*) self);
-#line 660 "Window.c"
+static void ___lambda32__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda32_ ((SolusJournalSolusWindow*) self);
+#line 849 "Window.c"
 }
 
 
-static void __lambda25_ (SolusJournalSolusWindow* self) {
+static void __lambda34_ (SolusJournalSolusWindow* self) {
 	SolusJournalSolusNotebook* _tmp0_ = NULL;
 	gint _tmp1_ = 0;
-#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = self->priv->notebook;
-#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = gtk_notebook_get_n_pages ((GtkNotebook*) _tmp0_);
-#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp1_ <= 0) {
-#line 169 "/home/logan/Source/Vala/journal/src/Window.vala"
-		g_message ("Window.vala:169: No pages! \n");
-#line 675 "Window.c"
+#line 223 "/home/logan/Source/Vala/journal/src/Window.vala"
+		g_message ("Window.vala:223: No pages! \n");
+#line 864 "Window.c"
 	} else {
 		gchar* typed_text = NULL;
 		SolusJournalSolusNotebook* _tmp2_ = NULL;
@@ -680,110 +869,110 @@ static void __lambda25_ (SolusJournalSolusWindow* self) {
 		SolusJournalShare* _tmp4_ = NULL;
 		SolusJournalShare* _tmp5_ = NULL;
 		const gchar* _tmp6_ = NULL;
-#line 171 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp2_ = self->priv->notebook;
-#line 171 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp3_ = solus_journal_solus_notebook_get_text (_tmp2_);
-#line 171 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
 		typed_text = _tmp3_;
-#line 172 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 226 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp4_ = solus_journal_share_new ();
-#line 172 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 226 "/home/logan/Source/Vala/journal/src/Window.vala"
 		share = _tmp4_;
-#line 173 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 227 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp5_ = share;
-#line 173 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 227 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp6_ = typed_text;
-#line 173 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 227 "/home/logan/Source/Vala/journal/src/Window.vala"
 		solus_journal_share_generate_paste (_tmp5_, _tmp6_, (GtkWindow*) self);
-#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_solus_journal_share_unref0 (share);
-#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (typed_text);
-#line 704 "Window.c"
+#line 893 "Window.c"
 	}
 }
 
 
-static void ___lambda25__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
-#line 167 "/home/logan/Source/Vala/journal/src/Window.vala"
-	__lambda25_ ((SolusJournalSolusWindow*) self);
-#line 712 "Window.c"
+static void ___lambda34__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
+	__lambda34_ ((SolusJournalSolusWindow*) self);
+#line 901 "Window.c"
 }
 
 
 static gchar** _vala_array_dup2 (gchar** self, int length) {
 	gchar** result;
 	int i;
-#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 	result = g_new0 (gchar*, length + 1);
-#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 	for (i = 0; i < length; i++) {
-#line 723 "Window.c"
+#line 912 "Window.c"
 		gchar* _tmp0_ = NULL;
-#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp0_ = g_strdup (self[i]);
-#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 		result[i] = _tmp0_;
-#line 729 "Window.c"
+#line 918 "Window.c"
 	}
-#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 733 "Window.c"
+#line 922 "Window.c"
 }
 
 
 static Block7Data* block7_data_ref (Block7Data* _data7_) {
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_atomic_int_inc (&_data7_->_ref_count_);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return _data7_;
-#line 742 "Window.c"
+#line 931 "Window.c"
 }
 
 
 static void block7_data_unref (void * _userdata_) {
 	Block7Data* _data7_;
 	_data7_ = (Block7Data*) _userdata_;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (g_atomic_int_dec_and_test (&_data7_->_ref_count_)) {
-#line 751 "Window.c"
+#line 940 "Window.c"
 		SolusJournalSolusWindow* self;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 		self = _data7_->_data6_->self;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (_data7_->scheme);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 		block6_data_unref (_data7_->_data6_);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_data7_->_data6_ = NULL;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 		g_slice_free (Block7Data, _data7_);
-#line 763 "Window.c"
+#line 952 "Window.c"
 	}
 }
 
 
-static void _____lambda27_ (Block7Data* _data7_) {
+static void _____lambda36_ (Block7Data* _data7_) {
 	Block6Data* _data6_;
 	SolusJournalSolusWindow* self;
 	const gchar* _tmp0_ = NULL;
-#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_data6_ = _data7_->_data6_;
-#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
 	self = _data6_->self;
-#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 319 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = _data7_->scheme;
-#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 319 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_solus_window_change_action (self, _tmp0_);
-#line 780 "Window.c"
+#line 969 "Window.c"
 }
 
 
-static void ______lambda27__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
-#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_____lambda27_ (self);
-#line 787 "Window.c"
+static void ______lambda36__g_simple_action_activate (GSimpleAction* _sender, GVariant* parameter, gpointer self) {
+#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_____lambda36_ (self);
+#line 976 "Window.c"
 }
 
 
@@ -842,171 +1031,261 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 	GSimpleAction* newtab_action = NULL;
 	GSimpleAction* _tmp41_ = NULL;
 	GSimpleAction* _tmp42_ = NULL;
-	GSimpleAction* quit_action = NULL;
+	GSimpleAction* switchtab1_action = NULL;
 	GSimpleAction* _tmp43_ = NULL;
 	GSimpleAction* _tmp44_ = NULL;
-	GPropertyAction* show_tabs_action = NULL;
-	SolusJournalApp* _tmp45_ = NULL;
-	GPropertyAction* _tmp46_ = NULL;
-	GSimpleAction* about_action = NULL;
+	GSimpleAction* switchtab2_action = NULL;
+	GSimpleAction* _tmp45_ = NULL;
+	GSimpleAction* _tmp46_ = NULL;
+	GSimpleAction* switchtab3_action = NULL;
 	GSimpleAction* _tmp47_ = NULL;
 	GSimpleAction* _tmp48_ = NULL;
-	GSimpleAction* hastebin_action = NULL;
+	GSimpleAction* switchtab4_action = NULL;
 	GSimpleAction* _tmp49_ = NULL;
 	GSimpleAction* _tmp50_ = NULL;
-	SolusJournalApp* _tmp51_ = NULL;
-	gchar* _tmp52_ = NULL;
-	gchar** _tmp53_ = NULL;
-	gchar** _tmp54_ = NULL;
-	gint _tmp54__length1 = 0;
-	SolusJournalApp* _tmp55_ = NULL;
-	gchar* _tmp56_ = NULL;
-	gchar** _tmp57_ = NULL;
-	gchar** _tmp58_ = NULL;
-	gint _tmp58__length1 = 0;
-	SolusJournalApp* _tmp59_ = NULL;
-	gchar* _tmp60_ = NULL;
-	gchar** _tmp61_ = NULL;
-	gchar** _tmp62_ = NULL;
-	gint _tmp62__length1 = 0;
+	GSimpleAction* switchtab5_action = NULL;
+	GSimpleAction* _tmp51_ = NULL;
+	GSimpleAction* _tmp52_ = NULL;
+	GSimpleAction* switchtab6_action = NULL;
+	GSimpleAction* _tmp53_ = NULL;
+	GSimpleAction* _tmp54_ = NULL;
+	GSimpleAction* switchtab7_action = NULL;
+	GSimpleAction* _tmp55_ = NULL;
+	GSimpleAction* _tmp56_ = NULL;
+	GSimpleAction* switchtab8_action = NULL;
+	GSimpleAction* _tmp57_ = NULL;
+	GSimpleAction* _tmp58_ = NULL;
+	GSimpleAction* switchtab9_action = NULL;
+	GSimpleAction* _tmp59_ = NULL;
+	GSimpleAction* _tmp60_ = NULL;
+	GSimpleAction* quit_action = NULL;
+	GSimpleAction* _tmp61_ = NULL;
+	GSimpleAction* _tmp62_ = NULL;
+	GPropertyAction* show_tabs_action = NULL;
 	SolusJournalApp* _tmp63_ = NULL;
-	gchar* _tmp64_ = NULL;
-	gchar** _tmp65_ = NULL;
-	gchar** _tmp66_ = NULL;
-	gint _tmp66__length1 = 0;
-	SolusJournalApp* _tmp67_ = NULL;
-	gchar* _tmp68_ = NULL;
-	gchar** _tmp69_ = NULL;
-	gchar** _tmp70_ = NULL;
-	gint _tmp70__length1 = 0;
-	SolusJournalApp* _tmp71_ = NULL;
-	gchar* _tmp72_ = NULL;
-	gchar** _tmp73_ = NULL;
-	gchar** _tmp74_ = NULL;
-	gint _tmp74__length1 = 0;
-	SolusJournalApp* _tmp75_ = NULL;
-	gchar* _tmp76_ = NULL;
-	gchar** _tmp77_ = NULL;
-	gchar** _tmp78_ = NULL;
-	gint _tmp78__length1 = 0;
-	SolusJournalApp* _tmp79_ = NULL;
-	GSimpleAction* _tmp80_ = NULL;
+	GPropertyAction* _tmp64_ = NULL;
+	GSimpleAction* about_action = NULL;
+	GSimpleAction* _tmp65_ = NULL;
+	GSimpleAction* _tmp66_ = NULL;
+	GSimpleAction* hastebin_action = NULL;
+	GSimpleAction* _tmp67_ = NULL;
+	GSimpleAction* _tmp68_ = NULL;
+	SolusJournalApp* _tmp69_ = NULL;
+	gchar* _tmp70_ = NULL;
+	gchar** _tmp71_ = NULL;
+	gchar** _tmp72_ = NULL;
+	gint _tmp72__length1 = 0;
+	SolusJournalApp* _tmp73_ = NULL;
+	gchar* _tmp74_ = NULL;
+	gchar** _tmp75_ = NULL;
+	gchar** _tmp76_ = NULL;
+	gint _tmp76__length1 = 0;
+	SolusJournalApp* _tmp77_ = NULL;
+	gchar* _tmp78_ = NULL;
+	gchar** _tmp79_ = NULL;
+	gchar** _tmp80_ = NULL;
+	gint _tmp80__length1 = 0;
 	SolusJournalApp* _tmp81_ = NULL;
-	GSimpleAction* _tmp82_ = NULL;
-	SolusJournalApp* _tmp83_ = NULL;
-	GSimpleAction* _tmp84_ = NULL;
+	gchar* _tmp82_ = NULL;
+	gchar** _tmp83_ = NULL;
+	gchar** _tmp84_ = NULL;
+	gint _tmp84__length1 = 0;
 	SolusJournalApp* _tmp85_ = NULL;
-	GSimpleAction* _tmp86_ = NULL;
-	SolusJournalApp* _tmp87_ = NULL;
-	GSimpleAction* _tmp88_ = NULL;
+	gchar* _tmp86_ = NULL;
+	gchar** _tmp87_ = NULL;
+	gchar** _tmp88_ = NULL;
+	gint _tmp88__length1 = 0;
 	SolusJournalApp* _tmp89_ = NULL;
-	GSimpleAction* _tmp90_ = NULL;
-	SolusJournalApp* _tmp91_ = NULL;
-	GSimpleAction* _tmp92_ = NULL;
+	gchar* _tmp90_ = NULL;
+	gchar** _tmp91_ = NULL;
+	gchar** _tmp92_ = NULL;
+	gint _tmp92__length1 = 0;
 	SolusJournalApp* _tmp93_ = NULL;
-	GSimpleAction* _tmp94_ = NULL;
-	SolusJournalApp* _tmp95_ = NULL;
-	GSimpleAction* _tmp96_ = NULL;
+	gchar* _tmp94_ = NULL;
+	gchar** _tmp95_ = NULL;
+	gchar** _tmp96_ = NULL;
+	gint _tmp96__length1 = 0;
 	SolusJournalApp* _tmp97_ = NULL;
-	GPropertyAction* _tmp98_ = NULL;
-	SolusJournalApp* _tmp99_ = NULL;
-	GSimpleAction* _tmp100_ = NULL;
+	gchar* _tmp98_ = NULL;
+	gchar** _tmp99_ = NULL;
+	gchar** _tmp100_ = NULL;
+	gint _tmp100__length1 = 0;
+	SolusJournalApp* _tmp101_ = NULL;
+	gchar* _tmp102_ = NULL;
+	gchar** _tmp103_ = NULL;
+	gchar** _tmp104_ = NULL;
+	gint _tmp104__length1 = 0;
+	SolusJournalApp* _tmp105_ = NULL;
+	gchar* _tmp106_ = NULL;
+	gchar** _tmp107_ = NULL;
+	gchar** _tmp108_ = NULL;
+	gint _tmp108__length1 = 0;
+	SolusJournalApp* _tmp109_ = NULL;
+	gchar* _tmp110_ = NULL;
+	gchar** _tmp111_ = NULL;
+	gchar** _tmp112_ = NULL;
+	gint _tmp112__length1 = 0;
+	SolusJournalApp* _tmp113_ = NULL;
+	gchar* _tmp114_ = NULL;
+	gchar** _tmp115_ = NULL;
+	gchar** _tmp116_ = NULL;
+	gint _tmp116__length1 = 0;
+	SolusJournalApp* _tmp117_ = NULL;
+	gchar* _tmp118_ = NULL;
+	gchar** _tmp119_ = NULL;
+	gchar** _tmp120_ = NULL;
+	gint _tmp120__length1 = 0;
+	SolusJournalApp* _tmp121_ = NULL;
+	gchar* _tmp122_ = NULL;
+	gchar** _tmp123_ = NULL;
+	gchar** _tmp124_ = NULL;
+	gint _tmp124__length1 = 0;
+	SolusJournalApp* _tmp125_ = NULL;
+	gchar* _tmp126_ = NULL;
+	gchar** _tmp127_ = NULL;
+	gchar** _tmp128_ = NULL;
+	gint _tmp128__length1 = 0;
+	SolusJournalApp* _tmp129_ = NULL;
+	gchar* _tmp130_ = NULL;
+	gchar** _tmp131_ = NULL;
+	gchar** _tmp132_ = NULL;
+	gint _tmp132__length1 = 0;
+	SolusJournalApp* _tmp133_ = NULL;
+	GSimpleAction* _tmp134_ = NULL;
+	SolusJournalApp* _tmp135_ = NULL;
+	GSimpleAction* _tmp136_ = NULL;
+	SolusJournalApp* _tmp137_ = NULL;
+	GSimpleAction* _tmp138_ = NULL;
+	SolusJournalApp* _tmp139_ = NULL;
+	GSimpleAction* _tmp140_ = NULL;
+	SolusJournalApp* _tmp141_ = NULL;
+	GSimpleAction* _tmp142_ = NULL;
+	SolusJournalApp* _tmp143_ = NULL;
+	GSimpleAction* _tmp144_ = NULL;
+	SolusJournalApp* _tmp145_ = NULL;
+	GSimpleAction* _tmp146_ = NULL;
+	SolusJournalApp* _tmp147_ = NULL;
+	GSimpleAction* _tmp148_ = NULL;
+	SolusJournalApp* _tmp149_ = NULL;
+	GSimpleAction* _tmp150_ = NULL;
+	SolusJournalApp* _tmp151_ = NULL;
+	GSimpleAction* _tmp152_ = NULL;
+	SolusJournalApp* _tmp153_ = NULL;
+	GSimpleAction* _tmp154_ = NULL;
+	SolusJournalApp* _tmp155_ = NULL;
+	GSimpleAction* _tmp156_ = NULL;
+	SolusJournalApp* _tmp157_ = NULL;
+	GSimpleAction* _tmp158_ = NULL;
+	SolusJournalApp* _tmp159_ = NULL;
+	GSimpleAction* _tmp160_ = NULL;
+	SolusJournalApp* _tmp161_ = NULL;
+	GSimpleAction* _tmp162_ = NULL;
+	SolusJournalApp* _tmp163_ = NULL;
+	GSimpleAction* _tmp164_ = NULL;
+	SolusJournalApp* _tmp165_ = NULL;
+	GSimpleAction* _tmp166_ = NULL;
+	SolusJournalApp* _tmp167_ = NULL;
+	GSimpleAction* _tmp168_ = NULL;
+	SolusJournalApp* _tmp169_ = NULL;
+	GPropertyAction* _tmp170_ = NULL;
+	SolusJournalApp* _tmp171_ = NULL;
+	GSimpleAction* _tmp172_ = NULL;
 	GtkMenuButton* share_button = NULL;
-	GtkMenuButton* _tmp101_ = NULL;
-	GtkMenuButton* _tmp102_ = NULL;
-	GtkImage* _tmp103_ = NULL;
-	GtkImage* _tmp104_ = NULL;
-	GtkMenuButton* _tmp105_ = NULL;
+	GtkMenuButton* _tmp173_ = NULL;
+	GtkMenuButton* _tmp174_ = NULL;
+	GtkImage* _tmp175_ = NULL;
+	GtkImage* _tmp176_ = NULL;
+	GtkMenuButton* _tmp177_ = NULL;
 	GMenu* share_menu = NULL;
-	GMenu* _tmp106_ = NULL;
+	GMenu* _tmp178_ = NULL;
 	GMenuItem* hastebin_item = NULL;
-	GMenuItem* _tmp107_ = NULL;
-	GMenu* _tmp108_ = NULL;
-	GMenuItem* _tmp109_ = NULL;
+	GMenuItem* _tmp179_ = NULL;
+	GMenu* _tmp180_ = NULL;
+	GMenuItem* _tmp181_ = NULL;
 	GtkPopover* share_popover = NULL;
-	GtkMenuButton* _tmp110_ = NULL;
-	GtkPopover* _tmp111_ = NULL;
-	GtkMenuButton* _tmp112_ = NULL;
-	GtkPopover* _tmp113_ = NULL;
-	GtkMenuButton* _tmp114_ = NULL;
-	GtkPopover* _tmp115_ = NULL;
-	GtkMenuButton* _tmp116_ = NULL;
-	GtkMenuButton* _tmp117_ = NULL;
-	GMenu* _tmp118_ = NULL;
+	GtkMenuButton* _tmp182_ = NULL;
+	GtkPopover* _tmp183_ = NULL;
+	GtkMenuButton* _tmp184_ = NULL;
+	GtkPopover* _tmp185_ = NULL;
+	GtkMenuButton* _tmp186_ = NULL;
+	GtkPopover* _tmp187_ = NULL;
+	GtkMenuButton* _tmp188_ = NULL;
+	GtkMenuButton* _tmp189_ = NULL;
+	GMenu* _tmp190_ = NULL;
 	GtkMenuButton* menu_button = NULL;
-	GtkMenuButton* _tmp119_ = NULL;
+	GtkMenuButton* _tmp191_ = NULL;
 	GtkPopover* popover = NULL;
-	GtkMenuButton* _tmp120_ = NULL;
-	GtkPopover* _tmp121_ = NULL;
-	GtkPopover* _tmp122_ = NULL;
+	GtkMenuButton* _tmp192_ = NULL;
+	GtkPopover* _tmp193_ = NULL;
+	GtkPopover* _tmp194_ = NULL;
 	GMenu* action_menu = NULL;
-	GMenu* _tmp123_ = NULL;
+	GMenu* _tmp195_ = NULL;
 	GMenu* file_menu = NULL;
-	GMenu* _tmp124_ = NULL;
+	GMenu* _tmp196_ = NULL;
 	GMenuItem* file_menu_item = NULL;
-	GMenu* _tmp125_ = NULL;
-	GMenuItem* _tmp126_ = NULL;
-	GMenu* _tmp127_ = NULL;
-	GMenuItem* _tmp128_ = NULL;
+	GMenu* _tmp197_ = NULL;
+	GMenuItem* _tmp198_ = NULL;
+	GMenu* _tmp199_ = NULL;
+	GMenuItem* _tmp200_ = NULL;
 	GMenuItem* saveas_item = NULL;
-	GMenuItem* _tmp129_ = NULL;
+	GMenuItem* _tmp201_ = NULL;
 	GMenuItem* quit_item = NULL;
-	GMenuItem* _tmp130_ = NULL;
-	GMenu* _tmp131_ = NULL;
-	GMenuItem* _tmp132_ = NULL;
-	GMenu* _tmp133_ = NULL;
-	GMenuItem* _tmp134_ = NULL;
+	GMenuItem* _tmp202_ = NULL;
+	GMenu* _tmp203_ = NULL;
+	GMenuItem* _tmp204_ = NULL;
+	GMenu* _tmp205_ = NULL;
+	GMenuItem* _tmp206_ = NULL;
 	GMenu* view_menu = NULL;
-	GMenu* _tmp135_ = NULL;
+	GMenu* _tmp207_ = NULL;
 	GMenuItem* view_menu_item = NULL;
-	GMenu* _tmp136_ = NULL;
-	GMenuItem* _tmp137_ = NULL;
-	GMenu* _tmp138_ = NULL;
-	GMenuItem* _tmp139_ = NULL;
+	GMenu* _tmp208_ = NULL;
+	GMenuItem* _tmp209_ = NULL;
+	GMenu* _tmp210_ = NULL;
+	GMenuItem* _tmp211_ = NULL;
 	GMenuItem* show_tabs_item = NULL;
-	GMenuItem* _tmp140_ = NULL;
-	GMenu* _tmp141_ = NULL;
-	GMenuItem* _tmp142_ = NULL;
+	GMenuItem* _tmp212_ = NULL;
+	GMenu* _tmp213_ = NULL;
+	GMenuItem* _tmp214_ = NULL;
 	GMenu* appearance_menu = NULL;
-	GMenu* _tmp143_ = NULL;
+	GMenu* _tmp215_ = NULL;
 	GMenuItem* appearance_item = NULL;
-	GMenu* _tmp144_ = NULL;
-	GMenuItem* _tmp145_ = NULL;
-	GMenu* _tmp146_ = NULL;
-	GMenuItem* _tmp147_ = NULL;
+	GMenu* _tmp216_ = NULL;
+	GMenuItem* _tmp217_ = NULL;
+	GMenu* _tmp218_ = NULL;
+	GMenuItem* _tmp219_ = NULL;
 	GMenuItem* about_item = NULL;
-	GMenuItem* _tmp148_ = NULL;
-	GMenu* _tmp149_ = NULL;
-	GMenuItem* _tmp150_ = NULL;
+	GMenuItem* _tmp220_ = NULL;
+	GMenu* _tmp221_ = NULL;
+	GMenuItem* _tmp222_ = NULL;
 	gchar** schemes = NULL;
-	GtkSourceStyleSchemeManager* _tmp151_ = NULL;
-	gchar** _tmp152_ = NULL;
-	gchar** _tmp153_ = NULL;
-	gchar** _tmp154_ = NULL;
-	gint _tmp154__length1 = 0;
+	GtkSourceStyleSchemeManager* _tmp223_ = NULL;
+	gchar** _tmp224_ = NULL;
+	gchar** _tmp225_ = NULL;
+	gchar** _tmp226_ = NULL;
+	gint _tmp226__length1 = 0;
 	gint schemes_length1 = 0;
 	gint _schemes_size_ = 0;
-	gchar** _tmp155_ = NULL;
-	gint _tmp155__length1 = 0;
-	SolusJournalApp* _tmp174_ = NULL;
-	GtkMenuButton* _tmp175_ = NULL;
-	GtkImage* _tmp176_ = NULL;
-	GtkImage* _tmp177_ = NULL;
-	GtkMenuButton* _tmp178_ = NULL;
-	GtkMenuButton* _tmp179_ = NULL;
-	GtkPopover* _tmp180_ = NULL;
-	GtkMenuButton* _tmp181_ = NULL;
-	GtkMenuButton* _tmp182_ = NULL;
-	GMenu* _tmp183_ = NULL;
-	GtkHeaderBar* _tmp184_ = NULL;
-	GtkMenuButton* _tmp185_ = NULL;
-	GtkHeaderBar* _tmp186_ = NULL;
-	GtkMenuButton* _tmp187_ = NULL;
+	gchar** _tmp227_ = NULL;
+	gint _tmp227__length1 = 0;
+	SolusJournalApp* _tmp246_ = NULL;
+	GtkMenuButton* _tmp247_ = NULL;
+	GtkImage* _tmp248_ = NULL;
+	GtkImage* _tmp249_ = NULL;
+	GtkMenuButton* _tmp250_ = NULL;
+	GtkMenuButton* _tmp251_ = NULL;
+	GtkPopover* _tmp252_ = NULL;
+	GtkMenuButton* _tmp253_ = NULL;
+	GtkMenuButton* _tmp254_ = NULL;
+	GMenu* _tmp255_ = NULL;
+	GtkHeaderBar* _tmp256_ = NULL;
+	GtkMenuButton* _tmp257_ = NULL;
+	GtkHeaderBar* _tmp258_ = NULL;
+	GtkMenuButton* _tmp259_ = NULL;
 	GtkBox* vbox = NULL;
-	GtkBox* _tmp188_ = NULL;
-	SolusJournalSolusNotebook* _tmp189_ = NULL;
-	SolusJournalSolusNotebook* _tmp190_ = NULL;
-	GtkHeaderBar* _tmp191_ = NULL;
+	GtkBox* _tmp260_ = NULL;
+	SolusJournalSolusNotebook* _tmp261_ = NULL;
+	SolusJournalSolusNotebook* _tmp262_ = NULL;
+	GtkHeaderBar* _tmp263_ = NULL;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_val_if_fail (application != NULL, NULL);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
@@ -1194,594 +1473,864 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 #line 127 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_connect_object (_tmp42_, "activate", (GCallback) ___lambda21__g_simple_action_activate, self, 0);
 #line 132 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp43_ = g_simple_action_new ("quit_action", NULL);
+	_tmp43_ = g_simple_action_new ("switchtab1_action", NULL);
 #line 132 "/home/logan/Source/Vala/journal/src/Window.vala"
-	quit_action = _tmp43_;
+	switchtab1_action = _tmp43_;
 #line 133 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp44_ = quit_action;
+	_tmp44_ = switchtab1_action;
 #line 133 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_connect_object (_tmp44_, "activate", (GCallback) ___lambda22__g_simple_action_activate, self, 0);
 #line 138 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp45_ = _data6_->application;
+	_tmp45_ = g_simple_action_new ("switchtab2_action", NULL);
 #line 138 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp46_ = g_property_action_new ("show_tabs_action", (GObject*) _tmp45_, "show-tabs");
-#line 138 "/home/logan/Source/Vala/journal/src/Window.vala"
-	show_tabs_action = _tmp46_;
-#line 140 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp47_ = g_simple_action_new ("about_action", NULL);
-#line 140 "/home/logan/Source/Vala/journal/src/Window.vala"
-	about_action = _tmp47_;
-#line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp48_ = about_action;
-#line 141 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_signal_connect_object (_tmp48_, "activate", (GCallback) ___lambda23__g_simple_action_activate, self, 0);
-#line 166 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp49_ = g_simple_action_new ("hastebin_action", NULL);
-#line 166 "/home/logan/Source/Vala/journal/src/Window.vala"
-	hastebin_action = _tmp49_;
-#line 167 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp50_ = hastebin_action;
-#line 167 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab2_action = _tmp45_;
+#line 139 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp46_ = switchtab2_action;
+#line 139 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp46_, "activate", (GCallback) ___lambda23__g_simple_action_activate, self, 0);
+#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp47_ = g_simple_action_new ("switchtab3_action", NULL);
+#line 144 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab3_action = _tmp47_;
+#line 145 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp48_ = switchtab3_action;
+#line 145 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp48_, "activate", (GCallback) ___lambda24__g_simple_action_activate, self, 0);
+#line 150 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp49_ = g_simple_action_new ("switchtab4_action", NULL);
+#line 150 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab4_action = _tmp49_;
+#line 151 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp50_ = switchtab4_action;
+#line 151 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_connect_object (_tmp50_, "activate", (GCallback) ___lambda25__g_simple_action_activate, self, 0);
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp51_ = _data6_->application;
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp52_ = g_strdup ("<Ctrl>S");
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp53_ = g_new0 (gchar*, 1 + 1);
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp53_[0] = _tmp52_;
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp54_ = _tmp53_;
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp54__length1 = 1;
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp51_, "app.save_action", _tmp54_);
-#line 178 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp54_ = (_vala_array_free (_tmp54_, _tmp54__length1, (GDestroyNotify) g_free), NULL);
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp55_ = _data6_->application;
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp56_ = g_strdup ("<Ctrl>O");
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp57_ = g_new0 (gchar*, 1 + 1);
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp57_[0] = _tmp56_;
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp58_ = _tmp57_;
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp58__length1 = 1;
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp55_, "app.open_action", _tmp58_);
-#line 179 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp58_ = (_vala_array_free (_tmp58_, _tmp58__length1, (GDestroyNotify) g_free), NULL);
+#line 156 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp51_ = g_simple_action_new ("switchtab5_action", NULL);
+#line 156 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab5_action = _tmp51_;
+#line 157 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp52_ = switchtab5_action;
+#line 157 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp52_, "activate", (GCallback) ___lambda26__g_simple_action_activate, self, 0);
+#line 162 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp53_ = g_simple_action_new ("switchtab6_action", NULL);
+#line 162 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab6_action = _tmp53_;
+#line 163 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp54_ = switchtab6_action;
+#line 163 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp54_, "activate", (GCallback) ___lambda27__g_simple_action_activate, self, 0);
+#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp55_ = g_simple_action_new ("switchtab7_action", NULL);
+#line 168 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab7_action = _tmp55_;
+#line 169 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp56_ = switchtab7_action;
+#line 169 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp56_, "activate", (GCallback) ___lambda28__g_simple_action_activate, self, 0);
+#line 174 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp57_ = g_simple_action_new ("switchtab8_action", NULL);
+#line 174 "/home/logan/Source/Vala/journal/src/Window.vala"
+	switchtab8_action = _tmp57_;
+#line 175 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp58_ = switchtab8_action;
+#line 175 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp58_, "activate", (GCallback) ___lambda29__g_simple_action_activate, self, 0);
 #line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp59_ = _data6_->application;
+	_tmp59_ = g_simple_action_new ("switchtab9_action", NULL);
 #line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp60_ = g_strdup ("<Ctrl>Q");
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp61_ = g_new0 (gchar*, 1 + 1);
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp61_[0] = _tmp60_;
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp62_ = _tmp61_;
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp62__length1 = 1;
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp59_, "app.quit_action", _tmp62_);
-#line 180 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp62_ = (_vala_array_free (_tmp62_, _tmp62__length1, (GDestroyNotify) g_free), NULL);
+	switchtab9_action = _tmp59_;
 #line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp60_ = switchtab9_action;
+#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp60_, "activate", (GCallback) ___lambda30__g_simple_action_activate, self, 0);
+#line 186 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp61_ = g_simple_action_new ("quit_action", NULL);
+#line 186 "/home/logan/Source/Vala/journal/src/Window.vala"
+	quit_action = _tmp61_;
+#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp62_ = quit_action;
+#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp62_, "activate", (GCallback) ___lambda31__g_simple_action_activate, self, 0);
+#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp63_ = _data6_->application;
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp64_ = g_strdup ("<Ctrl>Z");
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp65_ = g_new0 (gchar*, 1 + 1);
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp65_[0] = _tmp64_;
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp66_ = _tmp65_;
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp66__length1 = 1;
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp63_, "app.undo_action", _tmp66_);
-#line 181 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp66_ = (_vala_array_free (_tmp66_, _tmp66__length1, (GDestroyNotify) g_free), NULL);
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp67_ = _data6_->application;
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp68_ = g_strdup ("<Shift><Ctrl>Z");
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp69_ = g_new0 (gchar*, 1 + 1);
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp69_[0] = _tmp68_;
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp70_ = _tmp69_;
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp70__length1 = 1;
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp67_, "app.redo_action", _tmp70_);
-#line 182 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp70_ = (_vala_array_free (_tmp70_, _tmp70__length1, (GDestroyNotify) g_free), NULL);
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp71_ = _data6_->application;
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp72_ = g_strdup ("<Ctrl>N");
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp73_ = g_new0 (gchar*, 1 + 1);
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp73_[0] = _tmp72_;
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp74_ = _tmp73_;
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp74__length1 = 1;
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp71_, "app.newtab_action", _tmp74_);
-#line 183 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp74_ = (_vala_array_free (_tmp74_, _tmp74__length1, (GDestroyNotify) g_free), NULL);
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp75_ = _data6_->application;
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp76_ = g_strdup ("<Shift><Ctrl>S");
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp77_ = g_new0 (gchar*, 1 + 1);
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp77_[0] = _tmp76_;
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp78_ = _tmp77_;
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp78__length1 = 1;
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_application_set_accels_for_action ((GtkApplication*) _tmp75_, "app.saveas_action", _tmp78_);
-#line 184 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp78_ = (_vala_array_free (_tmp78_, _tmp78__length1, (GDestroyNotify) g_free), NULL);
-#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp79_ = _data6_->application;
-#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp80_ = save_action;
-#line 187 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp79_, (GAction*) _tmp80_);
-#line 188 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp64_ = g_property_action_new ("show_tabs_action", (GObject*) _tmp63_, "show-tabs");
+#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
+	show_tabs_action = _tmp64_;
+#line 194 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp65_ = g_simple_action_new ("about_action", NULL);
+#line 194 "/home/logan/Source/Vala/journal/src/Window.vala"
+	about_action = _tmp65_;
+#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp66_ = about_action;
+#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp66_, "activate", (GCallback) ___lambda32__g_simple_action_activate, self, 0);
+#line 220 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp67_ = g_simple_action_new ("hastebin_action", NULL);
+#line 220 "/home/logan/Source/Vala/journal/src/Window.vala"
+	hastebin_action = _tmp67_;
+#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp68_ = hastebin_action;
+#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_signal_connect_object (_tmp68_, "activate", (GCallback) ___lambda34__g_simple_action_activate, self, 0);
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp69_ = _data6_->application;
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp70_ = g_strdup ("<Ctrl>S");
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp71_ = g_new0 (gchar*, 1 + 1);
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp71_[0] = _tmp70_;
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp72_ = _tmp71_;
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp72__length1 = 1;
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp69_, "app.save_action", _tmp72_);
+#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp72_ = (_vala_array_free (_tmp72_, _tmp72__length1, (GDestroyNotify) g_free), NULL);
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp73_ = _data6_->application;
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp74_ = g_strdup ("<Ctrl>O");
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp75_ = g_new0 (gchar*, 1 + 1);
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp75_[0] = _tmp74_;
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp76_ = _tmp75_;
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp76__length1 = 1;
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp73_, "app.open_action", _tmp76_);
+#line 233 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp76_ = (_vala_array_free (_tmp76_, _tmp76__length1, (GDestroyNotify) g_free), NULL);
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp77_ = _data6_->application;
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp78_ = g_strdup ("<Ctrl>Q");
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp79_ = g_new0 (gchar*, 1 + 1);
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp79_[0] = _tmp78_;
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp80_ = _tmp79_;
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp80__length1 = 1;
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp77_, "app.quit_action", _tmp80_);
+#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp80_ = (_vala_array_free (_tmp80_, _tmp80__length1, (GDestroyNotify) g_free), NULL);
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp81_ = _data6_->application;
-#line 188 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp82_ = quit_action;
-#line 188 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp81_, (GAction*) _tmp82_);
-#line 189 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp83_ = _data6_->application;
-#line 189 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp84_ = open_action;
-#line 189 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp83_, (GAction*) _tmp84_);
-#line 190 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp82_ = g_strdup ("<Alt>1");
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp83_ = g_new0 (gchar*, 1 + 1);
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp83_[0] = _tmp82_;
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp84_ = _tmp83_;
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp84__length1 = 1;
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp81_, "app.switchtab1_action", _tmp84_);
+#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp84_ = (_vala_array_free (_tmp84_, _tmp84__length1, (GDestroyNotify) g_free), NULL);
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp85_ = _data6_->application;
-#line 190 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp86_ = undo_action;
-#line 190 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp85_, (GAction*) _tmp86_);
-#line 191 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp87_ = _data6_->application;
-#line 191 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp88_ = redo_action;
-#line 191 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp87_, (GAction*) _tmp88_);
-#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp86_ = g_strdup ("<Alt>2");
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp87_ = g_new0 (gchar*, 1 + 1);
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp87_[0] = _tmp86_;
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp88_ = _tmp87_;
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp88__length1 = 1;
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp85_, "app.switchtab2_action", _tmp88_);
+#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp88_ = (_vala_array_free (_tmp88_, _tmp88__length1, (GDestroyNotify) g_free), NULL);
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp89_ = _data6_->application;
-#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp90_ = print_action;
-#line 192 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp89_, (GAction*) _tmp90_);
-#line 193 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp91_ = _data6_->application;
-#line 193 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp92_ = saveas_action;
-#line 193 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp91_, (GAction*) _tmp92_);
-#line 194 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp90_ = g_strdup ("<Alt>3");
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp91_ = g_new0 (gchar*, 1 + 1);
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp91_[0] = _tmp90_;
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp92_ = _tmp91_;
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp92__length1 = 1;
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp89_, "app.switchtab3_action", _tmp92_);
+#line 237 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp92_ = (_vala_array_free (_tmp92_, _tmp92__length1, (GDestroyNotify) g_free), NULL);
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp93_ = _data6_->application;
-#line 194 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp94_ = newtab_action;
-#line 194 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp93_, (GAction*) _tmp94_);
-#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp95_ = _data6_->application;
-#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp96_ = about_action;
-#line 195 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp95_, (GAction*) _tmp96_);
-#line 196 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp94_ = g_strdup ("<Alt>4");
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp95_ = g_new0 (gchar*, 1 + 1);
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp95_[0] = _tmp94_;
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp96_ = _tmp95_;
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp96__length1 = 1;
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp93_, "app.switchtab4_action", _tmp96_);
+#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp96_ = (_vala_array_free (_tmp96_, _tmp96__length1, (GDestroyNotify) g_free), NULL);
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp97_ = _data6_->application;
-#line 196 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp98_ = show_tabs_action;
-#line 196 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp97_, (GAction*) _tmp98_);
-#line 197 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp99_ = _data6_->application;
-#line 197 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp100_ = hastebin_action;
-#line 197 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_action_map_add_action ((GActionMap*) _tmp99_, (GAction*) _tmp100_);
-#line 200 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp101_ = (GtkMenuButton*) gtk_menu_button_new ();
-#line 200 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp101_);
-#line 200 "/home/logan/Source/Vala/journal/src/Window.vala"
-	share_button = _tmp101_;
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp102_ = share_button;
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp103_ = (GtkImage*) gtk_image_new_from_icon_name ("emblem-shared-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp103_);
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp98_ = g_strdup ("<Alt>5");
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp99_ = g_new0 (gchar*, 1 + 1);
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp99_[0] = _tmp98_;
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp100_ = _tmp99_;
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp100__length1 = 1;
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp97_, "app.switchtab5_action", _tmp100_);
+#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp100_ = (_vala_array_free (_tmp100_, _tmp100__length1, (GDestroyNotify) g_free), NULL);
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp101_ = _data6_->application;
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp102_ = g_strdup ("<Alt>6");
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp103_ = g_new0 (gchar*, 1 + 1);
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp103_[0] = _tmp102_;
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp104_ = _tmp103_;
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_button_set_image ((GtkButton*) _tmp102_, (GtkWidget*) _tmp104_);
-#line 201 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_g_object_unref0 (_tmp104_);
-#line 202 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp105_ = share_button;
-#line 202 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_set_tooltip_text ((GtkWidget*) _tmp105_, "Share");
-#line 203 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp106_ = g_menu_new ();
-#line 203 "/home/logan/Source/Vala/journal/src/Window.vala"
-	share_menu = _tmp106_;
-#line 204 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp107_ = g_menu_item_new ("Hastebin", "app.hastebin_action");
-#line 204 "/home/logan/Source/Vala/journal/src/Window.vala"
-	hastebin_item = _tmp107_;
-#line 205 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp108_ = share_menu;
-#line 205 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp109_ = hastebin_item;
-#line 205 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp108_, _tmp109_);
-#line 206 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp110_ = share_button;
-#line 206 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp111_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp110_);
-#line 206 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp111_);
-#line 206 "/home/logan/Source/Vala/journal/src/Window.vala"
-	share_popover = _tmp111_;
-#line 207 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp112_ = share_button;
-#line 207 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_use_popover (_tmp112_, TRUE);
-#line 208 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp113_ = share_popover;
-#line 208 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_popover_set_modal (_tmp113_, TRUE);
-#line 209 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp114_ = share_button;
-#line 209 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp115_ = share_popover;
-#line 209 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_popover (_tmp114_, (GtkWidget*) _tmp115_);
-#line 210 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp116_ = share_button;
-#line 210 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_show ((GtkWidget*) _tmp116_);
-#line 211 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp117_ = share_button;
-#line 211 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp118_ = share_menu;
-#line 211 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_menu_model (_tmp117_, (GMenuModel*) _tmp118_);
-#line 214 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp119_ = (GtkMenuButton*) gtk_menu_button_new ();
-#line 214 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp119_);
-#line 214 "/home/logan/Source/Vala/journal/src/Window.vala"
-	menu_button = _tmp119_;
-#line 215 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp120_ = menu_button;
-#line 215 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp121_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp120_);
-#line 215 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp121_);
-#line 215 "/home/logan/Source/Vala/journal/src/Window.vala"
-	popover = _tmp121_;
-#line 216 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp122_ = popover;
-#line 216 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_popover_set_modal (_tmp122_, TRUE);
-#line 217 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp123_ = g_menu_new ();
-#line 217 "/home/logan/Source/Vala/journal/src/Window.vala"
-	action_menu = _tmp123_;
-#line 219 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp124_ = g_menu_new ();
-#line 219 "/home/logan/Source/Vala/journal/src/Window.vala"
-	file_menu = _tmp124_;
-#line 220 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp125_ = file_menu;
-#line 220 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp126_ = g_menu_item_new_submenu ("File", (GMenuModel*) _tmp125_);
-#line 220 "/home/logan/Source/Vala/journal/src/Window.vala"
-	file_menu_item = _tmp126_;
-#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp127_ = action_menu;
-#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp128_ = file_menu_item;
-#line 221 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp127_, _tmp128_);
-#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp129_ = g_menu_item_new ("Save As...", "app.saveas_action");
-#line 222 "/home/logan/Source/Vala/journal/src/Window.vala"
-	saveas_item = _tmp129_;
-#line 223 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp130_ = g_menu_item_new ("Quit", "app.quit_action");
-#line 223 "/home/logan/Source/Vala/journal/src/Window.vala"
-	quit_item = _tmp130_;
-#line 224 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp131_ = file_menu;
-#line 224 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp132_ = saveas_item;
-#line 224 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp131_, _tmp132_);
-#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp133_ = file_menu;
-#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp134_ = quit_item;
-#line 225 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp133_, _tmp134_);
-#line 228 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp135_ = g_menu_new ();
-#line 228 "/home/logan/Source/Vala/journal/src/Window.vala"
-	view_menu = _tmp135_;
-#line 229 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp136_ = view_menu;
-#line 229 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp137_ = g_menu_item_new_submenu ("View", (GMenuModel*) _tmp136_);
-#line 229 "/home/logan/Source/Vala/journal/src/Window.vala"
-	view_menu_item = _tmp137_;
-#line 230 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp138_ = action_menu;
-#line 230 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp139_ = view_menu_item;
-#line 230 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp138_, _tmp139_);
-#line 231 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp140_ = g_menu_item_new ("Always Show Tabs", "app.show_tabs_action");
-#line 231 "/home/logan/Source/Vala/journal/src/Window.vala"
-	show_tabs_item = _tmp140_;
-#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp141_ = view_menu;
-#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp142_ = show_tabs_item;
-#line 232 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp141_, _tmp142_);
-#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp143_ = g_menu_new ();
-#line 234 "/home/logan/Source/Vala/journal/src/Window.vala"
-	appearance_menu = _tmp143_;
-#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp144_ = appearance_menu;
-#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp145_ = g_menu_item_new_submenu ("Appearance", (GMenuModel*) _tmp144_);
-#line 235 "/home/logan/Source/Vala/journal/src/Window.vala"
-	appearance_item = _tmp145_;
-#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp146_ = action_menu;
-#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp147_ = appearance_item;
-#line 236 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp146_, _tmp147_);
-#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp148_ = g_menu_item_new ("About", "app.about_action");
-#line 238 "/home/logan/Source/Vala/journal/src/Window.vala"
-	about_item = _tmp148_;
-#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp149_ = action_menu;
-#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp150_ = about_item;
-#line 239 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_menu_append_item (_tmp149_, _tmp150_);
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp104__length1 = 1;
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp101_, "app.switchtab6_action", _tmp104_);
+#line 240 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp104_ = (_vala_array_free (_tmp104_, _tmp104__length1, (GDestroyNotify) g_free), NULL);
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp151_ = gtk_source_style_scheme_manager_get_default ();
+	_tmp105_ = _data6_->application;
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp153_ = _tmp152_ = gtk_source_style_scheme_manager_get_scheme_ids (_tmp151_);
+	_tmp106_ = g_strdup ("<Alt>7");
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp154_ = (_tmp153_ != NULL) ? _vala_array_dup2 (_tmp153_, _vala_array_length (_tmp152_)) : ((gpointer) _tmp153_);
+	_tmp107_ = g_new0 (gchar*, 1 + 1);
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp154__length1 = _vala_array_length (_tmp152_);
+	_tmp107_[0] = _tmp106_;
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	schemes = _tmp154_;
+	_tmp108_ = _tmp107_;
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
-	schemes_length1 = _tmp154__length1;
+	_tmp108__length1 = 1;
 #line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp105_, "app.switchtab7_action", _tmp108_);
+#line 241 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp108_ = (_vala_array_free (_tmp108_, _tmp108__length1, (GDestroyNotify) g_free), NULL);
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp109_ = _data6_->application;
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp110_ = g_strdup ("<Alt>8");
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp111_ = g_new0 (gchar*, 1 + 1);
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp111_[0] = _tmp110_;
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp112_ = _tmp111_;
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp112__length1 = 1;
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp109_, "app.switchtab8_action", _tmp112_);
+#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp112_ = (_vala_array_free (_tmp112_, _tmp112__length1, (GDestroyNotify) g_free), NULL);
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp113_ = _data6_->application;
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp114_ = g_strdup ("<Alt>9");
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp115_ = g_new0 (gchar*, 1 + 1);
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp115_[0] = _tmp114_;
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp116_ = _tmp115_;
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp116__length1 = 1;
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp113_, "app.switchtab9_action", _tmp116_);
+#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp116_ = (_vala_array_free (_tmp116_, _tmp116__length1, (GDestroyNotify) g_free), NULL);
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp117_ = _data6_->application;
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp118_ = g_strdup ("<Ctrl>Z");
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp119_ = g_new0 (gchar*, 1 + 1);
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp119_[0] = _tmp118_;
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp120_ = _tmp119_;
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp120__length1 = 1;
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp117_, "app.undo_action", _tmp120_);
+#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp120_ = (_vala_array_free (_tmp120_, _tmp120__length1, (GDestroyNotify) g_free), NULL);
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp121_ = _data6_->application;
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp122_ = g_strdup ("<Shift><Ctrl>Z");
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp123_ = g_new0 (gchar*, 1 + 1);
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp123_[0] = _tmp122_;
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp124_ = _tmp123_;
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp124__length1 = 1;
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp121_, "app.redo_action", _tmp124_);
+#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp124_ = (_vala_array_free (_tmp124_, _tmp124__length1, (GDestroyNotify) g_free), NULL);
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp125_ = _data6_->application;
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp126_ = g_strdup ("<Ctrl>N");
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp127_ = g_new0 (gchar*, 1 + 1);
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp127_[0] = _tmp126_;
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp128_ = _tmp127_;
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp128__length1 = 1;
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp125_, "app.newtab_action", _tmp128_);
+#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp128_ = (_vala_array_free (_tmp128_, _tmp128__length1, (GDestroyNotify) g_free), NULL);
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp129_ = _data6_->application;
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp130_ = g_strdup ("<Shift><Ctrl>S");
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp131_ = g_new0 (gchar*, 1 + 1);
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp131_[0] = _tmp130_;
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp132_ = _tmp131_;
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp132__length1 = 1;
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_application_set_accels_for_action ((GtkApplication*) _tmp129_, "app.saveas_action", _tmp132_);
+#line 247 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp132_ = (_vala_array_free (_tmp132_, _tmp132__length1, (GDestroyNotify) g_free), NULL);
+#line 250 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp133_ = _data6_->application;
+#line 250 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp134_ = save_action;
+#line 250 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp133_, (GAction*) _tmp134_);
+#line 251 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp135_ = _data6_->application;
+#line 251 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp136_ = quit_action;
+#line 251 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp135_, (GAction*) _tmp136_);
+#line 252 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp137_ = _data6_->application;
+#line 252 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp138_ = open_action;
+#line 252 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp137_, (GAction*) _tmp138_);
+#line 253 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp139_ = _data6_->application;
+#line 253 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp140_ = undo_action;
+#line 253 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp139_, (GAction*) _tmp140_);
+#line 254 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp141_ = _data6_->application;
+#line 254 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp142_ = redo_action;
+#line 254 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp141_, (GAction*) _tmp142_);
+#line 255 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp143_ = _data6_->application;
+#line 255 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp144_ = print_action;
+#line 255 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp143_, (GAction*) _tmp144_);
+#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp145_ = _data6_->application;
+#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp146_ = saveas_action;
+#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp145_, (GAction*) _tmp146_);
+#line 257 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp147_ = _data6_->application;
+#line 257 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp148_ = newtab_action;
+#line 257 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp147_, (GAction*) _tmp148_);
+#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp149_ = _data6_->application;
+#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp150_ = switchtab1_action;
+#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp149_, (GAction*) _tmp150_);
+#line 259 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp151_ = _data6_->application;
+#line 259 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp152_ = switchtab2_action;
+#line 259 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp151_, (GAction*) _tmp152_);
+#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp153_ = _data6_->application;
+#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp154_ = switchtab3_action;
+#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp153_, (GAction*) _tmp154_);
+#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp155_ = _data6_->application;
+#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp156_ = switchtab4_action;
+#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp155_, (GAction*) _tmp156_);
+#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp157_ = _data6_->application;
+#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp158_ = switchtab5_action;
+#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp157_, (GAction*) _tmp158_);
+#line 263 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp159_ = _data6_->application;
+#line 263 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp160_ = switchtab6_action;
+#line 263 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp159_, (GAction*) _tmp160_);
+#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp161_ = _data6_->application;
+#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp162_ = switchtab7_action;
+#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp161_, (GAction*) _tmp162_);
+#line 265 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp163_ = _data6_->application;
+#line 265 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp164_ = switchtab8_action;
+#line 265 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp163_, (GAction*) _tmp164_);
+#line 266 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp165_ = _data6_->application;
+#line 266 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp166_ = switchtab9_action;
+#line 266 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp165_, (GAction*) _tmp166_);
+#line 267 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp167_ = _data6_->application;
+#line 267 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp168_ = about_action;
+#line 267 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp167_, (GAction*) _tmp168_);
+#line 268 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp169_ = _data6_->application;
+#line 268 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp170_ = show_tabs_action;
+#line 268 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp169_, (GAction*) _tmp170_);
+#line 269 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp171_ = _data6_->application;
+#line 269 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp172_ = hastebin_action;
+#line 269 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_action_map_add_action ((GActionMap*) _tmp171_, (GAction*) _tmp172_);
+#line 272 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp173_ = (GtkMenuButton*) gtk_menu_button_new ();
+#line 272 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp173_);
+#line 272 "/home/logan/Source/Vala/journal/src/Window.vala"
+	share_button = _tmp173_;
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp174_ = share_button;
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp175_ = (GtkImage*) gtk_image_new_from_icon_name ("emblem-shared-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp175_);
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp176_ = _tmp175_;
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_button_set_image ((GtkButton*) _tmp174_, (GtkWidget*) _tmp176_);
+#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (_tmp176_);
+#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp177_ = share_button;
+#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_set_tooltip_text ((GtkWidget*) _tmp177_, "Share");
+#line 275 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp178_ = g_menu_new ();
+#line 275 "/home/logan/Source/Vala/journal/src/Window.vala"
+	share_menu = _tmp178_;
+#line 276 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp179_ = g_menu_item_new ("Hastebin", "app.hastebin_action");
+#line 276 "/home/logan/Source/Vala/journal/src/Window.vala"
+	hastebin_item = _tmp179_;
+#line 277 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp180_ = share_menu;
+#line 277 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp181_ = hastebin_item;
+#line 277 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp180_, _tmp181_);
+#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp182_ = share_button;
+#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp183_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp182_);
+#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp183_);
+#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+	share_popover = _tmp183_;
+#line 279 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp184_ = share_button;
+#line 279 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_use_popover (_tmp184_, TRUE);
+#line 280 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp185_ = share_popover;
+#line 280 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_popover_set_modal (_tmp185_, TRUE);
+#line 281 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp186_ = share_button;
+#line 281 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp187_ = share_popover;
+#line 281 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_popover (_tmp186_, (GtkWidget*) _tmp187_);
+#line 282 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp188_ = share_button;
+#line 282 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_show ((GtkWidget*) _tmp188_);
+#line 283 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp189_ = share_button;
+#line 283 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp190_ = share_menu;
+#line 283 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_menu_model (_tmp189_, (GMenuModel*) _tmp190_);
+#line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp191_ = (GtkMenuButton*) gtk_menu_button_new ();
+#line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp191_);
+#line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
+	menu_button = _tmp191_;
+#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp192_ = menu_button;
+#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp193_ = (GtkPopover*) gtk_popover_new ((GtkWidget*) _tmp192_);
+#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp193_);
+#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+	popover = _tmp193_;
+#line 288 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp194_ = popover;
+#line 288 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_popover_set_modal (_tmp194_, TRUE);
+#line 289 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp195_ = g_menu_new ();
+#line 289 "/home/logan/Source/Vala/journal/src/Window.vala"
+	action_menu = _tmp195_;
+#line 291 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp196_ = g_menu_new ();
+#line 291 "/home/logan/Source/Vala/journal/src/Window.vala"
+	file_menu = _tmp196_;
+#line 292 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp197_ = file_menu;
+#line 292 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp198_ = g_menu_item_new_submenu ("File", (GMenuModel*) _tmp197_);
+#line 292 "/home/logan/Source/Vala/journal/src/Window.vala"
+	file_menu_item = _tmp198_;
+#line 293 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp199_ = action_menu;
+#line 293 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp200_ = file_menu_item;
+#line 293 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp199_, _tmp200_);
+#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp201_ = g_menu_item_new ("Save As...", "app.saveas_action");
+#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+	saveas_item = _tmp201_;
+#line 295 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp202_ = g_menu_item_new ("Quit", "app.quit_action");
+#line 295 "/home/logan/Source/Vala/journal/src/Window.vala"
+	quit_item = _tmp202_;
+#line 296 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp203_ = file_menu;
+#line 296 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp204_ = saveas_item;
+#line 296 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp203_, _tmp204_);
+#line 297 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp205_ = file_menu;
+#line 297 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp206_ = quit_item;
+#line 297 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp205_, _tmp206_);
+#line 300 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp207_ = g_menu_new ();
+#line 300 "/home/logan/Source/Vala/journal/src/Window.vala"
+	view_menu = _tmp207_;
+#line 301 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp208_ = view_menu;
+#line 301 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp209_ = g_menu_item_new_submenu ("View", (GMenuModel*) _tmp208_);
+#line 301 "/home/logan/Source/Vala/journal/src/Window.vala"
+	view_menu_item = _tmp209_;
+#line 302 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp210_ = action_menu;
+#line 302 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp211_ = view_menu_item;
+#line 302 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp210_, _tmp211_);
+#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp212_ = g_menu_item_new ("Always Show Tabs", "app.show_tabs_action");
+#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+	show_tabs_item = _tmp212_;
+#line 304 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp213_ = view_menu;
+#line 304 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp214_ = show_tabs_item;
+#line 304 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp213_, _tmp214_);
+#line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp215_ = g_menu_new ();
+#line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
+	appearance_menu = _tmp215_;
+#line 307 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp216_ = appearance_menu;
+#line 307 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp217_ = g_menu_item_new_submenu ("Appearance", (GMenuModel*) _tmp216_);
+#line 307 "/home/logan/Source/Vala/journal/src/Window.vala"
+	appearance_item = _tmp217_;
+#line 308 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp218_ = action_menu;
+#line 308 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp219_ = appearance_item;
+#line 308 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp218_, _tmp219_);
+#line 310 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp220_ = g_menu_item_new ("About", "app.about_action");
+#line 310 "/home/logan/Source/Vala/journal/src/Window.vala"
+	about_item = _tmp220_;
+#line 311 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp221_ = action_menu;
+#line 311 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp222_ = about_item;
+#line 311 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_menu_append_item (_tmp221_, _tmp222_);
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp223_ = gtk_source_style_scheme_manager_get_default ();
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp225_ = _tmp224_ = gtk_source_style_scheme_manager_get_scheme_ids (_tmp223_);
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp226_ = (_tmp225_ != NULL) ? _vala_array_dup2 (_tmp225_, _vala_array_length (_tmp224_)) : ((gpointer) _tmp225_);
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp226__length1 = _vala_array_length (_tmp224_);
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	schemes = _tmp226_;
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+	schemes_length1 = _tmp226__length1;
+#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_schemes_size_ = schemes_length1;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp155_ = schemes;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp155__length1 = schemes_length1;
-#line 1601 "Window.c"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp227_ = schemes;
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp227__length1 = schemes_length1;
+#line 2150 "Window.c"
 	{
 		gchar** scheme_collection = NULL;
 		gint scheme_collection_length1 = 0;
 		gint _scheme_collection_size_ = 0;
 		gint scheme_it = 0;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-		scheme_collection = _tmp155_;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-		scheme_collection_length1 = _tmp155__length1;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-		for (scheme_it = 0; scheme_it < _tmp155__length1; scheme_it = scheme_it + 1) {
-#line 1613 "Window.c"
-			gchar* _tmp156_ = NULL;
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+		scheme_collection = _tmp227_;
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+		scheme_collection_length1 = _tmp227__length1;
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+		for (scheme_it = 0; scheme_it < _tmp227__length1; scheme_it = scheme_it + 1) {
+#line 2162 "Window.c"
+			gchar* _tmp228_ = NULL;
 			gchar* scheme = NULL;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-			_tmp156_ = g_strdup (scheme_collection[scheme_it]);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
-			scheme = _tmp156_;
-#line 1620 "Window.c"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+			_tmp228_ = g_strdup (scheme_collection[scheme_it]);
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
+			scheme = _tmp228_;
+#line 2169 "Window.c"
 			{
 				Block7Data* _data7_;
-				GMenu* _tmp157_ = NULL;
-				const gchar* _tmp158_ = NULL;
-				const gchar* _tmp159_ = NULL;
-				gchar* _tmp160_ = NULL;
-				gchar* _tmp161_ = NULL;
-				gchar* _tmp162_ = NULL;
-				gchar* _tmp163_ = NULL;
-				SolusJournalApp* _tmp164_ = NULL;
-				gboolean _tmp165_ = FALSE;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+				GMenu* _tmp229_ = NULL;
+				const gchar* _tmp230_ = NULL;
+				const gchar* _tmp231_ = NULL;
+				gchar* _tmp232_ = NULL;
+				gchar* _tmp233_ = NULL;
+				gchar* _tmp234_ = NULL;
+				gchar* _tmp235_ = NULL;
+				SolusJournalApp* _tmp236_ = NULL;
+				gboolean _tmp237_ = FALSE;
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_ = g_slice_new0 (Block7Data);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_->_ref_count_ = 1;
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_->_data6_ = block6_data_ref (_data6_);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_->scheme = scheme;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp157_ = appearance_menu;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp158_ = _data7_->scheme;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp159_ = _data7_->scheme;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp160_ = g_strconcat ("app.", _tmp159_, NULL);
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp161_ = _tmp160_;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp162_ = g_strconcat (_tmp161_, "_action", NULL);
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp163_ = _tmp162_;
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				g_menu_append (_tmp157_, _tmp158_, _tmp163_);
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_g_free0 (_tmp163_);
-#line 243 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_g_free0 (_tmp161_);
-#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp164_ = _data6_->application;
-#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
-				_tmp165_ = (G_TYPE_CHECK_INSTANCE_TYPE (_tmp164_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp164_) : NULL)->scheme_action_added;
-#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
-				if (_tmp165_ != TRUE) {
-#line 1666 "Window.c"
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp229_ = appearance_menu;
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp230_ = _data7_->scheme;
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp231_ = _data7_->scheme;
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp232_ = g_strconcat ("app.", _tmp231_, NULL);
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp233_ = _tmp232_;
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp234_ = g_strconcat (_tmp233_, "_action", NULL);
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp235_ = _tmp234_;
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				g_menu_append (_tmp229_, _tmp230_, _tmp235_);
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_g_free0 (_tmp235_);
+#line 315 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_g_free0 (_tmp233_);
+#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp236_ = _data6_->application;
+#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
+				_tmp237_ = (G_TYPE_CHECK_INSTANCE_TYPE (_tmp236_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp236_) : NULL)->scheme_action_added;
+#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
+				if (_tmp237_ != TRUE) {
+#line 2215 "Window.c"
 					GSimpleAction* scheme_action = NULL;
-					const gchar* _tmp166_ = NULL;
-					gchar* _tmp167_ = NULL;
-					gchar* _tmp168_ = NULL;
-					GSimpleAction* _tmp169_ = NULL;
-					GSimpleAction* _tmp170_ = NULL;
-					GSimpleAction* _tmp171_ = NULL;
-					SolusJournalApp* _tmp172_ = NULL;
-					GSimpleAction* _tmp173_ = NULL;
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp166_ = _data7_->scheme;
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp167_ = g_strconcat (_tmp166_, "_action", NULL);
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp168_ = _tmp167_;
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp169_ = g_simple_action_new (_tmp168_, NULL);
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp170_ = _tmp169_;
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_g_free0 (_tmp168_);
-#line 245 "/home/logan/Source/Vala/journal/src/Window.vala"
-					scheme_action = _tmp170_;
-#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp171_ = scheme_action;
-#line 246 "/home/logan/Source/Vala/journal/src/Window.vala"
-					g_signal_connect_data (_tmp171_, "activate", (GCallback) ______lambda27__g_simple_action_activate, block7_data_ref (_data7_), (GClosureNotify) block7_data_unref, 0);
-#line 249 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp172_ = _data6_->application;
-#line 249 "/home/logan/Source/Vala/journal/src/Window.vala"
-					_tmp173_ = scheme_action;
-#line 249 "/home/logan/Source/Vala/journal/src/Window.vala"
-					g_action_map_add_action ((GActionMap*) _tmp172_, (GAction*) _tmp173_);
-#line 244 "/home/logan/Source/Vala/journal/src/Window.vala"
+					const gchar* _tmp238_ = NULL;
+					gchar* _tmp239_ = NULL;
+					gchar* _tmp240_ = NULL;
+					GSimpleAction* _tmp241_ = NULL;
+					GSimpleAction* _tmp242_ = NULL;
+					GSimpleAction* _tmp243_ = NULL;
+					SolusJournalApp* _tmp244_ = NULL;
+					GSimpleAction* _tmp245_ = NULL;
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp238_ = _data7_->scheme;
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp239_ = g_strconcat (_tmp238_, "_action", NULL);
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp240_ = _tmp239_;
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp241_ = g_simple_action_new (_tmp240_, NULL);
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp242_ = _tmp241_;
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_g_free0 (_tmp240_);
+#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+					scheme_action = _tmp242_;
+#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp243_ = scheme_action;
+#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
+					g_signal_connect_data (_tmp243_, "activate", (GCallback) ______lambda36__g_simple_action_activate, block7_data_ref (_data7_), (GClosureNotify) block7_data_unref, 0);
+#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp244_ = _data6_->application;
+#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+					_tmp245_ = scheme_action;
+#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+					g_action_map_add_action ((GActionMap*) _tmp244_, (GAction*) _tmp245_);
+#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
 					_g_object_unref0 (scheme_action);
-#line 1702 "Window.c"
+#line 2251 "Window.c"
 				} else {
-#line 251 "/home/logan/Source/Vala/journal/src/Window.vala"
-					g_message ("Window.vala:251: Actions already exist.");
-#line 1706 "Window.c"
+#line 323 "/home/logan/Source/Vala/journal/src/Window.vala"
+					g_message ("Window.vala:323: Actions already exist.");
+#line 2255 "Window.c"
 				}
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				block7_data_unref (_data7_);
-#line 242 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 314 "/home/logan/Source/Vala/journal/src/Window.vala"
 				_data7_ = NULL;
-#line 1712 "Window.c"
+#line 2261 "Window.c"
 			}
 		}
 	}
-#line 254 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp174_ = _data6_->application;
-#line 254 "/home/logan/Source/Vala/journal/src/Window.vala"
-	(G_TYPE_CHECK_INSTANCE_TYPE (_tmp174_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp174_) : NULL)->scheme_action_added = TRUE;
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp175_ = menu_button;
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp176_ = (GtkImage*) gtk_image_new_from_icon_name ("open-menu-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp176_);
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp177_ = _tmp176_;
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_button_set_image ((GtkButton*) _tmp175_, (GtkWidget*) _tmp177_);
-#line 256 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_g_object_unref0 (_tmp177_);
-#line 257 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp178_ = menu_button;
-#line 257 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_use_popover (_tmp178_, TRUE);
-#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp179_ = menu_button;
-#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp180_ = popover;
-#line 258 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_popover (_tmp179_, (GtkWidget*) _tmp180_);
-#line 259 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp181_ = menu_button;
-#line 259 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_show ((GtkWidget*) _tmp181_);
-#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp182_ = menu_button;
-#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp183_ = action_menu;
-#line 260 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_menu_button_set_menu_model (_tmp182_, (GMenuModel*) _tmp183_);
-#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp184_ = self->headbar;
-#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp185_ = menu_button;
-#line 261 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_header_bar_pack_end (_tmp184_, (GtkWidget*) _tmp185_);
-#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp186_ = self->headbar;
-#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp187_ = share_button;
-#line 262 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_header_bar_pack_end (_tmp186_, (GtkWidget*) _tmp187_);
-#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp188_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
-	g_object_ref_sink (_tmp188_);
-#line 264 "/home/logan/Source/Vala/journal/src/Window.vala"
-	vbox = _tmp188_;
-#line 266 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp189_ = self->priv->notebook;
-#line 266 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_box_pack_start (vbox, (GtkWidget*) _tmp189_, TRUE, TRUE, (guint) 0);
-#line 267 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 326 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp246_ = _data6_->application;
+#line 326 "/home/logan/Source/Vala/journal/src/Window.vala"
+	(G_TYPE_CHECK_INSTANCE_TYPE (_tmp246_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp246_) : NULL)->scheme_action_added = TRUE;
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp247_ = menu_button;
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp248_ = (GtkImage*) gtk_image_new_from_icon_name ("open-menu-symbolic", GTK_ICON_SIZE_SMALL_TOOLBAR);
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp248_);
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp249_ = _tmp248_;
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_button_set_image ((GtkButton*) _tmp247_, (GtkWidget*) _tmp249_);
+#line 328 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (_tmp249_);
+#line 329 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp250_ = menu_button;
+#line 329 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_use_popover (_tmp250_, TRUE);
+#line 330 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp251_ = menu_button;
+#line 330 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp252_ = popover;
+#line 330 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_popover (_tmp251_, (GtkWidget*) _tmp252_);
+#line 331 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp253_ = menu_button;
+#line 331 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_show ((GtkWidget*) _tmp253_);
+#line 332 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp254_ = menu_button;
+#line 332 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp255_ = action_menu;
+#line 332 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_menu_button_set_menu_model (_tmp254_, (GMenuModel*) _tmp255_);
+#line 333 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp256_ = self->headbar;
+#line 333 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp257_ = menu_button;
+#line 333 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_header_bar_pack_end (_tmp256_, (GtkWidget*) _tmp257_);
+#line 334 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp258_ = self->headbar;
+#line 334 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp259_ = share_button;
+#line 334 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_header_bar_pack_end (_tmp258_, (GtkWidget*) _tmp259_);
+#line 336 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp260_ = (GtkBox*) gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+#line 336 "/home/logan/Source/Vala/journal/src/Window.vala"
+	g_object_ref_sink (_tmp260_);
+#line 336 "/home/logan/Source/Vala/journal/src/Window.vala"
+	vbox = _tmp260_;
+#line 338 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp261_ = self->priv->notebook;
+#line 338 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_box_pack_start (vbox, (GtkWidget*) _tmp261_, TRUE, TRUE, (guint) 0);
+#line 339 "/home/logan/Source/Vala/journal/src/Window.vala"
 	gtk_widget_show_all ((GtkWidget*) vbox);
-#line 268 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 340 "/home/logan/Source/Vala/journal/src/Window.vala"
 	gtk_container_add ((GtkContainer*) self, (GtkWidget*) vbox);
-#line 269 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp190_ = self->priv->notebook;
-#line 269 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_show_all ((GtkWidget*) _tmp190_);
-#line 270 "/home/logan/Source/Vala/journal/src/Window.vala"
-	_tmp191_ = self->headbar;
-#line 270 "/home/logan/Source/Vala/journal/src/Window.vala"
-	gtk_widget_show_all ((GtkWidget*) _tmp191_);
+#line 341 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp262_ = self->priv->notebook;
+#line 341 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_show_all ((GtkWidget*) _tmp262_);
+#line 342 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_tmp263_ = self->headbar;
+#line 342 "/home/logan/Source/Vala/journal/src/Window.vala"
+	gtk_widget_show_all ((GtkWidget*) _tmp263_);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (vbox);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
@@ -1829,6 +2378,24 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (quit_action);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab9_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab8_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab7_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab6_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab5_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab4_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab3_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab2_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
+	_g_object_unref0 (switchtab1_action);
+#line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (newtab_action);
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (saveas_action);
@@ -1852,85 +2419,85 @@ SolusJournalSolusWindow* solus_journal_solus_window_construct (GType object_type
 	_data6_ = NULL;
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return self;
-#line 1856 "Window.c"
+#line 2423 "Window.c"
 }
 
 
 SolusJournalSolusWindow* solus_journal_solus_window_new (SolusJournalApp* application) {
 #line 36 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return solus_journal_solus_window_construct (SOLUS_JOURNAL_TYPE_SOLUS_WINDOW, application);
-#line 1863 "Window.c"
+#line 2430 "Window.c"
 }
 
 
 void solus_journal_solus_window_set_notebook (SolusJournalSolusWindow* self) {
 	SolusJournalSolusNotebook* _tmp0_ = NULL;
-#line 273 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 345 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 346 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = solus_journal_solus_notebook_new (self);
-#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 346 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_object_ref_sink (_tmp0_);
-#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 346 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_object_unref0 (self->priv->notebook);
-#line 274 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 346 "/home/logan/Source/Vala/journal/src/Window.vala"
 	self->priv->notebook = _tmp0_;
-#line 1879 "Window.c"
+#line 2446 "Window.c"
 }
 
 
 SolusJournalSolusNotebook* solus_journal_solus_window_get_notebook (SolusJournalSolusWindow* self) {
 	SolusJournalSolusNotebook* result = NULL;
 	SolusJournalSolusNotebook* _tmp0_ = NULL;
-#line 277 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 349 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 350 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = self->priv->notebook;
-#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 350 "/home/logan/Source/Vala/journal/src/Window.vala"
 	result = _tmp0_;
-#line 278 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 350 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1894 "Window.c"
+#line 2461 "Window.c"
 }
 
 
 void solus_journal_solus_window_set_loaded (SolusJournalSolusWindow* self, gboolean loaded) {
 	gboolean _tmp0_ = FALSE;
-#line 281 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 353 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 282 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 354 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = loaded;
-#line 282 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 354 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_file_loaded = _tmp0_;
-#line 1906 "Window.c"
+#line 2473 "Window.c"
 }
 
 
 void solus_journal_solus_window_open_tabs (SolusJournalSolusWindow* self) {
 	gboolean _tmp0_ = FALSE;
-#line 285 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 357 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 358 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = solus_journal_file_loaded;
-#line 286 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 358 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp0_ != TRUE) {
-#line 1918 "Window.c"
+#line 2485 "Window.c"
 		SolusJournalSolusNotebook* _tmp1_ = NULL;
 		SolusJournalSolusNotebook* _tmp2_ = NULL;
 		const gchar* _tmp3_ = NULL;
-#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 359 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp1_ = self->priv->notebook;
-#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 359 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp2_ = self->priv->notebook;
-#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 359 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp3_ = _tmp2_->null_buffer;
-#line 287 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 359 "/home/logan/Source/Vala/journal/src/Window.vala"
 		solus_journal_solus_notebook_new_tab (_tmp1_, _tmp3_, FALSE, "");
-#line 1930 "Window.c"
+#line 2497 "Window.c"
 	} else {
-#line 289 "/home/logan/Source/Vala/journal/src/Window.vala"
-		g_message ("Window.vala:289: File already loaded.");
-#line 1934 "Window.c"
+#line 361 "/home/logan/Source/Vala/journal/src/Window.vala"
+		g_message ("Window.vala:361: File already loaded.");
+#line 2501 "Window.c"
 	}
 }
 
@@ -1939,17 +2506,17 @@ GtkHeaderBar* solus_journal_solus_window_get_headerbar (SolusJournalSolusWindow*
 	GtkHeaderBar* result = NULL;
 	GtkHeaderBar* _tmp0_ = NULL;
 	GtkHeaderBar* _tmp1_ = NULL;
-#line 293 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 365 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 366 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = self->headbar;
-#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 366 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 366 "/home/logan/Source/Vala/journal/src/Window.vala"
 	result = _tmp1_;
-#line 294 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 366 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1953 "Window.c"
+#line 2520 "Window.c"
 }
 
 
@@ -1957,17 +2524,17 @@ GtkButton* solus_journal_solus_window_get_save_button (SolusJournalSolusWindow* 
 	GtkButton* result = NULL;
 	GtkButton* _tmp0_ = NULL;
 	GtkButton* _tmp1_ = NULL;
-#line 297 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 369 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 298 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 370 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = self->priv->save_button;
-#line 298 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 370 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 298 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 370 "/home/logan/Source/Vala/journal/src/Window.vala"
 	result = _tmp1_;
-#line 298 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 370 "/home/logan/Source/Vala/journal/src/Window.vala"
 	return result;
-#line 1971 "Window.c"
+#line 2538 "Window.c"
 }
 
 
@@ -1976,23 +2543,23 @@ static void solus_journal_solus_window_change_action (SolusJournalSolusWindow* s
 	GtkApplication* _tmp1_ = NULL;
 	GtkApplication* _tmp2_ = NULL;
 	const gchar* _tmp3_ = NULL;
-#line 301 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 373 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 301 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 373 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (new_scheme != NULL);
-#line 302 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 374 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = new_scheme;
-#line 302 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 374 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_emit_by_name (self, "change-scheme", _tmp0_);
-#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 375 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = gtk_window_get_application ((GtkWindow*) self);
-#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 375 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp2_ = _tmp1_;
-#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 375 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp3_ = new_scheme;
-#line 303 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 375 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_app_set_current_scheme (G_TYPE_CHECK_INSTANCE_TYPE (_tmp2_, SOLUS_JOURNAL_TYPE_APP) ? ((SolusJournalApp*) _tmp2_) : NULL, _tmp3_);
-#line 1996 "Window.c"
+#line 2563 "Window.c"
 }
 
 
@@ -2006,80 +2573,80 @@ void solus_journal_solus_window_open_file (SolusJournalSolusWindow* self, SolusJ
 	SolusJournalSolusNotebook* _tmp7_ = NULL;
 	gboolean _tmp8_ = FALSE;
 	gchar* _tmp9_ = NULL;
-#line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 378 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 378 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (open_notebook != NULL);
-#line 307 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 379 "/home/logan/Source/Vala/journal/src/Window.vala"
 	tab_edited = TRUE;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = open_notebook;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp2_ = gtk_notebook_get_n_pages ((GtkNotebook*) _tmp1_);
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp2_ == 1) {
-#line 2022 "Window.c"
+#line 2589 "Window.c"
 		SolusJournalSolusNotebook* _tmp3_ = NULL;
 		gchar* _tmp4_ = NULL;
 		gchar* _tmp5_ = NULL;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp3_ = open_notebook;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp4_ = solus_journal_solus_notebook_get_label (_tmp3_);
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp5_ = _tmp4_;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp0_ = g_strcmp0 (_tmp5_, "Untitled") == 0;
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (_tmp5_);
-#line 2036 "Window.c"
+#line 2603 "Window.c"
 	} else {
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp0_ = FALSE;
-#line 2040 "Window.c"
+#line 2607 "Window.c"
 	}
-#line 309 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 381 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp0_) {
-#line 310 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 382 "/home/logan/Source/Vala/journal/src/Window.vala"
 		tab_edited = FALSE;
-#line 2046 "Window.c"
+#line 2613 "Window.c"
 	}
-#line 312 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 384 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp6_ = solus_journal_files_new ();
-#line 312 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 384 "/home/logan/Source/Vala/journal/src/Window.vala"
 	file = _tmp6_;
-#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 385 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp7_ = open_notebook;
-#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 385 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp8_ = tab_edited;
-#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 385 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp9_ = solus_journal_files_on_open_clicked (file, _tmp7_, _tmp8_);
-#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 385 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_g_free0 (solus_journal_buffer);
-#line 313 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 385 "/home/logan/Source/Vala/journal/src/Window.vala"
 	solus_journal_buffer = _tmp9_;
-#line 306 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 378 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_solus_journal_files_unref0 (file);
-#line 2064 "Window.c"
+#line 2631 "Window.c"
 }
 
 
 void solus_journal_solus_window_save_file (SolusJournalSolusWindow* self, SolusJournalSolusNotebook* save_notebook, gboolean save_as) {
 	SolusJournalSolusNotebook* _tmp0_ = NULL;
 	gint _tmp1_ = 0;
-#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 388 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (self != NULL);
-#line 316 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 388 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_return_if_fail (save_notebook != NULL);
-#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 389 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp0_ = save_notebook;
-#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 389 "/home/logan/Source/Vala/journal/src/Window.vala"
 	_tmp1_ = gtk_notebook_get_n_pages ((GtkNotebook*) _tmp0_);
-#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 389 "/home/logan/Source/Vala/journal/src/Window.vala"
 	if (_tmp1_ <= 0) {
-#line 318 "/home/logan/Source/Vala/journal/src/Window.vala"
-		g_message ("Window.vala:318: No pages! \n");
-#line 2083 "Window.c"
+#line 390 "/home/logan/Source/Vala/journal/src/Window.vala"
+		g_message ("Window.vala:390: No pages! \n");
+#line 2650 "Window.c"
 	} else {
 		SolusJournalFiles* file = NULL;
 		SolusJournalFiles* _tmp2_ = NULL;
@@ -2090,31 +2657,31 @@ void solus_journal_solus_window_save_file (SolusJournalSolusWindow* self, SolusJ
 		const gchar* _tmp6_ = NULL;
 		SolusJournalSolusNotebook* _tmp7_ = NULL;
 		gboolean _tmp8_ = FALSE;
-#line 320 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 392 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp2_ = solus_journal_files_new ();
-#line 320 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 392 "/home/logan/Source/Vala/journal/src/Window.vala"
 		file = _tmp2_;
-#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 393 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp3_ = save_notebook;
-#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 393 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp4_ = solus_journal_solus_notebook_get_text (_tmp3_);
-#line 321 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 393 "/home/logan/Source/Vala/journal/src/Window.vala"
 		typed_text = _tmp4_;
-#line 322 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 394 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp5_ = file;
-#line 322 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 394 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp6_ = typed_text;
-#line 322 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 394 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp7_ = save_notebook;
-#line 322 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 394 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_tmp8_ = save_as;
-#line 322 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 394 "/home/logan/Source/Vala/journal/src/Window.vala"
 		solus_journal_files_on_save_clicked (_tmp5_, _tmp6_, _tmp7_, _tmp8_);
-#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 389 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_g_free0 (typed_text);
-#line 317 "/home/logan/Source/Vala/journal/src/Window.vala"
+#line 389 "/home/logan/Source/Vala/journal/src/Window.vala"
 		_solus_journal_files_unref0 (file);
-#line 2118 "Window.c"
+#line 2685 "Window.c"
 	}
 }
 
@@ -2128,14 +2695,14 @@ static void solus_journal_solus_window_class_init (SolusJournalSolusWindowClass 
 	G_OBJECT_CLASS (klass)->finalize = solus_journal_solus_window_finalize;
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	g_signal_new ("change_scheme", SOLUS_JOURNAL_TYPE_SOLUS_WINDOW, G_SIGNAL_RUN_LAST, 0, NULL, NULL, g_cclosure_marshal_VOID__STRING, G_TYPE_NONE, 1, G_TYPE_STRING);
-#line 2132 "Window.c"
+#line 2699 "Window.c"
 }
 
 
 static void solus_journal_solus_window_instance_init (SolusJournalSolusWindow * self) {
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	self->priv = SOLUS_JOURNAL_SOLUS_WINDOW_GET_PRIVATE (self);
-#line 2139 "Window.c"
+#line 2706 "Window.c"
 }
 
 
@@ -2151,7 +2718,7 @@ static void solus_journal_solus_window_finalize (GObject* obj) {
 	_g_object_unref0 (self->priv->notebook);
 #line 27 "/home/logan/Source/Vala/journal/src/Window.vala"
 	G_OBJECT_CLASS (solus_journal_solus_window_parent_class)->finalize (obj);
-#line 2155 "Window.c"
+#line 2722 "Window.c"
 }
 
 

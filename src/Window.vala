@@ -129,65 +129,65 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			notebook.new_tab(notebook.null_buffer, false, "");
 		});
         
-        var switchtab1_action = new SimpleAction("switchtab1_action", null);
+        	var switchtab1_action = new SimpleAction("switchtab1_action", null);
 		switchtab1_action.activate.connect(()=> {
 			message("Switching To Tab 1...");
             		notebook.set_current_page(0);
 		});
         
-        var switchtab2_action = new SimpleAction("switchtab2_action", null);
+        	var switchtab2_action = new SimpleAction("switchtab2_action", null);
 		switchtab2_action.activate.connect(()=> {
 			message("Switching To Tab 2...");
             		notebook.set_current_page(1);
 		});
         
-        var switchtab3_action = new SimpleAction("switchtab3_action", null);
+        	var switchtab3_action = new SimpleAction("switchtab3_action", null);
 		switchtab3_action.activate.connect(()=> {
 			message("Switching To Tab 3...");
             		notebook.set_current_page(2);
 		});
         
-        var switchtab4_action = new SimpleAction("switchtab4_action", null);
+		var switchtab4_action = new SimpleAction("switchtab4_action", null);
 		switchtab4_action.activate.connect(()=> {
 			message("Switching To Tab 4...");
             		notebook.set_current_page(3);
 		});
         
-        var switchtab5_action = new SimpleAction("switchtab5_action", null);
+        	var switchtab5_action = new SimpleAction("switchtab5_action", null);
 		switchtab5_action.activate.connect(()=> {
 			message("Switching To Tab 5...");
             		notebook.set_current_page(4);
 		});
         
-        var switchtab6_action = new SimpleAction("switchtab6_action", null);
+        	var switchtab6_action = new SimpleAction("switchtab6_action", null);
 		switchtab6_action.activate.connect(()=> {
 			message("Switching To Tab 6...");
             		notebook.set_current_page(5);
 		});
         
-        var switchtab7_action = new SimpleAction("switchtab7_action", null);
+        	var switchtab7_action = new SimpleAction("switchtab7_action", null);
 		switchtab7_action.activate.connect(()=> {
 			message("Switching To Tab 7...");
             		notebook.set_current_page(6);
 		});
         
-        var switchtab8_action = new SimpleAction("switchtab8_action", null);
+        	var switchtab8_action = new SimpleAction("switchtab8_action", null);
 		switchtab8_action.activate.connect(()=> {
 			message("Switching To Tab 8...");
             		notebook.set_current_page(7);
 		});
         
-        var switchtab9_action = new SimpleAction("switchtab9_action", null);
+        	var switchtab9_action = new SimpleAction("switchtab9_action", null);
 		switchtab9_action.activate.connect(()=> {
 			message("Switching To Tab 9...");
             		notebook.set_current_page(8);
 		});
         
-        var quit_action = new SimpleAction("quit_action", null);
+        	var quit_action = new SimpleAction("quit_action", null);
 		quit_action.activate.connect(()=> {
 			message("Closing...");
             		this.destroy();
-        });
+        	});
 
 		var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
 

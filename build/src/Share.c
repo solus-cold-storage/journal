@@ -92,8 +92,8 @@ static Block3Data* block3_data_ref (Block3Data* _data3_);
 static void block3_data_unref (void * _userdata_);
 static void solus_journal_share_on_response (SolusJournalShare* self, GtkDialog* dialog, gint response_id);
 static void _solus_journal_share_on_response_gtk_dialog_response (GtkDialog* _sender, gint response_id, gpointer self);
-static void ___lambda26_ (Block3Data* _data3_, SoupSession* sess, SoupMessage* mess);
-static void ____lambda26__soup_session_callback (SoupSession* session, SoupMessage* msg, gpointer self);
+static void ___lambda35_ (Block3Data* _data3_, SoupSession* sess, SoupMessage* mess);
+static void ____lambda35__soup_session_callback (SoupSession* session, SoupMessage* msg, gpointer self);
 SolusJournalShare* solus_journal_share_new (void);
 SolusJournalShare* solus_journal_share_construct (GType object_type);
 static void solus_journal_share_finalize (SolusJournalShare* obj);
@@ -199,7 +199,7 @@ static gpointer _json_object_ref0 (gpointer self) {
 }
 
 
-static void ___lambda26_ (Block3Data* _data3_, SoupSession* sess, SoupMessage* mess) {
+static void ___lambda35_ (Block3Data* _data3_, SoupSession* sess, SoupMessage* mess) {
 	SolusJournalShare* self;
 	JsonParser* parser = NULL;
 	JsonParser* _tmp0_ = NULL;
@@ -406,9 +406,9 @@ static void ___lambda26_ (Block3Data* _data3_, SoupSession* sess, SoupMessage* m
 }
 
 
-static void ____lambda26__soup_session_callback (SoupSession* session, SoupMessage* msg, gpointer self) {
+static void ____lambda35__soup_session_callback (SoupSession* session, SoupMessage* msg, gpointer self) {
 #line 57 "/home/logan/Source/Vala/journal/src/Share.vala"
-	___lambda26_ (self, session, msg);
+	___lambda35_ (self, session, msg);
 #line 57 "/home/logan/Source/Vala/journal/src/Share.vala"
 	block3_data_unref (self);
 #line 415 "Share.c"
@@ -576,7 +576,7 @@ void solus_journal_share_generate_paste (SolusJournalShare* self, const gchar* t
 #line 57 "/home/logan/Source/Vala/journal/src/Share.vala"
 		_tmp29_ = _g_object_ref0 (_tmp28_);
 #line 57 "/home/logan/Source/Vala/journal/src/Share.vala"
-		soup_session_queue_message (_tmp27_, _tmp29_, ____lambda26__soup_session_callback, block3_data_ref (_data3_));
+		soup_session_queue_message (_tmp27_, _tmp29_, ____lambda35__soup_session_callback, block3_data_ref (_data3_));
 #line 581 "Share.c"
 	}
 #line 30 "/home/logan/Source/Vala/journal/src/Share.vala"

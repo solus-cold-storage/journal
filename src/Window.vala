@@ -44,7 +44,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			application.set_window_settings("window-width", width);
 			application.set_window_settings("window-height", height);
 			return false;
-        });
+        	});
 
 		this.window_position = WindowPosition.CENTER;
 		set_default_size (application.get_window_settings("window-width"), 
@@ -80,7 +80,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		save_button.clicked.connect (() => {
 			save_file(notebook, false);
 		});
-
+                
 		//Define actions.
 		var save_action = new SimpleAction("save_action", null);
 		save_action.activate.connect(()=> {
@@ -211,7 +211,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 					  "Ryan Sipes <ryan@evolve-os.com>",
 					  "Ikey Doherty <ikey@evolve-os.com>",
 					  "Barry Smith <barry.of.smith@gmail.com>",
-                      "Michael Rutherford <michaellogan.rutherford@gmail.com>"
+                                          "Michael Rutherford <michaellogan.rutherford@gmail.com>"
 					});
 				return false;
 				});
@@ -227,11 +227,36 @@ public class SolusWindow : Gtk.ApplicationWindow {
 				share.generate_paste(typed_text, this);
 			}
 		});
+                
+		var indentwidth8_action = new SimpleAction("indentwidth8_action", null);
+		indentwidth8_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(8);
+		});
+                
+                var indentwidth4_action = new SimpleAction("indentwidth4_action", null);
+		indentwidth4_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(4);
+		});
 
+                var indentwidth2_action = new SimpleAction("indentwidth2_action", null);
+		indentwidth2_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(2);
+		});
+                
+                var indentspaces_action = new SimpleAction("indentspaces_action", null);
+		indentspaces_action.activate.connect(()=> {
+			message("Changing Tabs To Spaces...");
+                        notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(true);
+		});
+                
 		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
         	application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
+                application.set_accels_for_action("app.about_action", {"<Ctrl>A"});
         	application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
         	application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
         	application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
@@ -254,6 +279,10 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		application.add_action(redo_action);
 		application.add_action(print_action);
 		application.add_action(saveas_action);
+                application.add_action(indentwidth8_action);
+                application.add_action(indentwidth4_action);
+                application.add_action(indentwidth2_action);
+                application.add_action(indentspaces_action);
 		application.add_action(newtab_action);
 	        application.add_action(switchtab1_action);
 	        application.add_action(switchtab2_action);
@@ -301,7 +330,19 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
 		action_menu.append_item(view_menu_item);
 		GLib.MenuItem show_tabs_item = new GLib.MenuItem("Always Show Tabs", "app.show_tabs_action");
+                GLib.Menu indent_width_menu = new GLib.Menu();
+		GLib.MenuItem indent_width_item = new GLib.MenuItem.submenu("Indent", indent_width_menu);
+                view_menu.append_item(indent_width_item);
+                GLib.MenuItem indentspaces_item = new GLib.MenuItem("Spaces", "app.indentspaces_action");
+                GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
+                GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
+                GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
 		view_menu.append_item(show_tabs_item);
+                indent_width_menu.append_item(indentspaces_item);
+                indent_width_menu.append_item(width8_item);
+                indent_width_menu.append_item(width4_item);
+                indent_width_menu.append_item(width2_item);
+
 
 		GLib.Menu appearance_menu = new GLib.Menu();
 		GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);
@@ -351,7 +392,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 	}
 
 	public void set_loaded(bool loaded){
-        file_loaded = loaded;
+        	file_loaded = loaded;
 	}
 
 	public void open_tabs (){
@@ -389,9 +430,9 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		if (save_notebook.get_n_pages() <= 0){
 			message("No pages! \n");
 		} else {
-            var file = new SolusJournal.Files();
-            string typed_text = save_notebook.get_text();
-            file.on_save_clicked(typed_text, save_notebook, save_as);
+            	var file = new SolusJournal.Files();
+            	string typed_text = save_notebook.get_text();
+            	file.on_save_clicked(typed_text, save_notebook, save_as);
 		}
 	}
 }

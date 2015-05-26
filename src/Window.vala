@@ -182,6 +182,17 @@ public class SolusWindow : Gtk.ApplicationWindow {
                         message("Switching To Tab 9...");
                         notebook.set_current_page(8);
                 });
+                
+                var highlight_line_action = new SimpleAction("highlight_line_action", null);
+                highlight_line_action.activate.connect(()=> {
+                        if (notebook.get_current_tab().source_view.get_highlight_current_line() == true) {
+                                message("Turning Off Current Line Highlighting...");
+                                notebook.get_current_tab().source_view.set_highlight_current_line(false);
+                        } else if (notebook.get_current_tab().source_view.get_highlight_current_line() == false) {
+                                message("Turning On Current Line Highlighting...");
+                                notebook.get_current_tab().source_view.set_highlight_current_line(true);                                
+                        }
+                });
         
                 var quit_action = new SimpleAction("quit_action", null);
                 quit_action.activate.connect(()=> {
@@ -251,6 +262,12 @@ public class SolusWindow : Gtk.ApplicationWindow {
                         message("Changing Tabs To Spaces...");
                         notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(true);
                 });
+                
+                var indenttabs_action = new SimpleAction("indenttabs_action", null);
+                indenttabs_action.activate.connect(()=> {
+                        message("Changing Spaces To Tabs...");
+                        notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(false);
+                });
 
                 var autotab_off_action = new SimpleAction("autotab_off_action", null);
                 autotab_off_action.activate.connect(()=> {
@@ -294,8 +311,10 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.add_action(indentwidth4_action);
                 application.add_action(indentwidth2_action);
                 application.add_action(indentspaces_action);
+                application.add_action(indenttabs_action);
                 application.add_action(autotab_off_action);
                 application.add_action(autotab_on_action);
+                application.add_action(highlight_line_action);
                 application.add_action(newtab_action);
                 application.add_action(switchtab1_action);
                 application.add_action(switchtab2_action);
@@ -345,30 +364,35 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 GLib.Menu view_menu = new GLib.Menu();
                 GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
                 GLib.MenuItem show_tabs_item = new GLib.MenuItem("Always Show Tabs", "app.show_tabs_action");
-                GLib.MenuItem autotab_on_item = new GLib.MenuItem("Automatic Indent On", "app.autotab_on_action");
-                GLib.MenuItem autotab_off_item = new GLib.MenuItem("Automatic Indent Off", "app.autotab_off_action");
+                GLib.MenuItem highlight_line_item = new GLib.MenuItem("Highlight Current Line", "app.highlight_line_action");
+
                 GLib.Menu indent_width_menu = new GLib.Menu();
                 GLib.MenuItem indent_width_item = new GLib.MenuItem.submenu("Indent", indent_width_menu);
                 
                 GLib.Menu tabs_spaces_menu = new GLib.Menu();
                 GLib.MenuItem tabs_spaces_item = new GLib.MenuItem.submenu("Type", tabs_spaces_menu);
                 GLib.MenuItem indentspaces_item = new GLib.MenuItem("Spaces", "app.indentspaces_action");
+                GLib.MenuItem indenttabs_item = new GLib.MenuItem("Tabs", "app.indenttabs_action");
         
                 GLib.Menu tabs_size_menu = new GLib.Menu();
                 GLib.MenuItem tabs_size_item = new GLib.MenuItem.submenu("Size", tabs_size_menu);
                 GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
                 GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
                 GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
+                GLib.MenuItem autotab_on_item = new GLib.MenuItem("Automatic Indent On", "app.autotab_on_action");
+                GLib.MenuItem autotab_off_item = new GLib.MenuItem("Automatic Indent Off", "app.autotab_off_action");
                 
                 action_menu.append_item(view_menu_item);
                 
                 edit_menu.append_item(indent_width_item);
-                view_menu.append_item(show_tabs_item);
                 edit_menu.append_item(autotab_on_item);
                 edit_menu.append_item(autotab_off_item);
+                view_menu.append_item(show_tabs_item);
+                view_menu.append_item(highlight_line_item);
                 
                 indent_width_menu.append_item(tabs_spaces_item);
                 tabs_spaces_menu.append_item(indentspaces_item);
+                tabs_spaces_menu.append_item(indenttabs_item);
                 
                 indent_width_menu.append_item(tabs_size_item);
                 tabs_size_menu.append_item(width8_item);

@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-8929d420c4bbeb84feee84365ef6bd75 journal_valac.stamp
-ff1253d2e6e938bbd901cb1bf3439434 src/Journal.c

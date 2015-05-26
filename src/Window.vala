@@ -44,7 +44,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			application.set_window_settings("window-width", width);
 			application.set_window_settings("window-height", height);
 			return false;
-        });
+        	});
 
 		this.window_position = WindowPosition.CENTER;
 		set_default_size (application.get_window_settings("window-width"), 
@@ -80,7 +80,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		save_button.clicked.connect (() => {
 			save_file(notebook, false);
 		});
-
+                
 		//Define actions.
 		var save_action = new SimpleAction("save_action", null);
 		save_action.activate.connect(()=> {
@@ -129,65 +129,65 @@ public class SolusWindow : Gtk.ApplicationWindow {
 			notebook.new_tab(notebook.null_buffer, false, "");
 		});
         
-        var switchtab1_action = new SimpleAction("switchtab1_action", null);
+        	var switchtab1_action = new SimpleAction("switchtab1_action", null);
 		switchtab1_action.activate.connect(()=> {
 			message("Switching To Tab 1...");
             		notebook.set_current_page(0);
 		});
         
-        var switchtab2_action = new SimpleAction("switchtab2_action", null);
+        	var switchtab2_action = new SimpleAction("switchtab2_action", null);
 		switchtab2_action.activate.connect(()=> {
 			message("Switching To Tab 2...");
             		notebook.set_current_page(1);
 		});
         
-        var switchtab3_action = new SimpleAction("switchtab3_action", null);
+        	var switchtab3_action = new SimpleAction("switchtab3_action", null);
 		switchtab3_action.activate.connect(()=> {
 			message("Switching To Tab 3...");
             		notebook.set_current_page(2);
 		});
         
-        var switchtab4_action = new SimpleAction("switchtab4_action", null);
+		var switchtab4_action = new SimpleAction("switchtab4_action", null);
 		switchtab4_action.activate.connect(()=> {
 			message("Switching To Tab 4...");
             		notebook.set_current_page(3);
 		});
         
-        var switchtab5_action = new SimpleAction("switchtab5_action", null);
+        	var switchtab5_action = new SimpleAction("switchtab5_action", null);
 		switchtab5_action.activate.connect(()=> {
 			message("Switching To Tab 5...");
             		notebook.set_current_page(4);
 		});
         
-        var switchtab6_action = new SimpleAction("switchtab6_action", null);
+        	var switchtab6_action = new SimpleAction("switchtab6_action", null);
 		switchtab6_action.activate.connect(()=> {
 			message("Switching To Tab 6...");
             		notebook.set_current_page(5);
 		});
         
-        var switchtab7_action = new SimpleAction("switchtab7_action", null);
+        	var switchtab7_action = new SimpleAction("switchtab7_action", null);
 		switchtab7_action.activate.connect(()=> {
 			message("Switching To Tab 7...");
             		notebook.set_current_page(6);
 		});
         
-        var switchtab8_action = new SimpleAction("switchtab8_action", null);
+        	var switchtab8_action = new SimpleAction("switchtab8_action", null);
 		switchtab8_action.activate.connect(()=> {
 			message("Switching To Tab 8...");
             		notebook.set_current_page(7);
 		});
         
-        var switchtab9_action = new SimpleAction("switchtab9_action", null);
+        	var switchtab9_action = new SimpleAction("switchtab9_action", null);
 		switchtab9_action.activate.connect(()=> {
 			message("Switching To Tab 9...");
             		notebook.set_current_page(8);
 		});
         
-        var quit_action = new SimpleAction("quit_action", null);
+        	var quit_action = new SimpleAction("quit_action", null);
 		quit_action.activate.connect(()=> {
 			message("Closing...");
             		this.destroy();
-        });
+        	});
 
 		var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
 
@@ -211,7 +211,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 					  "Ryan Sipes <ryan@evolve-os.com>",
 					  "Ikey Doherty <ikey@evolve-os.com>",
 					  "Barry Smith <barry.of.smith@gmail.com>",
-                      "Michael Rutherford <michaellogan.rutherford@gmail.com>"
+                                          "Michael Rutherford <michaellogan.rutherford@gmail.com>"
 					});
 				return false;
 				});
@@ -227,20 +227,45 @@ public class SolusWindow : Gtk.ApplicationWindow {
 				share.generate_paste(typed_text, this);
 			}
 		});
+                
+		var indentwidth8_action = new SimpleAction("indentwidth8_action", null);
+		indentwidth8_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(8);
+		});
+                
+                var indentwidth4_action = new SimpleAction("indentwidth4_action", null);
+		indentwidth4_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(4);
+		});
 
+                var indentwidth2_action = new SimpleAction("indentwidth2_action", null);
+		indentwidth2_action.activate.connect(()=> {
+			message("Changing Indent Width...");
+                        notebook.get_current_tab().source_view.set_indent_width(2);
+		});
+                
+                var indentspaces_action = new SimpleAction("indentspaces_action", null);
+		indentspaces_action.activate.connect(()=> {
+			message("Changing Tabs To Spaces...");
+                        notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(true);
+		});
+                
 		//Set accelerators
 		application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
 		application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
-        application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
-        application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
-        application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
-        application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
-        application.set_accels_for_action("app.switchtab4_action", {"<Alt>4"});
-        application.set_accels_for_action("app.switchtab5_action", {"<Alt>5"});
-        application.set_accels_for_action("app.switchtab6_action", {"<Alt>6"});
-        application.set_accels_for_action("app.switchtab7_action", {"<Alt>7"});
-        application.set_accels_for_action("app.switchtab8_action", {"<Alt>8"});
-        application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
+        	application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
+                application.set_accels_for_action("app.about_action", {"<Ctrl>A"});
+        	application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
+        	application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
+        	application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});
+	        application.set_accels_for_action("app.switchtab4_action", {"<Alt>4"});
+        	application.set_accels_for_action("app.switchtab5_action", {"<Alt>5"});
+	        application.set_accels_for_action("app.switchtab6_action", {"<Alt>6"});
+	        application.set_accels_for_action("app.switchtab7_action", {"<Alt>7"});
+	        application.set_accels_for_action("app.switchtab8_action", {"<Alt>8"});
+	        application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
 		application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
 		application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
 		application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
@@ -248,22 +273,26 @@ public class SolusWindow : Gtk.ApplicationWindow {
 
 		//add actions to the application.
 		application.add_action(save_action);
-        application.add_action(quit_action);
+	        application.add_action(quit_action);
 		application.add_action(open_action);
 		application.add_action(undo_action);
 		application.add_action(redo_action);
 		application.add_action(print_action);
 		application.add_action(saveas_action);
+                application.add_action(indentwidth8_action);
+                application.add_action(indentwidth4_action);
+                application.add_action(indentwidth2_action);
+                application.add_action(indentspaces_action);
 		application.add_action(newtab_action);
-        application.add_action(switchtab1_action);
-        application.add_action(switchtab2_action);
-        application.add_action(switchtab3_action);
-        application.add_action(switchtab4_action);
-        application.add_action(switchtab5_action);
-        application.add_action(switchtab6_action);
-        application.add_action(switchtab7_action);
-        application.add_action(switchtab8_action);
-        application.add_action(switchtab9_action);
+	        application.add_action(switchtab1_action);
+	        application.add_action(switchtab2_action);
+	        application.add_action(switchtab3_action);
+	        application.add_action(switchtab4_action);
+	        application.add_action(switchtab5_action);
+	        application.add_action(switchtab6_action);
+	        application.add_action(switchtab7_action);
+	        application.add_action(switchtab8_action);
+	        application.add_action(switchtab9_action);
 		application.add_action(about_action);
 		application.add_action(show_tabs_action);
 		application.add_action(hastebin_action);
@@ -294,14 +323,26 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		GLib.MenuItem saveas_item = new GLib.MenuItem("Save As...", "app.saveas_action");
 		GLib.MenuItem quit_item = new GLib.MenuItem("Quit", "app.quit_action");
 		file_menu.append_item(saveas_item);
-        file_menu.append_item(quit_item);
+	        file_menu.append_item(quit_item);
 
 
 		GLib.Menu view_menu = new GLib.Menu();
 		GLib.MenuItem view_menu_item = new GLib.MenuItem.submenu("View", view_menu);
 		action_menu.append_item(view_menu_item);
 		GLib.MenuItem show_tabs_item = new GLib.MenuItem("Always Show Tabs", "app.show_tabs_action");
+                GLib.Menu indent_width_menu = new GLib.Menu();
+		GLib.MenuItem indent_width_item = new GLib.MenuItem.submenu("Indent", indent_width_menu);
+                view_menu.append_item(indent_width_item);
+                GLib.MenuItem indentspaces_item = new GLib.MenuItem("Spaces", "app.indentspaces_action");
+                GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
+                GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
+                GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
 		view_menu.append_item(show_tabs_item);
+                indent_width_menu.append_item(indentspaces_item);
+                indent_width_menu.append_item(width8_item);
+                indent_width_menu.append_item(width4_item);
+                indent_width_menu.append_item(width2_item);
+
 
 		GLib.Menu appearance_menu = new GLib.Menu();
 		GLib.MenuItem appearance_item = new GLib.MenuItem.submenu("Appearance", appearance_menu);
@@ -351,7 +392,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 	}
 
 	public void set_loaded(bool loaded){
-        file_loaded = loaded;
+        	file_loaded = loaded;
 	}
 
 	public void open_tabs (){
@@ -389,9 +430,9 @@ public class SolusWindow : Gtk.ApplicationWindow {
 		if (save_notebook.get_n_pages() <= 0){
 			message("No pages! \n");
 		} else {
-            var file = new SolusJournal.Files();
-            string typed_text = save_notebook.get_text();
-            file.on_save_clicked(typed_text, save_notebook, save_as);
+            	var file = new SolusJournal.Files();
+            	string typed_text = save_notebook.get_text();
+            	file.on_save_clicked(typed_text, save_notebook, save_as);
 		}
 	}
 }

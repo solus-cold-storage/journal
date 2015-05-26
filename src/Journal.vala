@@ -20,6 +20,7 @@ using GLib;
 
 namespace SolusJournal{
 
+
 public class App : Gtk.Application{
 
 	private bool window_created = false;
@@ -27,14 +28,18 @@ public class App : Gtk.Application{
 	public bool scheme_action_added;
 	private string current_scheme;
 	private Settings settings;
+        private SolusPluginManager manager;
+
 
 	public bool show_tabs { public set; public get; default = false; }
 
 	public App() {
+
 		Object(application_id:"com.solus-project.journal", 
 			flags:ApplicationFlags.HANDLES_OPEN);
 		settings = new Settings("com.solus-project.journal");
 		on_settings_change("scheme");
+                manager = new SolusPluginManager(this);
 	}
 
 	public override void activate(){
@@ -99,6 +104,8 @@ public class App : Gtk.Application{
 	}
 
 	public void run_application(){
+
+
 		SolusWindow first_window = create_window();
 
 		if (loaded_files != null){

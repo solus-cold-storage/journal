@@ -26,6 +26,7 @@ pkg_check_modules(DEPS REQUIRED
 	libsoup-2.4
 	json-glib-1.0
 	gtksourceview-3.0
+  	libpeas-1.0
 )
 add_definitions(${DEPS_CFLAGS})
 link_libraries(${DEPS_LIBRARIES})
@@ -57,6 +58,7 @@ PACKAGES
     libsoup-2.4
     json-glib-1.0
     gtksourceview-3.0
+    libpeas-1.0
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/vapi/
 )
@@ -102,3 +104,4 @@ install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/scalable/journal.svg DESTINATION
 
 #subdirectories
 add_subdirectory (data)
+

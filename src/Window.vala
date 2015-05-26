@@ -197,7 +197,23 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 var quit_action = new SimpleAction("quit_action", null);
                 quit_action.activate.connect(()=> {
                         message("Closing...");
-                        this.destroy();
+                        Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
+                        msg.response.connect ((response_id) => {
+                                switch (response_id) {
+                                        case Gtk.ResponseType.OK:
+                                                stdout.puts ("Ok\n");
+                                                this.destroy();
+                                                break;
+                                        case Gtk.ResponseType.CANCEL:
+                                                stdout.puts ("Cancel\n");
+                                                break;
+                                        case Gtk.ResponseType.DELETE_EVENT:
+                                                stdout.puts ("Delete\n");
+                                                break;
+                                }
+                                msg.destroy();
+                        });
+                        msg.show ();
                 });
 
                 var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
@@ -272,7 +288,23 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 var close_tab_action = new SimpleAction("close_tab_action", null);
                 close_tab_action.activate.connect(()=> {
                         message("Closing Current Tab...");
-                        notebook.get_current_tab().destroy();
+                        Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
+                        msg.response.connect ((response_id) => {
+                                switch (response_id) {
+                                        case Gtk.ResponseType.OK:
+                                                stdout.puts ("Ok\n");
+                                                notebook.get_current_tab().destroy();
+                                                break;
+                                        case Gtk.ResponseType.CANCEL:
+                                                stdout.puts ("Cancel\n");
+                                                break;
+                                        case Gtk.ResponseType.DELETE_EVENT:
+                                                stdout.puts ("Delete\n");
+                                                break;
+                                }
+                                msg.destroy();
+                        });
+                        msg.show ();
                 });
 
                 var autotab_action = new SimpleAction("autotab_action", null);

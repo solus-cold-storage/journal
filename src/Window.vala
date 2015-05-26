@@ -268,6 +268,12 @@ public class SolusWindow : Gtk.ApplicationWindow {
                         message("Changing Spaces To Tabs...");
                         notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(false);
                 });
+                
+                var close_tab_action = new SimpleAction("close_tab_action", null);
+                close_tab_action.activate.connect(()=> {
+                        message("Closing Current Tab...");
+                        notebook.get_current_tab().destroy();
+                });
 
                 var autotab_action = new SimpleAction("autotab_action", null);
                 autotab_action.activate.connect(()=> {
@@ -284,6 +290,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
                 application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
                 application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
+                application.set_accels_for_action("app.close_tab_action", {"<Ctrl>W"});
                 application.set_accels_for_action("app.about_action", {"<Shift><Ctrl>A"});
                 application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
                 application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
@@ -313,6 +320,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.add_action(indentspaces_action);
                 application.add_action(indenttabs_action);
                 application.add_action(autotab_action);
+                application.add_action(close_tab_action);
                 application.add_action(highlight_line_action);
                 application.add_action(newtab_action);
                 application.add_action(switchtab1_action);
@@ -378,7 +386,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
                 GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
                 GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
-                GLib.MenuItem autotab_item = new GLib.MenuItem("Automatic Indent", "app.autotab_action");
+                GLib.MenuItem autotab_item = new GLib.MenuItem("[*] Automatic Indent", "app.autotab_action");
                 
                 action_menu.append_item(view_menu_item);
                 

@@ -284,7 +284,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.set_accels_for_action("app.save_action", {"<Ctrl>S"});
                 application.set_accels_for_action("app.open_action", {"<Ctrl>O"});
                 application.set_accels_for_action("app.quit_action", {"<Ctrl>Q"});
-                application.set_accels_for_action("app.about_action", {"<Ctrl>A"});
+                application.set_accels_for_action("app.about_action", {"<Shift><Ctrl>A"});
                 application.set_accels_for_action("app.switchtab1_action", {"<Alt>1"});
                 application.set_accels_for_action("app.switchtab2_action", {"<Alt>2"});
                 application.set_accels_for_action("app.switchtab3_action", {"<Alt>3"});

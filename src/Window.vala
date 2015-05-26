@@ -269,15 +269,15 @@ public class SolusWindow : Gtk.ApplicationWindow {
                         notebook.get_current_tab().source_view.set_insert_spaces_instead_of_tabs(false);
                 });
 
-                var autotab_off_action = new SimpleAction("autotab_off_action", null);
-                autotab_off_action.activate.connect(()=> {
-                        message("Turning Off Automatic Indentation...");
-                        notebook.get_current_tab().source_view.set_auto_indent(false);
-                });
-                var autotab_on_action = new SimpleAction("autotab_on_action", null);
-                autotab_on_action.activate.connect(()=> {
-                        message("Turning On Automatic Indentation...");
-                        notebook.get_current_tab().source_view.set_auto_indent(true);
+                var autotab_action = new SimpleAction("autotab_action", null);
+                autotab_action.activate.connect(()=> {
+                        if (notebook.get_current_tab().source_view.get_auto_indent() == true) {
+                                message("Turning Off Automatic Indentation...");
+                                notebook.get_current_tab().source_view.set_auto_indent(false);
+                        } else if (notebook.get_current_tab().source_view.get_auto_indent() == false) {
+                                message("Turning On Automatic Indentation...");
+                                notebook.get_current_tab().source_view.set_auto_indent(true);                                
+                        }
                 });
                 
                 //Set accelerators
@@ -312,8 +312,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.add_action(indentwidth2_action);
                 application.add_action(indentspaces_action);
                 application.add_action(indenttabs_action);
-                application.add_action(autotab_off_action);
-                application.add_action(autotab_on_action);
+                application.add_action(autotab_action);
                 application.add_action(highlight_line_action);
                 application.add_action(newtab_action);
                 application.add_action(switchtab1_action);
@@ -379,18 +378,16 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
                 GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
                 GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
-                GLib.MenuItem autotab_on_item = new GLib.MenuItem("Automatic Indent On", "app.autotab_on_action");
-                GLib.MenuItem autotab_off_item = new GLib.MenuItem("Automatic Indent Off", "app.autotab_off_action");
+                GLib.MenuItem autotab_item = new GLib.MenuItem("Automatic Indent", "app.autotab_action");
                 
                 action_menu.append_item(view_menu_item);
                 
                 edit_menu.append_item(indent_width_item);
-                edit_menu.append_item(autotab_on_item);
-                edit_menu.append_item(autotab_off_item);
                 view_menu.append_item(show_tabs_item);
                 view_menu.append_item(highlight_line_item);
                 
                 indent_width_menu.append_item(tabs_spaces_item);
+                indent_width_menu.append_item(autotab_item);
                 tabs_spaces_menu.append_item(indentspaces_item);
                 tabs_spaces_menu.append_item(indenttabs_item);
                 

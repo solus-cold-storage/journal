@@ -2,7 +2,7 @@
 
 A lightweight text editor written in Vala, with advanced features available that can be enabled for advanced users.
 
-###Version: 1.0 (Stable)
+###Version: 1.0.1 (Stable)
 ____
 ###Dependencies
 

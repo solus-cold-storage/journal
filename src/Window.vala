@@ -202,7 +202,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
 					"website-label", "Solus Project",
 					"license-type", Gtk.License.GPL_2_0,
 					"comments", "A simple text-editor with sharing features.",
-					"version", "1.0 (Stable)",
+					"version", "1.0.1 (Stable)",
 					"logo-icon-name", "journal",
 					"artists", new string[]{
 					  "Alejandro Seoane <asetrigo@gmail.com>"

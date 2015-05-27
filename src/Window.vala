@@ -198,11 +198,28 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 quit_action.activate.connect(()=> {
                         message("Closing...");
                         Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
+                        msg.show ();
                         msg.response.connect ((response_id) => {
                                 switch (response_id) {
                                         case Gtk.ResponseType.OK:
                                                 stdout.puts ("Ok\n");
-                                                this.destroy();
+                                                Gtk.MessageDialog smsg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.YES_NO, "Save unsaved document?");
+                                                smsg.show();
+                                                smsg.response.connect ((response_id) => {
+                                                        switch (response_id) {
+                                                                case Gtk.ResponseType.YES:
+                                                                        stdout.puts ("Yes\n");
+                                                                        save_file(notebook, false);
+                                                                        notebook.get_current_tab().destroy();
+                                                                        break;   
+                                                                case Gtk.ResponseType.NO:
+                                                                        stdout.puts ("No\n");
+                                                                        notebook.get_current_tab().destroy();
+                                                                        break;
+                                                        }
+                                                        smsg.destroy();
+                                                        this.destroy();                          
+                                                });
                                                 break;
                                         case Gtk.ResponseType.CANCEL:
                                                 stdout.puts ("Cancel\n");
@@ -213,7 +230,6 @@ public class SolusWindow : Gtk.ApplicationWindow {
                                 }
                                 msg.destroy();
                         });
-                        msg.show ();
                 });
 
                 var show_tabs_action = new PropertyAction("show_tabs_action", application, "show-tabs");
@@ -289,11 +305,27 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 close_tab_action.activate.connect(()=> {
                         message("Closing Current Tab...");
                         Gtk.MessageDialog msg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.OK_CANCEL, "Close unsaved document?");
+                        msg.show ();                        
                         msg.response.connect ((response_id) => {
                                 switch (response_id) {
                                         case Gtk.ResponseType.OK:
                                                 stdout.puts ("Ok\n");
-                                                notebook.get_current_tab().destroy();
+                                                Gtk.MessageDialog smsg = new Gtk.MessageDialog (this, Gtk.DialogFlags.MODAL, Gtk.MessageType.WARNING, Gtk.ButtonsType.YES_NO, "Save unsaved document?");
+                                                smsg.show();
+                                                smsg.response.connect ((response_id) => {
+                                                        switch (response_id) {
+                                                                case Gtk.ResponseType.YES:
+                                                                        stdout.puts ("Yes\n");
+                                                                        save_file(notebook, false);
+                                                                        notebook.get_current_tab().destroy();
+                                                                        break;   
+                                                                case Gtk.ResponseType.NO:
+                                                                        stdout.puts ("No\n");
+                                                                        notebook.get_current_tab().destroy();
+                                                                        break;
+                                                        }
+                                                        smsg.destroy();                             
+                                                });
                                                 break;
                                         case Gtk.ResponseType.CANCEL:
                                                 stdout.puts ("Cancel\n");

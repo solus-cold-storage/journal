@@ -450,7 +450,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 GLib.MenuItem width8_item = new GLib.MenuItem("8", "app.indentwidth8_action");
                 GLib.MenuItem width4_item = new GLib.MenuItem("4", "app.indentwidth4_action");
                 GLib.MenuItem width2_item = new GLib.MenuItem("2", "app.indentwidth2_action");
-                GLib.MenuItem autotab_item = new GLib.MenuItem("[*] Automatic Indent", "app.autotab_action");
+                GLib.MenuItem autotab_item = new GLib.MenuItem("Automatic Indent", "app.autotab_action");
                 
                 action_menu.append_item(view_menu_item);
                 

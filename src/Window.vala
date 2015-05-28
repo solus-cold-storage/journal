@@ -376,7 +376,7 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 application.set_accels_for_action("app.switchtab9_action", {"<Alt>9"});
                 application.set_accels_for_action("app.undo_action", {"<Ctrl>Z"});
                 application.set_accels_for_action("app.redo_action", {"<Shift><Ctrl>Z"});
-                application.set_accels_for_action("app.newtab_action", {"<Ctrl>N"});
+                application.set_accels_for_action("app.newtab_action", {"<Ctrl>T"});
                 application.set_accels_for_action("app.saveas_action", {"<Shift><Ctrl>S"});
 
                 //add actions to the application.

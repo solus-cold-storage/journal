@@ -49,6 +49,7 @@ public class SolusTab : Gtk.Box
                 source_view.set_show_line_numbers(true);
                 source_view.set_auto_indent(true);
                 source_view.set_buffer(text_buffer);
+                source_view.set_highlight_current_line(true);
                 //Set the font to monospace.
                 var fontdec = new Pango.FontDescription();
                 fontdec.set_family("Monospace");

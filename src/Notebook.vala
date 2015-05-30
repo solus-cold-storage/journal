@@ -90,7 +90,7 @@ public class SolusNotebook: Gtk.Notebook{
                 tab.show ();
                 tab.change_focus(this);
                 tab.text_buffer.set_style_scheme(new Gtk.SourceStyleSchemeManager().get_default().get_scheme(get_current_scheme())); 
-                set_tab_detachable(tab, true);
+                set_tab_detachable(tab, false);
                 set_tab_reorderable(tab, true);
                 set_subtitle_text(tab);
         } 

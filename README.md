@@ -27,6 +27,17 @@ Change to this folder (Journal's root folder)
 >sudo make install
 
 ____
+###TODO
+ * Add "Go to Line" feature.
+ * Add "Search and Replace" feature.
+ * Develop a flexible plug-in manager.
+ * Add a drop-down terminal plug-in.
+ * Fix keyboard shortcuts when multiple windows are open.
+ * Add print functionality.
+ * Add font selection menu.
+ * Add more themes to the appearance menu.
+
+____
 ###Icons
 
 * Journal icon copyright of Alejandro Seoane, many thanks!

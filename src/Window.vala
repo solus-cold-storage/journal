@@ -473,31 +473,6 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 popover.set_modal(true);
                 GLib.Menu action_menu = new GLib.Menu();
 
-                var find_down_button = new Button.from_icon_name("go-down-symbolic",IconSize.MENU);
-                find_down_button.set_sensitive(true);
-
-                var find_up_button = new Button.from_icon_name("go-up-symbolic",IconSize.MENU);
-                find_up_button.set_sensitive(true);
-
-                var find_entry = new Gtk.Entry();
-                find_entry.placeholder_text = "Search...";
-
-                find_entry.activate.connect(()=> {
-                        var find_input = find_entry.text.strip();
-                        message("Searching For" + " " + find_input + " ...");
-                        this.search_start(find_input, find_entry);
-                });
-
-                find_up_button.clicked.connect(()=> {
-                        var find_input = find_entry.text.strip();
-                        this.search_backward(find_input, find_entry);
-                });
-
-                find_down_button.clicked.connect(()=> {
-                        var find_input = find_entry.text.strip();
-                        this.search_forward(find_input, find_entry);
-                });
-
                 GLib.Menu file_menu = new GLib.Menu();
                 GLib.MenuItem file_menu_item = new GLib.MenuItem.submenu("File", file_menu);
                 action_menu.append_item(file_menu_item);
@@ -576,10 +551,6 @@ public class SolusWindow : Gtk.ApplicationWindow {
                 menu_button.set_menu_model(action_menu);
                 headbar.pack_end (menu_button);
                 headbar.pack_end (share_button);
-                headbar.pack_end (find_down_button);
-                headbar.pack_end (find_entry);
-                headbar.pack_end (find_up_button);
-
                 var vbox = new Box (Orientation.VERTICAL, 0);
                 vbox.pack_start(notebook, true, true, 0);
                 vbox.show_all();
